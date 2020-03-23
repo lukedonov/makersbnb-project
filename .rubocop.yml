@@ -9,8 +9,6 @@
 #
 # See https://github.com/rubocop-hq/rubocop/blob/master/manual/configuration.md
 
-Documentation:
-  Enabled: false
 
 AllCops:
   Exclude:
@@ -18,3 +16,12 @@ AllCops:
 
 Layout/LineLength:
   Max: 180
+
+Style/Documentation:
+  Enabled: false
+Style/HashEachMethods:
+  Enabled: false
+Style/HashTransformKeys:
+  Enabled: false
+Style/HashTransformValues:
+  Enabled: false

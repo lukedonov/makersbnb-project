@@ -1,12 +1,10 @@
 <h1>Welcome to Inn Cognito</h1>
-
-<% @listings.each {|listing| %>
-<ul>
-
-    <li><%= listing.name%></li>
-    <li><%= listing.description%></li>
-    <li><%= listing.cpn%></li>
-
-
-</ul>
-<%}%>
+<body>
+  <% @listings.each do |listing| %>
+    <ul>
+      <b><%= listing.name%></b>
+      <li><%= listing.description%></li>
+      <li><%= listing.cpn%></li>
+    </ul>
+  <%end%>
+</body>
