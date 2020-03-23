@@ -6,5 +6,9 @@ class InnCognito < Sinatra::Base
 
   end
 
+  get '/sign-up' do
+    erb :'users/sign_up' 
+  end
+
   run! if app_file == $0
 end
