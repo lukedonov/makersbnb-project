@@ -6,5 +6,10 @@ class InnCognito < Sinatra::Base
 
   end
 
+  get '/listings' do
+    "Welcome to Inn Cognito"
+  end
+
+
   run! if app_file == $0
 end

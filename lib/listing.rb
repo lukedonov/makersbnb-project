@@ -1,6 +1,9 @@
+require_relative "./database_connection"
+
 class Listing
     
     def self.all
-        return 'test property - 122. test test test'
+        results = DatabaseConnection.query("SELECT * FROM properties")
+        results.map { |property| property['name'] + ' - ' + property['cpn'] + '. ' + property['description'] }
     end
 end
