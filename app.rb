@@ -28,6 +28,7 @@ class InnCognito < Sinatra::Base
   end
 
   get '/listings' do
+    @user = User.find(id: session[:user_id])
     @listings = Listing.all
     erb :listings
   end
