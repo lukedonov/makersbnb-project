@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sinatra/base'
 require 'sinatra/flash'
 require './lib/user'
@@ -10,18 +12,18 @@ class InnCognito < Sinatra::Base
   disable :strict_paths
 
   register Sinatra::Flash
-  
+
   get '/' do
-    "This is meant to be empty"
+    'This is meant to be empty'
   end
 
   get '/sign-up' do
-    erb :'users/sign_up' 
+    erb :'users/sign_up'
   end
 
   post '/users' do
-    user = User.create(name: params[:name], email: params[:email], password: params[:password])
-    
+    User.create(name: params[:name], email: params[:email], password: params[:password])
+
     redirect '/listings'
   end
 
@@ -30,7 +32,5 @@ class InnCognito < Sinatra::Base
     erb :listings
   end
 
-
-  run! if app_file == $0
-  
+  run! if app_file == $PROGRAM_NAME
 end
