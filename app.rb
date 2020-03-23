@@ -5,7 +5,7 @@ require_relative './lib/listing'
 class InnCognito < Sinatra::Base
 
   get '/' do
-
+    "Welcome"
   end
 
   get '/listings' do
