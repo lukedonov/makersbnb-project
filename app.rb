@@ -1,4 +1,6 @@
 require 'sinatra/base'
+require_relative './lib/database_connection_setup'
+require_relative './lib/listing'
 
 class InnCognito < Sinatra::Base
 
@@ -7,7 +9,8 @@ class InnCognito < Sinatra::Base
   end
 
   get '/listings' do
-    "Welcome to Inn Cognito"
+    @listings = Listing.all
+    erb :listings
   end
 
 
