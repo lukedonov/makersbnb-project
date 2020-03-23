@@ -61,6 +61,12 @@ I would like to receieve an email notifying me that my booking has been denied
 `git clone path-to-your-repo`
 `command_to_install_dependencies` (e.g. `bundle`)
 
+## Installation instructions
+**Setting up the databases**
+Connect to `psql` 
+
+Run the SQL scripts in the `db/migrations` folder in the given order.
+
 ## Usage
 
 Navigate to `http://localhost:xxxx/`
