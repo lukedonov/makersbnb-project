@@ -5,6 +5,7 @@ Airbnb Clone
 ## User Stories
 
 ### Primary:
+```
 As a user
 So that I can post or book a listing
 I would like to sign-up
@@ -53,7 +54,7 @@ I would like to recieve an email booking confirmation
 As a guest
 So that I know if my booking has been unsuccessful
 I would like to receieve an email notifying me that my booking has been denied
-
+```
 
 ## Getting started
 
