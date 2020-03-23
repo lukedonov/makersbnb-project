@@ -10,5 +10,11 @@ class InnCognito < Sinatra::Base
     erb :'users/sign_up' 
   end
 
+  post '/users' do
+    # stuff goes here
+    
+    redirect '/'
+  end
+
   run! if app_file == $0
 end
