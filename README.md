@@ -2,6 +2,8 @@
 
 Airbnb Clone
 
+Contributors: Orion Reed, Gareth Harris, Sophia Bell
+
 ## User Stories
 
 ### Primary:
@@ -63,6 +65,7 @@ I would like to receieve an email notifying me that my booking has been denied
 
 ## Installation instructions
 **Setting up the databases**
+
 Connect to `psql` 
 
 Run the SQL scripts in the `db/migrations` folder in the given order.
