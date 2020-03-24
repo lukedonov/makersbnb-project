@@ -2,7 +2,7 @@
 
 Airbnb Clone
 
-Contributors: Orion Reed, Gareth Harris, Sophia Bell
+Contributors: Luke Donovan, Orion Reed, Gareth Harris, Sophia Bell
 
 ## User Stories
 
