@@ -26,4 +26,9 @@ class Listing
     results.map { |p| Listing.new(p['name'], p['description'], p['cpn'].to_i, p['user_id']) }
   end
 
+  def self.sort_by_cpn
+    results = DatabaseConnection.query('SELECT * FROM properties ORDER BY cpn ASC')
+    results.map { |p| Listing.new(p['name'], p['description'], p['cpn'].to_i, p['user_id']) }
+  end
+
 end
