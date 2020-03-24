@@ -23,7 +23,7 @@ class InnCognito < Sinatra::Base
 
   post '/users' do
     User.create(name: params[:name], email: params[:email], password: params[:password])
-    session[:user_id] = user.id
+   
     redirect '/listings'
   end
 
@@ -33,5 +33,4 @@ class InnCognito < Sinatra::Base
     erb :listings
   end
 
-  run! if app_file == $PROGRAM_NAME
 end
