@@ -7,7 +7,12 @@
     <form action="/sign-up" method="get">
       <input type="submit" value="Sign up" />
     </form>
-
+    <form action="/listings-sort" method="get">
+      <select>
+        <option>All</option>
+        <option>Most recent</option>
+      </select>
+    </form>
   <%if @user%>
     <form action="/listings/new" method="get">
       <input type="submit" value="New Listing">
