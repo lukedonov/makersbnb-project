@@ -7,6 +7,9 @@
     <form action="/sign-up" method="get">
       <input type="submit" value="Sign up" />
     </form>
+    <form action="/listings/new" method="get">
+      <input type="submit" value="New Listing">
+    </form>
     <% @listings.each do |listing| %>
       <ul>
         <b><%= listing.name%></b>

@@ -24,10 +24,14 @@ feature 'viewing all listings' do
     fill_in('name', with: 'new property')
     fill_in('description', with: 'wow, so nice')
     fill_in('cpn', with: '123421')
-    click_button('submit')
+    click_button('Submit')
     expect(page).to have_content "new property"
     expect(page).to have_content "wow, so nice"
     expect(page).to have_content "123421"
   end
 
+  scenario "user cannot post new listing when not signed in" do
+    visit('/listings')
+    expect(page).not_to have_selector("input[type=submit][value='New Listing']")
+  end
 end
