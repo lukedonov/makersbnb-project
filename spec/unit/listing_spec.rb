@@ -3,40 +3,40 @@
 require 'pg'
 require './lib/database_connection'
 require_relative '../database_helpers.rb'
-require 'listing'
+require 'Property'
 require 'user'
 
-describe Listing do
+describe Property do
   connection = DatabaseConnection.setup('inncognito_test')
 
   describe '.all' do
-    it('returns a list of listings') do
+    it('returns a list of properties') do
       connection.query("INSERT INTO users (id, name, email, password) VALUES ('1', 'bob', 'bob@bob.bob', 'bobbobbob');")
       connection.query("INSERT INTO properties (name, cpn, description, user_id) VALUES('test property', 122, 'test test test', '1');")
-      listings = Listing.all
-      expect(listings.first.name).to eq('test property')
-      expect(listings.first.description).to eq('test test test')
-      expect(listings.first.cpn).to eq(122)
+      properties = Property.all
+      expect(properties.first.name).to eq('test property')
+      expect(properties.first.description).to eq('test test test')
+      expect(properties.first.cpn).to eq(122)
     end
   end
 
   describe '.create' do
-    it('creates then returns a new Listing instance') do
+    it('creates then returns a new Property instance') do
       user = User.create(name: 'Bob', email: 'bob@bob.com', password: 'password')
-      listing = Listing.create(name: 'Bobs House', description: 'bobby bob bob', cpn: 111, user_id: user.id)
-      expect(listing.name).to eq('Bobs House')
-      expect(listing.description).to eq('bobby bob bob')
-      expect(listing.cpn).to eq(111)
-      expect(listing.user_id).to eq(user.id)
+      property = Property.create(name: 'Bobs House', description: 'bobby bob bob', cpn: 111, user_id: user.id)
+      expect(property.name).to eq('Bobs House')
+      expect(property.description).to eq('bobby bob bob')
+      expect(property.cpn).to eq(111)
+      expect(property.user_id).to eq(user.id)
     end
   end
 
   describe '.where' do
     it 'gets the relevant id number from the user database' do
       user = User.create(name: 'John Doe', email: 'john@doe.com', password: '123456789')
-      Listing.create(name: 'Bobs House', description: 'bobby bob bob', cpn: 111, user_id: user.id)
+      Property.create(name: 'Bobs House', description: 'bobby bob bob', cpn: 111, user_id: user.id)
 
-      properties = Listing.where(user_id: user.id)
+      properties = Property.where(user_id: user.id)
       property = properties.first
       persisted_data(table: 'properties', id: property.id)
       expect(property.user_id).to eq user.id
@@ -46,11 +46,11 @@ describe Listing do
   describe '.sort_by_recent' do
     it('displays the results by most recent entry first') do
       connection.query("INSERT INTO users (id, name, email, password) VALUES ('1', 'bob', 'bob@bob.bob', 'bobbobbob');")
-      Listing.create(name: "test property", description: "a splendid house made of cheese", cpn: '134', user_id: '1')
-      property = Listing.create(name: "test property2", description: "a splendid house made of eggs", cpn: '133', user_id: '1')
-      listing = Listing.sort_by_recent
+      Property.create(name: "test property", description: "a splendid house made of cheese", cpn: 134, user_id: '1')
+      property = Property.create(name: "test property2", description: "a splendid house made of eggs", cpn: 133, user_id: '1')
+      sorted_property = Property.sort_by_recent
       
-      expect(listing.first.name).to eq property.name;
+      expect(sorted_property.first.name).to eq property.name;
 
     end
   end
