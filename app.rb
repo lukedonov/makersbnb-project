@@ -33,10 +33,6 @@ class InnCognito < Sinatra::Base
     erb :listings
   end
 
-  get '/listings-sort' do
-    
-  end
-
   get '/listings/new' do
     erb :'/listings/new'
   end
@@ -47,7 +43,14 @@ class InnCognito < Sinatra::Base
     redirect '/listings'
   end
 
-
+  get '/listings-sort' do
+    if params[:sort] == "recent"
+      @listings = Listing.sort_by_recent
+    elsif params[:sort] == "price"
+      @listings = Listing.sort_by_cpn
+    end
+    erb :listings
+  end
 
   run! if app_file == $PROGRAM_NAME
 end
