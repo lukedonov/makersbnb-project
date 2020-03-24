@@ -19,17 +19,17 @@ class Listing
 
   def self.all
     results = DatabaseConnection.query('SELECT * FROM properties')
-  results.map { |p| Listing.new(p['id'], p['name'], p['description'], p['cpn'].to_i, p['user_id']) }
+    results.map { |p| Listing.new(p['id'], p['name'], p['description'], p['cpn'].to_i, p['user_id']) }
   end
 
   def self.sort_by_recent
     results = DatabaseConnection.query('SELECT * FROM properties ORDER BY id DESC')
-    results.map { |p| Listing.new(p['name'], p['description'], p['cpn'].to_i, p['user_id']) }
+    results.map { |p| Listing.new(p['id'], p['name'], p['description'], p['cpn'].to_i, p['user_id']) }
   end
 
   def self.sort_by_cpn
     results = DatabaseConnection.query('SELECT * FROM properties ORDER BY cpn ASC')
-    results.map { |p| Listing.new(p['name'], p['description'], p['cpn'].to_i, p['user_id']) }
+    results.map { |p| Listing.new(p['id'], p['name'], p['description'], p['cpn'].to_i, p['user_id']) }
   end
 
   def self.where(user_id:)

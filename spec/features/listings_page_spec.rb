@@ -20,14 +20,14 @@ feature 'viewing all listings' do
 
   scenario 'add a new listing' do
 
-    user = described_class.create(name: 'John Doe', email: 'john@doe.com', password: '123456789')
+    user = User.create(name: 'John Doe', email: 'john@doe.com', password: '123456789')
 
     #change to match sign-in page
 
     visit('/sign-in')
     fill_in('email', with: user.email)
-    fill_in('password', with: user.password)
-    click_button('Submit')
+    fill_in('password', with: '123456789')
+    click_button('Sign In')
 
     #------
 
