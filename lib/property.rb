@@ -35,6 +35,5 @@ class Property
   def self.where(user_id:)
     result = DatabaseConnection.query("SELECT * FROM properties WHERE user_id = #{user_id};")
     result.map { |p| Property.new(p['id'], p['name'], p['description'], p['cpn'].to_i, p['user_id']) }
-  end 
-
+  end
 end

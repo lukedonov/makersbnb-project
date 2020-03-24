@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def sign_up
   visit '/sign-up'
   fill_in('name', with: 'John Doe')
@@ -9,6 +11,13 @@ end
 def sign_in
   visit '/sign-in'
   fill_in(:email, with: 'test@test.com')
+  fill_in(:password, with: 'test')
+  click_button('Sign In')
+end
+
+def sign_in_with_wrong_email
+  visit '/sign-in'
+  fill_in(:email, with: 'test_wrong@test.com')
   fill_in(:password, with: 'test')
   click_button('Sign In')
 end

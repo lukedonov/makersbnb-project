@@ -49,18 +49,17 @@ class InnCognito < Sinatra::Base
 
   post '/properties/new' do
     @user = User.find(id: session[:user_id])
-    Property.create(name: params[:name], description: params[:description], cpn: params[:cpn], user_id: @user.id) 
+    Property.create(name: params[:name], description: params[:description], cpn: params[:cpn], user_id: @user.id)
     redirect '/properties'
   end
 
   get '/properties-sort' do
     @user = User.find(id: session[:user_id])
-    if params[:sort] == "recent"
+    if params[:sort] == 'recent'
       @properties = Property.sort_by_recent
-    elsif params[:sort] == "price"
+    elsif params[:sort] == 'price'
       @properties = Property.sort_by_cpn
     end
     erb :'properties/index'
   end
-
 end

@@ -11,7 +11,8 @@ require 'simplecov'
 require 'simplecov-console'
 require 'capybara/rspec'
 require 'rspec'
-require 'features/web_helpers'
+require 'features/feature_web_helpers'
+require 'unit/unit_web_helpers'
 
 Capybara.app = InnCognito
 
