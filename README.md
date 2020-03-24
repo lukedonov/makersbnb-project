@@ -18,7 +18,7 @@ I would like to post a listing
 
 As a host
 So I can get lots of business
-I would like to be able post multiple listings
+I would like to be able post multiple properties
 
 As a guest
 So I'm not sleeping in the street

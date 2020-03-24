@@ -4,7 +4,7 @@ require 'sinatra/base'
 require 'sinatra/flash'
 require './lib/user'
 require './lib/database_connection_setup'
-require_relative './lib/listing'
+require_relative './lib/Property'
 
 class InnCognito < Sinatra::Base
   enable :sessions
@@ -28,39 +28,39 @@ class InnCognito < Sinatra::Base
   post '/users/new' do
     @user = User.create(name: params[:name], email: params[:email], password: params[:password])
     session[:user_id] = @user.id unless @user.nil?
-    redirect '/listings'
+    redirect '/properties'
   end
 
   post '/users/sign-in' do
     @user = User.find_by_email(email: params[:email])
     session[:user_id] = @user.id unless @user.nil?
-    redirect '/listings'
+    redirect '/properties'
   end
 
-  get '/listings' do
+  get '/properties' do
     @user = User.find(id: session[:user_id])
-    @listings = Listing.all
-    erb :listings
+    @properties = Property.all
+    erb :'properties/index'
   end
 
-  get '/listings/new' do
-    erb :'/listings/new'
+  get '/properties/new' do
+    erb :'/properties/new'
   end
 
-  post '/listings/new' do
+  post '/properties/new' do
     @user = User.find(id: session[:user_id])
-    Listing.create(name: params[:name], description: params[:description], cpn: params[:cpn], user_id: @user) 
-    redirect '/listings'
+    Property.create(name: params[:name], description: params[:description], cpn: params[:cpn], user_id: @user.id) 
+    redirect '/properties'
   end
 
-  get '/listings-sort' do
+  get '/properties-sort' do
+    @user = User.find(id: session[:user_id])
     if params[:sort] == "recent"
-      @listings = Listing.sort_by_recent
+      @properties = Property.sort_by_recent
     elsif params[:sort] == "price"
-      @listings = Listing.sort_by_cpn
+      @properties = Property.sort_by_cpn
     end
-    erb :listings
+    erb :'properties/index'
   end
 
-  run! if app_file == $PROGRAM_NAME
 end
