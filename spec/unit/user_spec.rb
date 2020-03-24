@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-require 'database_helpers'
+
+require_relative '../spec/database_helpers.rb'
 
 require 'user'
 describe User do
@@ -19,11 +20,11 @@ describe User do
     it 'returns nil if there is no ID given' do
       expect(User.find(id: nil)).to eq nil
     end
-  
+
     it 'find a user by ID' do
       user = described_class.create(name: 'John Doe', email: 'john@doe.com', password: '123456789')
       result = User.find(id: user.id)
-  
+
       expect(result.id).to eq user.id
       expect(result.email).to eq user.email
     end
