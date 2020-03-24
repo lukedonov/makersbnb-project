@@ -13,6 +13,7 @@ require 'capybara/rspec'
 require 'rspec'
 require 'features/feature_web_helpers'
 require 'unit/unit_web_helpers'
+require 'bcrypt'
 
 Capybara.app = InnCognito
 
