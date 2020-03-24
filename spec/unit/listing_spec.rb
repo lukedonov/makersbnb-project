@@ -34,15 +34,12 @@ describe Listing do
   describe '.where' do
     it 'gets the relevant id number from the user database' do
       user = User.create(name: 'John Doe', email: 'john@doe.com', password: '123456789')
-      listing = Listing.create(name: 'Bobs House', description: 'bobby bob bob', cpn: 111, user_id: user.id)
+      Listing.create(name: 'Bobs House', description: 'bobby bob bob', cpn: 111, user_id: user.id)
 
       properties = Listing.where(user_id: user.id)
       property = properties.first
       persisted_data(table: 'properties', id: property.id)
-  
-      sleep 20
       expect(property.user_id).to eq user.id
     end
   end
-  
 end

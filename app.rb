@@ -17,13 +17,23 @@ class InnCognito < Sinatra::Base
     'This is meant to be empty'
   end
 
+  get '/sign-in' do
+    erb :'users/sign_in'
+  end
+
   get '/sign-up' do
     erb :'users/sign_up'
   end
 
-  post '/users' do
-    User.create(name: params[:name], email: params[:email], password: params[:password])
-    # session[:user_id] = user.id
+  post '/users/new' do
+    @user = User.create(name: params[:name], email: params[:email], password: params[:password])
+    session[:user_id] = @user.id unless @user.nil?
+    redirect '/listings'
+  end
+
+  post '/users/sign-in' do
+    @user = User.find_by_email(email: params[:email])
+    session[:user_id] = @user.id unless @user.nil?
     redirect '/listings'
   end
 
