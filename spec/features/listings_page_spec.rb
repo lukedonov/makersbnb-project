@@ -17,4 +17,17 @@ feature 'viewing all listings' do
     # expect(page).to have_content '122'
     # expect(page).to have_content 'test test test'
   end
+
+  scenario 'add a new listing' do
+    visit('/listings')
+    click_button('New Listing')
+    fill_in('name', with: 'new property')
+    fill_in('description', with: 'wow, so nice')
+    fill_in('cpn', with: '123421')
+    click_button('submit')
+    expect(page).to have_content "new property"
+    expect(page).to have_content "wow, so nice"
+    expect(page).to have_content "123421"
+  end
+
 end
