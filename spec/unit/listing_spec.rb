@@ -2,7 +2,9 @@
 
 require 'pg'
 require './lib/database_connection'
+require_relative '../database_helpers.rb'
 require 'listing'
+require 'user'
 
 describe Listing do
   connection = DatabaseConnection.setup('inncognito_test')
@@ -19,13 +21,25 @@ describe Listing do
   end
 
   describe '.create' do
-    it('adds a listing to the database') do
-      connection.query("INSERT INTO users (id, name, email, password) VALUES ('1', 'bob', 'bob@bob.bob', 'bobbobbob');")
-      listing = Listing.create(name: "test property", description: "a splendid house made of cheese", cpn: '134', user_id: '1')
-      expect(listing.name).to eq "test property"
-      expect(listing.description).to eq "a splendid house made of cheese"
-      expect(listing.cpn).to eq 134
-      expect(listing.user_id).to eq '1'
+    it('creates then returns a new Listing instance') do
+      user = User.create(name: 'Bob', email: 'bob@bob.com', password: 'password')
+      listing = Listing.create(name: 'Bobs House', description: 'bobby bob bob', cpn: 111, user_id: user.id)
+      expect(listing.name).to eq('Bobs House')
+      expect(listing.description).to eq('bobby bob bob')
+      expect(listing.cpn).to eq(111)
+      expect(listing.user_id).to eq(user.id)
+    end
+  end
+
+  describe '.where' do
+    it 'gets the relevant id number from the user database' do
+      user = User.create(name: 'John Doe', email: 'john@doe.com', password: '123456789')
+      Listing.create(name: 'Bobs House', description: 'bobby bob bob', cpn: 111, user_id: user.id)
+
+      properties = Listing.where(user_id: user.id)
+      property = properties.first
+      persisted_data(table: 'properties', id: property.id)
+      expect(property.user_id).to eq user.id
     end
   end
 
