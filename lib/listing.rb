@@ -3,7 +3,7 @@
 require_relative './database_connection'
 
 class Listing
-  attr_reader :name, :description, :cpn, :user_id
+  attr_reader :name, :description, :cpn, :user_id, :id
   def initialize(id, name, description, cpn, user_id)
     @id = id
     @name = name
@@ -21,4 +21,9 @@ class Listing
     results = DatabaseConnection.query('SELECT * FROM properties')
     results.map { |p| Listing.new(p['id'], p['name'], p['description'], p['cpn'].to_i, p['user_id']) }
   end
+
+  def self.where(user_id:)
+    result = DatabaseConnection.query("SELECT * FROM properties WHERE user_id = #{user_id};")
+    result.map { |p| Listing.new(p['id'], p['name'], p['description'], p['cpn'].to_i, p['user_id']) }
+  end 
 end
