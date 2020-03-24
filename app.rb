@@ -33,5 +33,24 @@ class InnCognito < Sinatra::Base
     erb :listings
   end
 
+  get '/listings/new' do
+    erb :'/listings/new'
+  end
+
+  post '/listings/new' do
+    @user =  1 #User.find(id: session[:user_id])     change when merge
+    Listing.create(name: params[:name], description: params[:description], cpn: params[:cpn], user_id: @user) 
+    redirect '/listings'
+  end
+
+  get '/listings-sort' do
+    if params[:sort] == "recent"
+      @listings = Listing.sort_by_recent
+    elsif params[:sort] == "price"
+      @listings = Listing.sort_by_cpn
+    end
+    erb :listings
+  end
+
   run! if app_file == $PROGRAM_NAME
 end

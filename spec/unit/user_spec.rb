@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../spec/database_helpers.rb'
+require_relative '../database_helpers.rb'
 
 require 'user'
 describe User do
