@@ -1,40 +1,54 @@
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="/public/inncognito.css" >
+    <link rel="stylesheet" type="text/css" href="<%= url('stylesheets/css/style.css') %>" >
   </head>
   <nav>
   </nav>
   <body>
-    <header>
-      <form action="/sign-in" method="get">
-        <input type="submit" value="Sign in" />
+    
+    <div class="grid-container">
+    
+    <div id="menu">
+      <header>
+        <form action="/sign-in" method="get">
+          <input type="submit" value="Sign in" />
+        </form>
+        <form action="/sign-up" method="get">
+          <input type="submit" value="Sign up" />
+        </form>
+      </header>
+  </div>
+
+  <div id="welcome">
+    <h1>Welcome to Inn Cognito</h1>
+    <h2><%= if @user then "Welcome, #{@user.name}" end%></h2>
+  </div>
+
+  <div id="properties">
+      <form action="/properties-sort" method="get">
+        <select id="sort" name="sort">
+          <option>All</option>
+          <option value="recent">Most recent</option>
+          <option value="price">Price (Lowest to Highest)</option>
+        </select>
       </form>
-      <form action="/sign-up" method="get">
-        <input type="submit" value="Sign up" />
+    <%if @user%>
+      <form action="/properties/new" method="get">
+        <input type="submit" value="New Property">
       </form>
-    </header>
-<h1>Welcome to Inn Cognito</h1>
-<h2><%= if @user then "Welcome, #{@user.name}" end%></h2>
-  
-    <form action="/properties-sort" method="get">
-      <select id="sort" name="sort">
-        <option>All</option>
-        <option value="recent">Most recent</option>
-        <option value="price">Price (Lowest to Highest)</option>
-      </select>
-    </form>
-  <%if @user%>
-    <form action="/properties/new" method="get">
-      <input type="submit" value="New Property">
-    </form>
-  <%end%>
-    <% @properties.each do |property| %>
-      <ul>
-        <b><%= property.name%></b>
-        <li><%= property.description%></li>
-        <li><%= property.cpn%></li>
-      </ul>
     <%end%>
+      <% @properties.each do |property| %>
+        <div class="property">
+            <h3><%= property.name%></h3>
+            <p class="propert-desc"><%= property.description%></p>
+            <p class="property-book">£ <%= property.cpn%> per night <button>Book</button></p>
+        </div>
+      <%end%>
+    </div>
+
+    </div>
+
+
   </body>
 
 <script

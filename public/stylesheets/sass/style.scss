@@ -1,4 +1,91 @@
-$blue: #3bbfce;
-.class2{
-  color:$blue;
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+
+$neutral: #202124;
+
+// $neutral-the-sequel: #323639;
+
+// $accent:
+
+$base: #D6D6D7;
+
+$secondary: #323639;
+
+// $success:
+
+// $failure:
+
+@mixin button-base{
+  background-color: $neutral;
+    color: $base;
+    border: 1px lighten($neutral, 30%) solid;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: 'Special Elite', cursive;
+    font-size: 20px;
+}
+
+body{
+  background-color: $neutral;
+  margin: 0;
+  font-family: 'Special Elite', cursive;
+}
+
+#menu {
+  padding: 10px;
+  grid-area: menu; 
+  background-color: $secondary;
+  align-items: stretch;
+  input[type=submit]{
+    @include button-base();
+  }
+
+  form{
+    display: block;
+    float: right;
+  }
+}
+
+#welcome {
+  grid-area: welcome;
+  
+}
+
+#welcome h1{
+  color: $base; 
+}
+
+#properties {
+  grid-area: properties; 
+ 
+}
+
+.property{
+  background-color: $secondary;
+  padding: 5px 50px 5px 50px;
+  color: $base;
+  h3{
+    font-size: 25px;
+  }
+
+  button{
+    @include button-base();
+  }
+  
+}
+
+.property-book{
+  text-align: right;
+}
+
+.grid-container {
+  display: grid;
+  
+  grid-template-areas: 'menu menu menu menu' 
+  '. welcome welcome .' 
+  '. properties properties .';
+  grid-gap: 10px;
+ 
+  justify-content: stretch; 
+
 }
