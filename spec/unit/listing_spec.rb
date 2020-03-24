@@ -3,6 +3,7 @@
 require 'pg'
 require './lib/database_connection'
 require 'listing'
+require 'user'
 
 describe Listing do
   connection = DatabaseConnection.setup('inncognito_test')
@@ -20,11 +21,12 @@ describe Listing do
 
   describe '.create' do
     it('creates then returns a new Listing instance') do
-      listing = Listing.create(name: 'Bobs House', description: 'bobby bob bob', cpn: 111, user_id: 9)
+      user = User.create(name: 'Bob', email: 'bob@bob.com', password: 'password')
+      listing = Listing.create(name: 'Bobs House', description: 'bobby bob bob', cpn: 111, user_id: user.id)
       expect(listing.name).to eq('Bobs House')
       expect(listing.description).to eq('bobby bob bob')
       expect(listing.cpn).to eq(111)
-      expect(listing.user_id).to eq(9)
+      expect(listing.user_id).to eq(user.id)
     end
   end
 end
