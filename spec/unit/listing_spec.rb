@@ -17,4 +17,14 @@ describe Listing do
       expect(listings.first.cpn).to eq(122)
     end
   end
+
+  describe '.create' do
+    it('creates then returns a new Listing instance') do
+      listing = Listing.create(name: 'Bobs House', description: 'bobby bob bob', cpn: 111, user_id: 9)
+      expect(listing.name).to eq('Bobs House')
+      expect(listing.description).to eq('bobby bob bob')
+      expect(listing.cpn).to eq(111)
+      expect(listing.user_id).to eq(9)
+    end
+  end
 end
