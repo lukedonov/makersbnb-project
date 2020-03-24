@@ -29,4 +29,18 @@ describe User do
       expect(result.email).to eq user.email
     end
   end
+
+  describe '.find_by_email' do
+    it 'returns nil if there is no email given' do
+      expect(User.find_by_email(email: nil)).to eq nil
+    end
+
+    it 'find a user by email' do
+      user = described_class.create(name: 'John Doe', email: 'john@doe.com', password: '123456789')
+      result = User.find_by_email(email: 'john@doe.com')
+
+      expect(result.id).to eq user.id
+      expect(result.email).to eq user.email
+    end
+  end
 end

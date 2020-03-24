@@ -1,13 +1,33 @@
 <html>
-  <head></head>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/public/inncognito.css" >
+  </head>
+  <nav>
+  </nav>
   <body>
     <header>
-      <h1>Welcome to Inn Cognito</h1>
-      <h2></h2>
+      <form action="/sign-in" method="get">
+        <input type="submit" value="Sign in" />
+      </form>
+      <form action="/sign-up" method="get">
+        <input type="submit" value="Sign up" />
+      </form>
     </header>
-    <form action="/sign-up" method="get">
-      <input type="submit" value="Sign up" />
+<h1>Welcome to Inn Cognito</h1>
+<h2><%= if @user then "Welcome, #{@user.name}" end%></h2>
+  
+    <form action="/listings-sort" method="get">
+      <select id="sort" name="sort">
+        <option>All</option>
+        <option value="recent">Most recent</option>
+        <option value="price">Price (Lowest to Highest)</option>
+      </select>
     </form>
+  <%if @user%>
+    <form action="/listings/new" method="get">
+      <input type="submit" value="New Listing">
+    </form>
+  <%end%>
     <% @listings.each do |listing| %>
       <ul>
         <b><%= listing.name%></b>
@@ -16,4 +36,20 @@
       </ul>
     <%end%>
   </body>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function(){
+    $(function(){
+      $('#sort').change(function(){
+        this.form.submit();
+      })
+    })
+  })
+</script>
+
+
   <html>

@@ -16,6 +16,21 @@ class User
     return nil unless id
 
     result = DatabaseConnection.query("SELECT * FROM users WHERE id = #{id}")
+    return nil unless result.any?
+
+    User.new(
+      id: result[0]['id'],
+      name: result[0]['name'],
+      email: result[0]['email']
+    )
+  end
+
+  def self.find_by_email(email:)
+    return nil unless email
+
+    result = DatabaseConnection.query("SELECT * FROM users WHERE email = '#{email}'")
+    return nil unless result.any?
+
     User.new(
       id: result[0]['id'],
       name: result[0]['name'],
