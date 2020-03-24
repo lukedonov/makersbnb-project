@@ -33,6 +33,10 @@ class InnCognito < Sinatra::Base
     erb :listings
   end
 
+  get '/listings-sort' do
+    
+  end
+
   get '/listings/new' do
     erb :'/listings/new'
   end
@@ -42,6 +46,8 @@ class InnCognito < Sinatra::Base
     Listing.create(name: params[:name], description: params[:description], cpn: params[:cpn], user_id: @user) 
     redirect '/listings'
   end
+
+
 
   run! if app_file == $PROGRAM_NAME
 end
