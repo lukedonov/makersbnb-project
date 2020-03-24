@@ -12,6 +12,14 @@
       <form action="/sign-up" method="get">
         <input type="submit" value="Sign up" />
       </form>
+      <form action="/sessions/destroy" method="post">
+        <input type="submit" value="Sign out" />
+    </form>
+  
+  <h2>
+      <%= flash[:notice] %>
+  </h2>
+
     </header>
 <h1>Welcome to Inn Cognito</h1>
 <h2><%= if @user then "Welcome, #{@user.name}" end%></h2>
