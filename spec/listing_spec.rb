@@ -29,4 +29,16 @@ describe Listing do
     end
   end
 
+  describe '.sort_by_recent' do
+    it('displays the results by most recent entry first') do
+      connection.query("INSERT INTO users (id, name, email, password) VALUES ('1', 'bob', 'bob@bob.bob', 'bobbobbob');")
+      Listing.create(name: "test property", description: "a splendid house made of cheese", cpn: '134', user_id: '1')
+      property = Listing.create(name: "test property2", description: "a splendid house made of eggs", cpn: '133', user_id: '1')
+      listing = Listing.sort_by_recent
+      
+      expect(listing.first.name).to eq property.name;
+
+    end
+  end
+
 end
