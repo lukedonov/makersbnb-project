@@ -8,7 +8,7 @@
       <input type="submit" value="Sign up" />
     </form>
     <form action="/listings-sort" method="get">
-      <select>
+      <select id="sort">
         <option>All</option>
         <option>Most recent</option>
       </select>
@@ -26,4 +26,20 @@
       </ul>
     <%end%>
   </body>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function(){
+    $(function(){
+      $('#sort').change(function(){
+        this.form.submit();
+      })
+    })
+  })
+</script>
+
+
   <html>
