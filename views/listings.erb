@@ -6,17 +6,16 @@
   </nav>
   <body>
     <header>
-
-    </header>
-      <h1>Welcome to Inn Cognito</h1>
-      <h2><%= if @user then "Welcome, #{@user.name}" end%></h2>
-
       <form action="/sign-in" method="get">
         <input type="submit" value="Sign in" />
       </form>
       <form action="/sign-up" method="get">
         <input type="submit" value="Sign up" />
       </form>
+    </header>
+      <h1>Welcome to Inn Cognito</h1>
+      <h2><%= if @user then "Welcome, #{@user.name}" end%></h2>
+
       <% @listings.each do |listing| %>
         <ul>
           <b><%= listing.name%></b>
