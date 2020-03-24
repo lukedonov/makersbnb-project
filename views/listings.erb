@@ -8,9 +8,10 @@
       <input type="submit" value="Sign up" />
     </form>
     <form action="/listings-sort" method="get">
-      <select id="sort">
+      <select id="sort" name="sort">
         <option>All</option>
-        <option>Most recent</option>
+        <option value="recent">Most recent</option>
+        <option value="price">Price (Lowest to Highest)</option>
       </select>
     </form>
   <%if @user%>

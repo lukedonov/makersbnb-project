@@ -44,7 +44,11 @@ class InnCognito < Sinatra::Base
   end
 
   get '/listings-sort' do
-    @listings = Listing.sort_by_recent
+    if params[:sort] == "recent"
+      @listings = Listing.sort_by_recent
+    elsif params[:sort] == "price"
+      @listings = Listing.sort_by_cpn
+    end
     erb :listings
   end
 
