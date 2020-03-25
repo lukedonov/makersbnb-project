@@ -1,8 +1,14 @@
-# Title of project
+# Inncognito
 
-Airbnb Clone
+Makers Academy - Week 6 (project)
 
 Contributors: Luke Donovan, Orion Reed, Gareth Harris, Sophia Bell
+
+[Outline](#Outline) | Specifications | Planning | Installation Instructions | Tech stack
+
+## [Outline](#Outline) 
+
+Work as a team to build a clone of Airbnb
 
 ## User Stories
 
