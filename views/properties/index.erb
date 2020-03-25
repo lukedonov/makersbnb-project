@@ -41,6 +41,15 @@
         <b><%= property.name%></b>
         <li><%= property.description%></li>
         <li><%= property.cpn%></li>
+        <%if @user%>
+          <form action="/properties/<%= property.id %>" method="get">
+            <input type="submit" value="Book">
+          </form>
+        <%else%> 
+          <form action="/sign-in" method="get">
+            <input type="submit" value="Sign in" />
+          </form>
+        <%end%>  
       </ul>
     <%end%>
   </body>
