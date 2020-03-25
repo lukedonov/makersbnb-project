@@ -14,31 +14,31 @@ class Property
 
   def self.create(name:, description:, cpn:, user_id:)
     result = DatabaseConnection.query("INSERT INTO properties (name, description, cpn, user_id) VALUES ('#{name}', '#{description}', #{cpn.to_i}, #{user_id}) RETURNING id, name, description, cpn, user_id;")
-    Property.new(result[0]['id'], result[0]['name'], result[0]['description'], result[0]['cpn'].to_i, result[0]['user_id'])
+    map(result).first
   end
 
   def self.all
-    results = DatabaseConnection.query('SELECT * FROM properties')
-    results.map { |p| Property.new(p['id'], p['name'], p['description'], p['cpn'].to_i, p['user_id']) }
+    map(DatabaseConnection.query('SELECT * FROM properties'))
   end
 
   def self.sort_by_recent
-    results = DatabaseConnection.query('SELECT * FROM properties ORDER BY id DESC')
-    results.map { |p| Property.new(p['id'], p['name'], p['description'], p['cpn'].to_i, p['user_id']) }
+    map(DatabaseConnection.query('SELECT * FROM properties ORDER BY id DESC'))
   end
 
   def self.sort_by_cpn
-    results = DatabaseConnection.query('SELECT * FROM properties ORDER BY cpn ASC')
-    results.map { |p| Property.new(p['id'], p['name'], p['description'], p['cpn'].to_i, p['user_id']) }
+    map(DatabaseConnection.query('SELECT * FROM properties ORDER BY cpn ASC'))
   end
 
   def self.where(user_id:)
-    result = DatabaseConnection.query("SELECT * FROM properties WHERE user_id = #{user_id};")
-    result.map { |p| Property.new(p['id'], p['name'], p['description'], p['cpn'].to_i, p['user_id']) }
+    map(DatabaseConnection.query("SELECT * FROM properties WHERE user_id = #{user_id};"))
   end
 
   def self.find(id:)
     result = DatabaseConnection.query("SELECT * FROM properties WHERE id = #{id}")
-    Property.new(result[0]['id'], result[0]['name'], result[0]['description'], result[0]['cpn'].to_i, result[0]['user_id'])
+    map(result).first
+  end
+
+  def self.map(sql_result)
+   sql_result.map { |p| Property.new(p['id'], p['name'], p['description'], p['cpn'].to_i, p['user_id']) }
   end
 end

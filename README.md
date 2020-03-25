@@ -4,7 +4,7 @@
 
 Contributors: Luke Donovan, Orion Reed, Gareth Harris, Sophia Bell
 
-[Outline](#Outline) | Specifications | Planning | Installation Instructions | Tech stack
+[Outline](#Outline) | [Specifications](#Specifications) | [Planning](#planning) | [Installation Instructions](#install) | [Tech stack](#tech)
 
 ## [Outline](#Outline) 
 
