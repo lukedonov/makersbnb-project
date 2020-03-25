@@ -17,7 +17,6 @@
       <option value="6">6 night</option>
       <option value="7">7 night</option>
     </select>
-    <%= flash[:booking_requested] %>
     <% if @user.id == @property.user_id %>
       You cannot book your own property
     <% else %>
