@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
+require './spec/helpers/user_web_helper.rb'
+
 def sign_up
   visit '/sign-up'
   fill_in('name', with: 'John Doe')
   fill_in('email', with: 'test@test.com')
   fill_in('password', with: 'test')
   click_button('Submit')
+
 end
 
 def sign_in
@@ -13,6 +16,7 @@ def sign_in
   fill_in(:email, with: 'test@test.com')
   fill_in(:password, with: 'test')
   click_button('Sign In')
+
 end
 
 def sign_in_with_wrong_email
