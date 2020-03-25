@@ -68,6 +68,12 @@ class InnCognito < Sinatra::Base
     erb :'/properties/booking'
   end
 
+  post '/properties/booking' do
+    @duration = params[:duration]    
+    flash[:booking_requested] = "Your request to book new property for #{@duration} nights has been sent"
+    redirect '/properties/booking'
+  end
+
   post '/sessions/destroy' do
     session.clear
     flash[:notice] = "You have signed out."
