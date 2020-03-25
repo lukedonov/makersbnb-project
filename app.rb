@@ -49,7 +49,7 @@ class InnCognito < Sinatra::Base
 
   post '/properties/new' do
     @user = User.find(id: session[:user_id])
-    Property.create(name: params[:name], description: params[:description], cpn: params[:cpn], user_id: @user.id)
+    @property = Property.create(name: params[:name], description: params[:description], cpn: params[:cpn], user_id: @user.id)
     redirect '/properties'
   end
 
@@ -63,15 +63,15 @@ class InnCognito < Sinatra::Base
     erb :'properties/index'
   end
 
-  get '/properties/booking' do
+  post '/properties/booking' do
     @user = User.find(id: session[:user_id])
+    @property = Property.find(id: :id)
     erb :'/properties/booking'
   end
 
-  post '/properties/booking' do
+  post '/properties/requests' do
     @duration = params[:duration]    
-    flash[:booking_requested] = "Your request to book new property for #{@duration} nights has been sent"
-    redirect '/properties/booking'
+    erb :'properties/requests'
   end
 
   post '/sessions/destroy' do

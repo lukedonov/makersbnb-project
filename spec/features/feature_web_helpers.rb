@@ -40,7 +40,6 @@ end
 
 def create_property
   Property.create(name: 'House John', description: 'a splendid house made of cheese', cpn: 134, user_id: 1)
-
 end
 
 def list_property

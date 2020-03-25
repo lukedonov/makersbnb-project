@@ -1,6 +1,6 @@
 feature 'booking a property' do
 
-  scenario 'a guest can view and request a property' do
+  scenario 'a guest can view a property in the booking page' do
     sign_up
     sign_in
     list_property
@@ -9,6 +9,9 @@ feature 'booking a property' do
     click_button('Book')
 
     expect(page).not_to have_content 'Welcome, Bob'
+    expect(page).to have_content 'new property'
+    expect(page).to have_content 'wow, so nice'
+    expect(page).to have_content '123421'
     expect(page).to have_button('Request booking')
   end
 
@@ -24,4 +27,7 @@ feature 'booking a property' do
     click_button("Request booking")
     expect(page).to have_content("Your request to book new property for 2 nights has been sent")
   end
+
+
+
 end
