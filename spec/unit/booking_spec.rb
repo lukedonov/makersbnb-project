@@ -5,17 +5,47 @@ require 'user'
 require 'booking'
 
 describe Booking do
+
+    before(:each) do
+        create_user_and_property
+        @booking = described_class.create(user_id: @user.id, property_id: @property.id, start_date: "2020-06-22 00:00:00", end_date: "2020-06-23 00:00:00", approval: Booking::PENDING)
+    end
     
     describe ('.create') do
         
         it 'adds a new booking' do
-            
-            create_user_and_property
-        
-            booking = Booking.create(user_id: @user.id, property_id: @property.id, start_date: "2020-06-22 00:00:00", end_date: "2020-06-23 00:00:00", approval: false)
-
+            expect(@booking.user_id).to eq(@user.id)    
+            expect(@booking.property_id).to eq(@property.id)    
+            expect(@booking.start_date).to eq("2020-06-22 00:00:00")    
+            expect(@booking.end_date).to eq("2020-06-23 00:00:00")    
+            expect(@booking.approval).to eq(Booking::PENDING)    
         end
 
     end
 
+    describe '.find_by_guest_id' do
+        it 'gets correct bookings for guest' do
+            expect(described_class.find_by_guest_id(@user.id).first.user_id).to eq(@user.id)
+        end
+    end
+    
+    describe '.find_by_property_id' do
+        it 'gets correct property' do
+            expect(described_class.find_by_property_id(@property.id).first.property_id).to eq(@property.id)
+        end
+    end
+
+    describe '.set_approval' do
+        it 'raises error given invalid state' do
+            expect{described_class.set_approval(@booking.id, 'some invalid state')}.to raise_error 'invalid approval state'
+        end
+        it 'sets approval to :approved' do
+            @booking = described_class.set_approval(@booking.id,Booking::APPROVED)
+            expect(@booking.approval).to eq (Booking::APPROVED)
+        end
+        it 'sets approval to :rejected' do
+            @booking = described_class.set_approval(@booking.id,Booking::REJECTED)
+            expect(@booking.approval).to eq (Booking::REJECTED)
+        end
+    end
 end
