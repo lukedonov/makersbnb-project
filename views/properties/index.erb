@@ -44,29 +44,28 @@
         <div class="property">
           <h3><%= property.name%></h3>
           <p class="propert-desc"><%= property.description%></p>
-          <p class="property-book">£<%= property.cpn%> per night</p>
-          <% if @user %>
-            <form action="/properties/<%= property.id %>" method="get">
-              <input type="submit" value="Book">                
-            </form>                                        
-          <% else %>
-            <form action="/sign-in" method="get">
-              <input type="submit" value="Sign in to book">
-            </form>
-          <% end %>
+          <div class="property-book">
+            <p>£<%= property.cpn%> per night</p>
+            <% if @user %>
+              <form action="/properties/<%= property.id %>" method="get">
+                <input type="submit" value="Book">                
+              </form>                                        
+            <% else %>
+              <form action="/sign-in" method="get">
+                <input type="submit" value="Sign in to book">
+              </form>
+            <% end %>
+          </div>
         </div>
       <%end%>
-  </div>
     <%if @user%>
       <form action="/properties/new" method="get">
         <input type="submit" value="Add New Property">
       </form>
     <%end%>
+  </div>
     </div>
-
     </div>
-
-
   </body>
 
   <%= flash[:notice] %>

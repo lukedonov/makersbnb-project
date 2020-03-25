@@ -159,8 +159,22 @@ body {
   }
 
   .property-book {
-    text-align: right;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     margin-bottom: 5px;
+    justify-content: flex-end;
+    align-content: center;
+    p {
+      text-align: right;
+      display: inline-flex;
+      margin: 0;
+      margin-right: 10px;
+    }
+    form {
+      display: inline-flex;
+      margin: 0;
+    }
   }
 }
 

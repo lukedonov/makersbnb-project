@@ -164,8 +164,20 @@ body {
   .property p {
     margin-top: 2px; }
   .property .property-book {
-    text-align: right;
-    margin-bottom: 5px; }
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 5px;
+    justify-content: flex-end;
+    align-content: center; }
+    .property .property-book p {
+      text-align: right;
+      display: inline-flex;
+      margin: 0;
+      margin-right: 10px; }
+    .property .property-book form {
+      display: inline-flex;
+      margin: 0; }
 
 .grid-container {
   display: grid;
