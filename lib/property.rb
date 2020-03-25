@@ -10,6 +10,7 @@ class Property
     @description = description
     @cpn = cpn
     @user_id = user_id
+    @availability = true
   end
 
   def self.create(name:, description:, cpn:, user_id:)
