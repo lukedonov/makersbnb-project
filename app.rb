@@ -63,6 +63,11 @@ class InnCognito < Sinatra::Base
     erb :'properties/index'
   end
 
+  get '/properties/booking' do
+    @user = User.find(id: session[:user_id])
+    erb :'/properties/booking'
+  end
+
   post '/sessions/destroy' do
     session.clear
     flash[:notice] = "You have signed out."
