@@ -8,7 +8,7 @@ describe Booking do
 
     before(:each) do
         create_user_and_property
-        @booking = described_class.create(user_id: @user.id, property_id: @property.id, start_date: "2020-06-22 00:00:00", end_date: "2020-06-23 00:00:00", approval: Booking::PENDING)
+        @booking = described_class.create(user_id: @user.id, property_id: @property.id, start_date: "2020-06-22 00:00:00", end_date: "2020-06-23 00:00:00")
     end
     
     describe ('.create') do
@@ -40,12 +40,10 @@ describe Booking do
             expect{described_class.set_approval(@booking.id, 'some invalid state')}.to raise_error 'invalid approval state'
         end
         it 'sets approval to :approved' do
-            @booking = described_class.set_approval(@booking.id,Booking::APPROVED)
-            expect(@booking.approval).to eq (Booking::APPROVED)
+            expect(described_class.set_approval(@booking.id, Booking::APPROVED).approval).to eq (Booking::APPROVED)
         end
         it 'sets approval to :rejected' do
-            @booking = described_class.set_approval(@booking.id,Booking::REJECTED)
-            expect(@booking.approval).to eq (Booking::REJECTED)
+            expect(described_class.set_approval(@booking.id, Booking::REJECTED).approval).to eq (Booking::REJECTED)
         end
     end
 end

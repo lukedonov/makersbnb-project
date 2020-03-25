@@ -20,9 +20,8 @@ class Booking
         .first
     end
 
-    def self.create(user_id:, property_id:, start_date:, end_date:, approval:)
-        
-        map(DatabaseConnection.query("INSERT INTO bookings (user_id, property_id, start_date, end_date, approval) VALUES ('#{user_id}', '#{property_id}', '#{start_date}', '#{end_date}', '#{approval}') RETURNING id, user_id, property_id, start_date, end_date, approval;")).first
+    def self.create(user_id:, property_id:, start_date:, end_date:)
+        map(DatabaseConnection.query("INSERT INTO bookings (user_id, property_id, start_date, end_date, approval) VALUES ('#{user_id}', '#{property_id}', '#{start_date}', '#{end_date}', '#{PENDING}') RETURNING id, user_id, property_id, start_date, end_date, approval;")).first
     end
 
     def self.find_by_guest_id(id)
