@@ -1,63 +1,65 @@
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="/public/inncognito.css" >
+    <link rel="stylesheet" type="text/css" href="stylesheets/css/style.css" >
   </head>
-  <nav>
-  </nav>
   <body>
-    <header>
-      <form action="/sign-in" method="get">
-        <input type="submit" value="Sign in" />
-      </form>
-      <form action="/sign-up" method="get">
-        <input type="submit" value="Sign up" />
-      </form>
-      <%if @user%>
+    
+    <div class="grid-container">
+    
+    <div id="menu">
+      <div class=logo_and_title>
+        <img src="images/logo_dark-on-light.svg">
+        <h1>INN COGNITO</h1>
+      </div>
+      <div class="message_and_options">
+        <%if @user %>
+        <p><%="Logged in as <b>#{@user.name.split(/ |\_|\-/).map(&:capitalize).join(" ")}</b>"%></p>
         <form action="/sessions/destroy" method="post">
           <input type="submit" value="Sign out" />
         </form>
         <form action="/view-requests" method="get">
           <input type="submit" value="View Booking Requests"/>
         </form>
-      <%end%>
-  
-  <h2>
-      <%= flash[:notice] %>
-  </h2>
+        <% else %>
+        <form action="/sign-in" method="get">
+          <input type="submit" value="Sign in" />
+        </form>
+        <form action="/sign-up" method="get">
+          <input type="submit" value="Sign up" />
+        </form>
+        <% end %>
+      </div>
+    </div>
 
-    </header>
-<h1>Welcome to Inn Cognito</h1>
-<h2><%= if @user then "Welcome, #{@user.name}" end%></h2>
-  
-    <form action="/properties-sort" method="get">
-      <select id="sort" name="sort">
-        <option>All</option>
-        <option value="recent">Most recent</option>
-        <option value="price">Price (Lowest to Highest)</option>
-      </select>
-    </form>
-  <%if @user%>
-    <form action="/properties/new" method="get">
-      <input type="submit" value="New Property">
-    </form>
-  <%end%>
-    <% @properties.each do |property| %>
-      <ul>
-        <b><%= property.name%></b>
-        <li><%= property.description%></li>
-        <li><%= property.cpn%></li>
-        <%if @user%>
-        <form action="/properties/<%= property.id %>" method="get">
-            <input type="submit" value="Book">
-          </form>
-        <%else%> 
-          <form action="/sign-in" method="get">
-            <input type="submit" value="Sign in" />
-          </form>
-        <%end%>  
-      </ul>
+  <div id="properties">
+      <form action="/properties-sort" method="get">
+      <p class="sortBy">Sort By</p>
+        <select class="select-css" id="sort" name="sort">
+          <option>All</option>
+          <option value="recent">Most recent</option>
+          <option value="price">Price (Lowest to Highest)</option>
+        </select>
+      </form>
+      <% @properties.each do |property| %>
+        <div class="property">
+            <h3><%= property.name%></h3>
+            <p class="propert-desc"><%= property.description%></p>
+            <p class="property-book">£<%= property.cpn%> per night <button>Book</button></p>
+        </div>
+      <%end%>
+    <%if @user%>
+      <form action="/properties/new" method="get">
+        <input type="submit" value="Add New Property">
+      </form>
     <%end%>
+    </div>
+
+    </div>
+
+
   </body>
+
+  <%= flash[:notice] %>
 
 <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"

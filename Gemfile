@@ -7,9 +7,10 @@ git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 gem 'pg'
 gem 'sinatra'
 gem 'sinatra-flash'
-gem 'solargraph' 
 gem 'bcrypt'
+gem 'sass'
 
+gem 'solargraph', group: :tests
 gem 'capybara', group: :tests
 gem 'rdoc', group: :tests
 gem 'rspec', group: :tests

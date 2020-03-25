@@ -1,0 +1,176 @@
+// USAGE:
+// run gem install sass
+// sass --watch public/stylesheets/sass:public/stylesheets/css
+// updating this file will automatically update the css file.
+
+@import "colour";
+
+@mixin tab-focus() {
+  outline: none;
+}
+@import "typography";
+
+@mixin button-base {
+  background-color: $base;
+  color: $neutral;
+  border: 1px lighten($base, 30%) solid;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: BrandonGrotesque, sans-serif;
+  font-size: 15px;
+  &:hover {
+    background-color: lighten($base, 15%);
+    border: 1px lighten($base, 40%) solid;
+  }
+  &:active {
+    background-color: lighten($base, 10%);
+  }
+}
+
+.sortBy {
+  color: $neutral;
+  display: inline-block;
+  font-weight: $normal;
+}
+
+.select-css {
+  display: inline-block;
+  font-size: 16px;
+  font-family: BrandonGrotesque, sans-serif;
+  font-weight: $normal;
+  color: $neutral;
+  padding: 0.6em 1.4em 0.5em 0.8em;
+  //width: 100%;
+  // max-width: 100%;
+  box-sizing: border-box;
+  margin: 0 0 0 10;
+  border: 1px solid lighten($base, 50%);
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+  border-radius: 0.5em;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: $base-light;
+}
+.select-css::-ms-expand {
+  display: none;
+}
+.select-css:hover {
+  border-color: lighten($base, 30%);
+}
+.select-css:focus {
+  border-color: lighten($base, 50%);
+  color: $neutral;
+  outline: none;
+}
+.select-css option {
+  font-weight: normal;
+}
+
+@mixin drop-shadow {
+  -webkit-box-shadow: 0px 6px 39px -5px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0px 6px 39px -5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 6px 39px -5px rgba(0, 0, 0, 0.4);
+}
+
+::selection {
+  background: $neutral; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: $neutral; /* Gecko Browsers */
+}
+
+body {
+  background-color: $base;
+  margin: 0;
+  font-family: BrandonGrotesque, sans-serif;
+  font-weight: $light;
+}
+
+#menu {
+  grid-area: menu;
+  padding: 5 20 5 10;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  $menu_scale: 50px;
+  background-color: lighten($base, 2%);
+  border-bottom: 1px solid lighten($base, 10%);
+  input {
+    @include button-base();
+  }
+
+  .logo_and_title {
+    display: flex;
+    align-items: center;
+    img {
+      max-width: 50px;
+    }
+    h1 {
+      padding-top: 4px; // optical centering (aligning with consideration for the shapes involved)
+      margin-left: 10px;
+      display: inline-flex;
+      font-size: 1.5em;
+      color: $neutral;
+    }
+  }
+  .message_and_options {
+    display: flex;
+    align-items: center;
+    color: $neutral;
+    p {
+      padding-top: 4px; // optical centering (aligning with consideration for the shapes involved)
+    }
+    form {
+      display: inline-flex;
+      padding-left: 10px;
+      margin: 0px;
+    }
+  }
+}
+
+#properties {
+  grid-area: properties;
+  button {
+    @include button-base();
+    @include tab-focus();
+  }
+  input {
+    @include button-base();
+  }
+}
+
+.property {
+  @include drop-shadow();
+  border-radius: 8px;
+  border: 1px solid lighten($base-light, 15%);
+  margin-bottom: 10px;
+  background-color: $base-light;
+  padding: 5px 15px 5px 15px;
+  color: $neutral;
+  h3 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-size: 20px;
+  }
+  p {
+    margin-top: 2px;
+  }
+
+  .property-book {
+    text-align: right;
+    margin-bottom: 5px;
+  }
+}
+
+.grid-container {
+  display: grid;
+
+  grid-template-areas:
+    "menu menu menu menu"
+    ". properties properties .";
+  grid-gap: 10px;
+
+  justify-content: stretch;
+}

@@ -3,11 +3,6 @@
 require './lib/database_connection'
 
 feature 'viewing all properties' do
-  scenario 'viewing the properties page' do
-    visit('/properties')
-
-    expect(page).to have_content 'Welcome to Inn Cognito'
-  end
 
   scenario 'add a new property' do
     create_user
