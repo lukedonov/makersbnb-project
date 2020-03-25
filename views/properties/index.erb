@@ -13,7 +13,7 @@
       </div>
       <div class="message_and_options">
         <%if @user %>
-        <p><%="Logged in as <b>#{@user.name.split(/ |\_|\-/).map(&:capitalize).join(" ")}</b>"%></p>
+        <p><%="Logged in as <b>#{@user.name}</b>"%></p>
         <form action="/sessions/destroy" method="post">
           <input type="submit" value="Sign out" />
         </form>
@@ -42,11 +42,21 @@
       </form>
       <% @properties.each do |property| %>
         <div class="property">
-            <h3><%= property.name%></h3>
-            <p class="propert-desc"><%= property.description%></p>
-            <p class="property-book">£<%= property.cpn%> per night <button>Book</button></p>
+          <h3><%= property.name%></h3>
+          <p class="propert-desc"><%= property.description%></p>
+          <p class="property-book">£<%= property.cpn%> per night</p>
+          <% if @user %>
+            <form action="/properties/<%= property.id %>" method="get">
+              <input type="submit" value="Book">                
+            </form>                                        
+          <% else %>
+            <form action="/sign-in" method="get">
+              <input type="submit" value="Sign in to book">
+            </form>
+          <% end %>
         </div>
       <%end%>
+  </div>
     <%if @user%>
       <form action="/properties/new" method="get">
         <input type="submit" value="Add New Property">
