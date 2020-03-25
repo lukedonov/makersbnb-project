@@ -7,11 +7,7 @@ class User
   def self.create(name:, email:, password:)
     encrypted_password = BCrypt::Password.create(password)
     result = DatabaseConnection.query("INSERT INTO users (name, email, password) VALUES ('#{name}', '#{email}', '#{encrypted_password}') RETURNING id, name, email;")
-    User.new(
-      id: result[0]['id'],
-      name: result[0]['name'],
-      email: result[0]['email']
-    )
+    map(result)
   end
 
   def self.find(id:)
@@ -19,12 +15,7 @@ class User
 
     result = DatabaseConnection.query("SELECT * FROM users WHERE id = #{id}")
     return nil unless result.any?
-
-    User.new(
-      id: result[0]['id'],
-      name: result[0]['name'],
-      email: result[0]['email']
-    )
+    map(result)
   end
 
   def self.find_by_email(email:)
@@ -32,11 +23,14 @@ class User
 
     result = DatabaseConnection.query("SELECT * FROM users WHERE email = '#{email}'")
     return nil unless result.any?
+    map(result)
+  end
 
+  def self.map(sql_result)
     User.new(
-      id: result[0]['id'],
-      name: result[0]['name'],
-      email: result[0]['email']
+      id: sql_result[0]['id'],
+      name: sql_result[0]['name'],
+      email: sql_result[0]['email']
     )
   end
 
