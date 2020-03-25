@@ -1,6 +1,6 @@
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="<%= url('stylesheets/css/style.css') %>" >
+    <link rel="stylesheet" type="text/css" href="stylesheets/css/style.css" >
   </head>
   <nav>
   </nav>
@@ -10,6 +10,8 @@
     
     <div id="menu">
       <header>
+        <img class="logo" src="images/logo_light-on-dark.svg">
+        <h1>Inn Cognito</h1>
         <form action="/sign-in" method="get">
           <input type="submit" value="Sign in" />
         </form>
@@ -41,7 +43,7 @@
         <div class="property">
             <h3><%= property.name%></h3>
             <p class="propert-desc"><%= property.description%></p>
-            <p class="property-book">£ <%= property.cpn%> per night <button>Book</button></p>
+            <p class="property-book">£<%= property.cpn%> per night <button>Book</button></p>
         </div>
       <%end%>
     </div>

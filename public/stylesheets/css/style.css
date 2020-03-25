@@ -1,22 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
+@font-face {
+  font-family: "brandon_regular";
+  src: "fonts/brandon-grotesque/Brandon_Text_Medium.otf"; }
 body {
-  background-color: #202124;
+  background-color: #202127;
   margin: 0;
-  font-family: 'Special Elite', cursive; }
+  font-family: 'brandon_regular', sans-serif; }
 
 #menu {
   padding: 10px;
   grid-area: menu;
-  background-color: #323639;
+  background-color: #2b2d35;
   align-items: stretch; }
   #menu input[type=submit] {
-    background-color: #202124;
+    background-color: #202127;
     color: #D6D6D7;
-    border: 1px #686b75 solid;
+    border: 1px #65687b solid;
     border-radius: 5px;
     padding: 5px;
-    font-family: 'Special Elite', cursive;
+    font-family: 'brandon_regular', sans-serif;
     font-size: 20px; }
+  #menu h1 {
+    display: inline;
+    color: #D6D6D7; }
   #menu form {
     display: block;
     float: right; }
@@ -31,18 +37,23 @@ body {
   grid-area: properties; }
 
 .property {
-  background-color: #323639;
-  padding: 5px 50px 5px 50px;
+  border-radius: 8px;
+  border: 1px solid #4c4e5c;
+  margin-bottom: 5px;
+  background-color: #2b2d35;
+  padding: 5px 15px 5px 15px;
   color: #D6D6D7; }
   .property h3 {
+    margin-top: 10px;
+    margin-bottom: 0px;
     font-size: 25px; }
   .property button {
-    background-color: #202124;
+    background-color: #202127;
     color: #D6D6D7;
-    border: 1px #686b75 solid;
+    border: 1px #65687b solid;
     border-radius: 5px;
     padding: 5px;
-    font-family: 'Special Elite', cursive;
+    font-family: 'brandon_regular', sans-serif;
     font-size: 20px; }
 
 .property-book {
@@ -53,5 +64,8 @@ body {
   grid-template-areas: 'menu menu menu menu' '. welcome welcome .'  '. properties properties .';
   grid-gap: 10px;
   justify-content: stretch; }
+
+.logo {
+  max-width: 75px; }
 
 /*# sourceMappingURL=style.css.map */
