@@ -7,7 +7,8 @@
   
   <form action="/properties/requests" method="post">
     <input type="hidden" name="property_id" value="<%= @property.id %>">
-    <input type="text" name="start-date" id="start-date"/>
+    <input type="text" name="start-date" id="startDate"/>
+    <input type="text" name="end-date" id="endDate"/>
     <select id="duration" name="duration">
       <option value="1">1 night</option>
       <option value="2">2 night</option>
@@ -18,13 +19,22 @@
       <option value="7">7 night</option>
     </select>
     <%= flash[:booking_requested] %>
-    <input type="submit" value="Request booking"/>
+    <input type="submit" id="requestbooking"value="Request booking"/>
   </form>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="../../lib/booking.rb"></script>
   <script>
-  $( function() {
-    $( "#start-date" ).datepicker();
-  });
+  // $( function() {
+    // var booking = new Booking();
+    // $(document).ready(function() {
+
+      $( "#startDate" ).datepicker();
+      $( "#endDate" ).datepicker();
+    //   $("#requestbooking").click(function() {
+    //     booking.create(1,1,startDate,endDate);
+    //   });
+    // });
+  // });
   </script>
   </html>
