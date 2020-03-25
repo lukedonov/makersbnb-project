@@ -4,13 +4,13 @@
 
 Contributors: Luke Donovan, Orion Reed, Gareth Harris, Sophia Bell
 
-[Outline](#Outline) | Specifications | Planning | Installation Instructions | Tech stack
+[Outline](#Outline) | [Specifications](#Specifications) | [Planning](#planning) | [Installation Instructions](#install) | [Tech stack](#tech)
 
-## [Outline](#Outline) 
+## Outline(#Outline) 
 
 Work as a team to build a clone of Airbnb
 
-## [Specifications](#Specifications)
+## Specifications(#Specifications)
 
 ### User Stories
 
@@ -67,9 +67,9 @@ So that I know if my booking has been unsuccessful
 I would like to receieve an email notifying me that my booking has been denied
 ```
 
-## [Planning](#planning)
+## Planning(#planning)
 
-## [Installation Instructions](#install)
+## Installation Instructions(#install)
 
 **Getting started**
 
@@ -90,7 +90,7 @@ Navigate to `http://localhost:xxxx/`
 
 `test_command` (e.g. `rspec`)
 
-## [Tech stack](#tech) 
+## Tech stack(#tech) 
 
 Back-end:
 * Ruby
