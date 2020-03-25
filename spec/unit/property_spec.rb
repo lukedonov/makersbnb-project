@@ -48,4 +48,15 @@ describe Property do
       expect(@sorted_property.first.name).to eq @property2.name
     end
   end
+
+  describe '.find' do
+    it 'find a property by ID' do
+      create_user_and_property
+      result = Property.find(id: @property.id)
+
+      expect(result.id).to eq @property.id
+      expect(result.description).to eq 'a splendid house made of cheese'
+      expect(result.cpn).to eq 134
+    end
+  end
 end

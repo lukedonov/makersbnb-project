@@ -49,7 +49,7 @@ class InnCognito < Sinatra::Base
 
   post '/properties/new' do
     @user = User.find(id: session[:user_id])
-    Property.create(name: params[:name], description: params[:description], cpn: params[:cpn], user_id: @user.id)
+    @property = Property.create(name: params[:name], description: params[:description], cpn: params[:cpn], user_id: @user.id)
     redirect '/properties'
   end
 
@@ -63,10 +63,27 @@ class InnCognito < Sinatra::Base
     erb :'properties/index'
   end
 
+  get "/properties/:id" do
+    @user = User.find(id: session[:user_id])
+    @property = Property.find(id: params[:id])
+    erb :'/properties/booking'
+  end
+
+  post '/properties/requests' do
+    @duration = params[:duration]    
+    @property = Property.find(id: :id)
+    erb :'properties/requests'
+  end
+
   post '/sessions/destroy' do
     session.clear
     flash[:notice] = "You have signed out."
     redirect('/properties')
+  end
+
+  get '/view-requests' do
+
+    erb :'view-requests'
   end
 
 end

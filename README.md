@@ -1,12 +1,20 @@
-# Title of project
+# Inncognito
 
-Airbnb Clone
+## Makers Academy - Week 6 (group project)
 
 Contributors: Luke Donovan, Orion Reed, Gareth Harris, Sophia Bell
 
-## User Stories
+[Outline](#Outline) | Specifications | Planning | Installation Instructions | Tech stack
 
-### Primary:
+## [Outline](#Outline) 
+
+Work as a team to build a clone of Airbnb
+
+## [Specifications](#Specifications)
+
+### User Stories
+
+**Primary**
 ```
 As a user
 So that I can post or book a listing
@@ -39,8 +47,9 @@ I would like my listing to contain the name, description and price per night of 
 As a host 
 So that I can get as much business as possible
 I want my room to be available to book until a booking has been confirmed
-
-### Secondary
+```
+**Secondary**
+```
 As a host
 So that I am not out of pocket
 I would lke to recieve payments for my bookings
@@ -58,23 +67,45 @@ So that I know if my booking has been unsuccessful
 I would like to receieve an email notifying me that my booking has been denied
 ```
 
-## Getting started
+## [Planning](#planning)
+
+## [Installation Instructions](#install)
+
+**Getting started**
 
 `git clone path-to-your-repo`
 `command_to_install_dependencies` (e.g. `bundle`)
 
-## Installation instructions
 **Setting up the databases**
 
 Connect to `psql` 
 
 Run the SQL scripts in the `db/migrations` folder in the given order.
 
-## Usage
+**Usage**
 
 Navigate to `http://localhost:xxxx/`
 
-
-## Running tests
+**Running tests**
 
 `test_command` (e.g. `rspec`)
+
+## [Tech stack](#tech) 
+
+Back-end:
+* Ruby
+
+Front-end:
+* CSS/HTML
+* Javascript
+* JQuery
+
+Testing:
+
+* Capybara
+* RSpec
+* SimpleCov
+
+Linting:
+
+* Rubocop

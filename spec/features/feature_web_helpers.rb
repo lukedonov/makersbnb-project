@@ -38,6 +38,10 @@ def create_user
   User.create(name: 'John Doe', email: 'test@test.com', password: 'test')
 end
 
+def create_property
+  Property.create(name: 'House John', description: 'a splendid house made of cheese', cpn: 134, user_id: 1)
+end
+
 def list_property
   click_button('New Property')
   fill_in('name', with: 'new property')

@@ -12,9 +12,14 @@
       <form action="/sign-up" method="get">
         <input type="submit" value="Sign up" />
       </form>
-      <form action="/sessions/destroy" method="post">
-        <input type="submit" value="Sign out" />
-    </form>
+      <%if @user%>
+        <form action="/sessions/destroy" method="post">
+          <input type="submit" value="Sign out" />
+        </form>
+        <form action="/view-requests" method="get">
+          <input type="submit" value="View Booking Requests"/>
+        </form>
+      <%end%>
   
   <h2>
       <%= flash[:notice] %>
@@ -41,6 +46,15 @@
         <b><%= property.name%></b>
         <li><%= property.description%></li>
         <li><%= property.cpn%></li>
+        <%if @user%>
+        <form action="/properties/<%= property.id %>" method="get">
+            <input type="submit" value="Book">
+          </form>
+        <%else%> 
+          <form action="/sign-in" method="get">
+            <input type="submit" value="Sign in" />
+          </form>
+        <%end%>  
       </ul>
     <%end%>
   </body>
