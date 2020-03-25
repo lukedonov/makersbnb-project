@@ -1,6 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="487" height="487" viewBox="0 0 487 487">
-  <g id="logo" transform="translate(120.054 -14.317)">
-    <g id="Ellipse_1" data-name="Ellipse 1" transform="translate(-120.054 14.317)" fill="#fff" stroke="#707070" stroke-width="1">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="487" height="487" viewBox="0 0 487 487">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" y1="-0.126" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="0.97" stop-color="#c4c4c4"/>
+      <stop offset="1" stop-color="#a0a0a0"/>
+    </linearGradient>
+  </defs>
+  <g id="logo_dark-on-light" transform="translate(120.054 -14.317)">
+    <g id="Ellipse_1" data-name="Ellipse 1" transform="translate(-120.054 14.317)" stroke="#707070" stroke-width="1" fill="url(#linear-gradient)">
       <circle cx="243.5" cy="243.5" r="243.5" stroke="none"/>
       <circle cx="243.5" cy="243.5" r="243" fill="none"/>
     </g>

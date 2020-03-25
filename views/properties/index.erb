@@ -2,40 +2,35 @@
   <head>
     <link rel="stylesheet" type="text/css" href="stylesheets/css/style.css" >
   </head>
-  <nav>
-  </nav>
   <body>
     
     <div class="grid-container">
     
     <div id="menu">
-      <header>
-        <img class="logo" src="images/logo_light-on-dark.svg">
-        <h1>INN COGNITO > HOME</h1>
+      <div class=logo_and_title>
+        <img src="images/logo_dark-on-light.svg">
+        <h1>INN COGNITO</h1>
+      </div>
+      <div class="message_and_options">
+        <p><%= if @user then "Logged in as <b>#{@user.name.capitalize}</b>" end%></p>
         <form action="/sign-in" method="get">
           <input type="submit" value="Sign in" />
         </form>
         <form action="/sign-up" method="get">
           <input type="submit" value="Sign up" />
         </form>
-        <h2 id="welcome"><%= if @user then "Welcome, #{@user.name}" end%></h2>
-      </header>
-  </div>
-
+      </div>
+    </div>
 
   <div id="properties">
       <form action="/properties-sort" method="get">
-        <select id="sort" name="sort">
+      <p class="sortBy">Sort By</p>
+        <select class="select-css" id="sort" name="sort">
           <option>All</option>
           <option value="recent">Most recent</option>
           <option value="price">Price (Lowest to Highest)</option>
         </select>
       </form>
-    <%if @user%>
-      <form action="/properties/new" method="get">
-        <input type="submit" value="New Property">
-      </form>
-    <%end%>
       <% @properties.each do |property| %>
         <div class="property">
             <h3><%= property.name%></h3>
@@ -43,6 +38,11 @@
             <p class="property-book">£<%= property.cpn%> per night <button>Book</button></p>
         </div>
       <%end%>
+    <%if @user%>
+      <form action="/properties/new" method="get">
+        <input type="submit" value="Add New Property">
+      </form>
+    <%end%>
     </div>
 
     </div>
