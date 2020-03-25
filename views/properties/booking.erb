@@ -18,7 +18,11 @@
       <option value="7">7 night</option>
     </select>
     <%= flash[:booking_requested] %>
-    <input type="submit" value="Request booking"/>
+    <% if @user.id == @property.user_id %>
+      You cannot book your own property
+    <% else %>
+      <input type="submit" value="Request booking"/>
+    <% end %>
   </form>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
