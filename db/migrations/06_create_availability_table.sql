@@ -1,0 +1,1 @@
+CREATE TABLE availablility(id SERIAL PRIMARY KEY, property_id INTEGER REFERENCES properties (id), start_date TIMESTAMP, end_date TIMESTAMP);
