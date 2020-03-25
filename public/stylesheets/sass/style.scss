@@ -1,61 +1,66 @@
-@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+// USAGE:
+// run gem install sass
+// sass --watch public/stylesheets/sass:public/stylesheets/css
+// updating this file will automatically update the css file.
 
+@import "colour";
+@import "typography";
 
-$neutral: #202127;
-// $accent:
-$base: #D6D6D7;
-$secondary: lighten($neutral, 5%);
-// $success:
-// $failure:
-
-@font-face {
-  font-family: "brandon_regular";
-  src: "fonts/brandon-grotesque/Brandon_Text_Medium.otf";
+@mixin button-base {
+  background-color: $base;
+  color: $neutral;
+  border: 1px lighten($base, 30%) solid;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: BrandonGrotesque, sans-serif;
+  font-size: 20px;
+  &:hover{
+    background-color: lighten($base, 15%);
+    border: 1px lighten($base, 40%) solid;
+  }
 }
 
-@mixin button-base{
-  background-color: $neutral;
-    color: $base;
-    border: 1px lighten($neutral, 30%) solid;
-    border-radius: 5px;
-    padding: 5px;
-    font-family: 'brandon_regular', sans-serif;
-    font-size: 20px;
+@mixin tab-focus() {
+  outline: none;
+  }
+
+::selection {
+  background: $neutral; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: $neutral; /* Gecko Browsers */
 }
 
-body{
-  background-color: $neutral;
+body {
+  background-color: $base;
   margin: 0;
-  font-family: 'brandon_regular', sans-serif;
+  font-family: BrandonGrotesque, sans-serif;
+  font-weight: $light;
 }
 
 #menu {
   padding: 10px;
   grid-area: menu; 
-  background-color: $secondary;
+  background-color: $base-light;
   align-items: stretch;
   input[type=submit]{
     @include button-base();
   }
   
   h1{
+    font-size: 1.5em;
     display: inline;
-    color: $base;
+    color: $neutral;
   }
 
   form{
     display: block;
     float: right;
   }
-}
-
-#welcome {
-  grid-area: welcome;
-  
-}
-
-#welcome h1{
-  color: $base; 
+  #welcome {
+    font-weight: bold;
+    color: darken($color: $neutral, $amount: 25);
+  }
 }
 
 #properties {
@@ -65,11 +70,11 @@ body{
 
 .property{
   border-radius: 8px;
-  border: 1px solid lighten($secondary, 14%);
+  border: 1px solid lighten($base-light, 14%);
   margin-bottom: 5px;
-  background-color: $secondary;
+  background-color: $base-light;
   padding: 5px 15px 5px 15px;
-  color: $base;
+  color: $neutral;
   h3{
     margin-top: 10px;
     margin-bottom: 0px;
@@ -78,8 +83,8 @@ body{
 
   button{
     @include button-base();
+    @include tab-focus();
   }
-  
 }
 
 .property-book{
@@ -90,7 +95,6 @@ body{
   display: grid;
   
   grid-template-areas: 'menu menu menu menu' 
-  '. welcome welcome .' 
   '. properties properties .';
   grid-gap: 10px;
  

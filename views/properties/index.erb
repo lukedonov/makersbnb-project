@@ -11,20 +11,17 @@
     <div id="menu">
       <header>
         <img class="logo" src="images/logo_light-on-dark.svg">
-        <h1>Inn Cognito</h1>
+        <h1>INN COGNITO > HOME</h1>
         <form action="/sign-in" method="get">
           <input type="submit" value="Sign in" />
         </form>
         <form action="/sign-up" method="get">
           <input type="submit" value="Sign up" />
         </form>
+        <h2 id="welcome"><%= if @user then "Welcome, #{@user.name}" end%></h2>
       </header>
   </div>
 
-  <div id="welcome">
-    <h1>Welcome to Inn Cognito</h1>
-    <h2><%= if @user then "Welcome, #{@user.name}" end%></h2>
-  </div>
 
   <div id="properties">
       <form action="/properties-sort" method="get">

@@ -1,0 +1,36 @@
+$light: 300;
+$normal: 400;
+$semi-bold: 500;
+$bold: 700;
+
+@font-face {
+  font-family: BrandonGrotesque;
+  src: "fonts/brandon-grotesque/Brandon Text.otf";
+  font-weight: $normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: BrandonGrotesque;
+  src: "fonts/brandon-grotesque/Brandon Text Light.otf";
+  font-weight: $light;
+  font-style: normal;
+}
+@font-face {
+  font-family: BrandonGrotesque;
+  src: "fonts/brandon-grotesque/Brandon Text Medium.otf";
+  font-weight: $semi-bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: BrandonGrotesque;
+  src: "fonts/brandon-grotesque/Brandon Text Bold.otf";
+  font-weight: $bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: BrandonGrotesque;
+  src: "fonts/brandon-grotesque/Brandon Text Italic.otf";
+  font-weight: $normal;
+  font-style: italic;
+}

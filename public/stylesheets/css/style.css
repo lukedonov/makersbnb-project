@@ -1,46 +1,77 @@
-@import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
 @font-face {
-  font-family: "brandon_regular";
-  src: "fonts/brandon-grotesque/Brandon_Text_Medium.otf"; }
+  font-family: BrandonGrotesque;
+  src: "fonts/brandon-grotesque/Brandon Text.otf";
+  font-weight: 400;
+  font-style: normal; }
+@font-face {
+  font-family: BrandonGrotesque;
+  src: "fonts/brandon-grotesque/Brandon Text Light.otf";
+  font-weight: 300;
+  font-style: normal; }
+@font-face {
+  font-family: BrandonGrotesque;
+  src: "fonts/brandon-grotesque/Brandon Text Medium.otf";
+  font-weight: 500;
+  font-style: normal; }
+@font-face {
+  font-family: BrandonGrotesque;
+  src: "fonts/brandon-grotesque/Brandon Text Bold.otf";
+  font-weight: 700;
+  font-style: normal; }
+@font-face {
+  font-family: BrandonGrotesque;
+  src: "fonts/brandon-grotesque/Brandon Text Italic.otf";
+  font-weight: 400;
+  font-style: italic; }
+::selection {
+  background: #D6D6D7;
+  /* WebKit/Blink Browsers */ }
+
+::-moz-selection {
+  background: #D6D6D7;
+  /* Gecko Browsers */ }
+
 body {
-  background-color: #202127;
+  background-color: #222327;
   margin: 0;
-  font-family: 'brandon_regular', sans-serif; }
+  font-family: BrandonGrotesque, sans-serif;
+  font-weight: 300; }
 
 #menu {
   padding: 10px;
   grid-area: menu;
-  background-color: #2b2d35;
+  background-color: #2e2f35;
   align-items: stretch; }
   #menu input[type=submit] {
-    background-color: #202127;
+    background-color: #222327;
     color: #D6D6D7;
-    border: 1px #65687b solid;
+    border: 1px #696c79 solid;
     border-radius: 5px;
     padding: 5px;
-    font-family: 'brandon_regular', sans-serif;
+    font-family: BrandonGrotesque, sans-serif;
     font-size: 20px; }
+    #menu input[type=submit]:hover {
+      background-color: #464850;
+      border: 1px #838692 solid; }
   #menu h1 {
+    font-size: 1.5em;
     display: inline;
     color: #D6D6D7; }
   #menu form {
     display: block;
     float: right; }
-
-#welcome {
-  grid-area: welcome; }
-
-#welcome h1 {
-  color: #D6D6D7; }
+  #menu #welcome {
+    font-weight: bold;
+    color: #959598; }
 
 #properties {
   grid-area: properties; }
 
 .property {
   border-radius: 8px;
-  border: 1px solid #4c4e5c;
+  border: 1px solid #4f515b;
   margin-bottom: 5px;
-  background-color: #2b2d35;
+  background-color: #2e2f35;
   padding: 5px 15px 5px 15px;
   color: #D6D6D7; }
   .property h3 {
@@ -48,20 +79,24 @@ body {
     margin-bottom: 0px;
     font-size: 25px; }
   .property button {
-    background-color: #202127;
+    background-color: #222327;
     color: #D6D6D7;
-    border: 1px #65687b solid;
+    border: 1px #696c79 solid;
     border-radius: 5px;
     padding: 5px;
-    font-family: 'brandon_regular', sans-serif;
-    font-size: 20px; }
+    font-family: BrandonGrotesque, sans-serif;
+    font-size: 20px;
+    outline: none; }
+    .property button:hover {
+      background-color: #464850;
+      border: 1px #838692 solid; }
 
 .property-book {
   text-align: right; }
 
 .grid-container {
   display: grid;
-  grid-template-areas: 'menu menu menu menu' '. welcome welcome .'  '. properties properties .';
+  grid-template-areas: 'menu menu menu menu' '. properties properties .';
   grid-gap: 10px;
   justify-content: stretch; }
 
