@@ -82,7 +82,8 @@ class InnCognito < Sinatra::Base
   end
 
   get '/view-requests' do
-
+    @user = User.find(id: session[:user_id])
+    @properties = Property.all
     erb :'view-requests'
   end
 

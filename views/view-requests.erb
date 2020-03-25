@@ -1,2 +1,35 @@
-You currently have 1 booking requests
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/public/inncognito.css" >
+  </head>
+ <body> 
+<p>My requests:
 
+<p>You currently have 1 booking requests
+
+<section>
+<p>My properties:
+    <% @properties.each do |property| %>
+      <%if @user.id == property.user_id %>
+      <ul>
+        <b><%= property.name%></b>
+        <li><%= property.description%></li>
+        <li><%= property.cpn%></li>  
+      </ul>
+      <%end%>
+    <%end%>
+
+</section>
+
+
+
+<section>
+
+<p>My bookings:
+
+
+
+
+</section>
+
+</body>

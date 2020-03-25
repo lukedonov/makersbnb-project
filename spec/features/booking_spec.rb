@@ -28,7 +28,7 @@ feature 'booking a property' do
     expect(page).to have_content("Your request to book new property for 2 nights has been sent")
   end
 
-  scenario "A host can recieve a booking request" do
+  scenario "A host can receive a booking request" do
     sign_up
     sign_in
     list_property
@@ -36,7 +36,7 @@ feature 'booking a property' do
     expect(page).to have_content("You currently have 0 booking requests")
   end
 
-  scenario "A host can recieve a booking request" do
+  scenario "A host can receive a booking request" do
     user = User.create(name: 'John Doe', email: 'test@test.com', password: 'test')
     property = Property.create(name: 'House John', description: 'a splendid house made of cheese', cpn: 134, user_id: user.id)
     sign_up_and_in_other_test_user
@@ -50,4 +50,22 @@ feature 'booking a property' do
     click_button "View Booking Requests"
     expect(page).to have_content("You currently have 1 booking requests")
   end
+
+  scenario "A host can see all their properties on their account page" do
+    sign_up
+    sign_in
+    list_property
+    click_button('New Property')
+    fill_in('name', with: 'a second property')
+    fill_in('description', with: 'even nicer')
+    fill_in('cpn', with: '50')
+    click_button('Submit')
+    click_button("View Booking Requests")
+
+    expect(page).to have_content("new property")
+    expect(page).to have_content("a second property")
+  end
+
+
+
 end
