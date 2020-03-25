@@ -80,4 +80,9 @@ class InnCognito < Sinatra::Base
     redirect('/properties')
   end
 
+  get '/view-requests' do
+
+    erb :'view-requests'
+  end
+
 end
