@@ -4,6 +4,7 @@
     <li><%= @property.cpn%></li>
 
 <form action="/properties/requests" method="post">
+<input type="hidden" name="property_id" value="<%= @property.id %>">
   <input type="date" name="start-date"/>
   <select id="duration" name="duration">
     <option value="1">1 night</option>
@@ -14,5 +15,6 @@
     <option value="6">6 night</option>
     <option value="7">7 night</option>
   </select>
+  <%= flash[:booking_requested] %>
   <input type="submit" value="Request booking"/>
 </form>

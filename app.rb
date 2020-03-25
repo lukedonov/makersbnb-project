@@ -63,14 +63,15 @@ class InnCognito < Sinatra::Base
     erb :'properties/index'
   end
 
-  post '/properties/booking' do
+  get "/properties/:id" do
     @user = User.find(id: session[:user_id])
-    @property = Property.find(id: :id)
+    @property = Property.find(id: params[:id])
     erb :'/properties/booking'
   end
 
   post '/properties/requests' do
     @duration = params[:duration]    
+    @property = Property.find(id: :id)
     erb :'properties/requests'
   end
 
