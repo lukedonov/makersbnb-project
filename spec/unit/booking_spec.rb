@@ -15,7 +15,6 @@ describe Booking do
         end
         
         describe ('.create') do
-            
             it 'adds a new booking' do
                 expect(@booking.user_id).to eq(@user.id)    
                 expect(@booking.property_id).to eq(@property.id)    
@@ -23,8 +22,6 @@ describe Booking do
                 expect(@booking.end_date).to eq("2020-06-23 00:00:00")    
                 expect(@booking.approval).to eq(Booking::PENDING)    
             end
-    
-    
         end
     
         describe '.find_by_guest_id' do
@@ -56,15 +53,27 @@ describe Booking do
         before(:each) do
             create_user_and_property
             Availability.create(property_id: @property.id, start_date: "2020-06-24 00:00:00", end_date: "2020-06-25 00:00:00")
-            
         end
-        
-        describe ('.create') do
+
+        describe '.create' do
             it 'cannot add a new booking' do
                 expect{described_class.create(user_id: @user.id, property_id: @property.id, start_date: "2020-06-22 00:00:00", end_date: "2020-06-23 00:00:00")}.to raise_error(RuntimeError, "the property is not available on these dates")
             end
         end
+    end
 
+    context("property is already booked") do
+        before(:each) do
+            create_user_and_property
+            Availability.create(property_id: @property.id, start_date: "2020-06-20 00:00:00", end_date: "2020-06-23 00:00:00")
+            DatabaseConnection.query("INSERT INTO bookings (user_id, property_id, start_date, end_date, approval) VALUES ('#{@user.id}', '#{@property.id}', '2020-06-22 00:00:00', '2020-06-23 00:00:00', 'APPROVED');")
+        end
+
+        describe '.create' do
+            it "cannot add a new booking" do
+                expect{described_class.create(user_id: @user.id, property_id: @property.id, start_date: "2020-06-21 00:00:00", end_date: "2020-06-23 00:00:00")}.to raise_error(RuntimeError, "the property is already booked on these dates")
+            end
+        end
     end
 
     

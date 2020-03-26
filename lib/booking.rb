@@ -21,8 +21,8 @@ class Booking
     end
 
     def self.create(user_id:, property_id:, start_date:, end_date:)
-
         raise 'the property is not available on these dates' unless check_availability(property_id: property_id, start_date: start_date, end_date: end_date) == true
+        raise 'the property is already booked on these dates' unless check_booking_conflict(property_id: property_id, start_date: start_date, end_date: end_date) == true
         map(DatabaseConnection.query("INSERT INTO bookings (user_id, property_id, start_date, end_date, approval) VALUES ('#{user_id}', '#{property_id}', '#{start_date}', '#{end_date}', '#{PENDING}') RETURNING id, user_id, property_id, start_date, end_date, approval;")).first
     end
 
@@ -49,12 +49,29 @@ class Booking
         results = Availability.find(property_id: property_id)
         
         results.each { |a|
-            if start_date >= a.start_date && start_date <= a.end_date 
+            if start_date >= a.start_date && end_date <= a.end_date 
                 available = true
             end
         }
         
         return available
     end
+
+    def self.check_booking_conflict(property_id:, start_date:, end_date:)
+        available = true
+        results = find_by_property_id(property_id)
+
+        results.each { |a|
+            if start_date <= a.start_date && end_date >= a.start_date 
+                available = false
+            elsif start_date >= a.start_date && start_date <= a.end_date
+                available = false
+            end
+        }
+
+        return available
+
+    end
+
 
 end
