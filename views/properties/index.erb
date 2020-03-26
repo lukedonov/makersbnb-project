@@ -9,7 +9,9 @@
     <div id="menu">
       <div class=logo_and_title>
         <img src="images/logo_dark-on-light.svg">
-        <h1>INN COGNITO</h1>
+        <a href='/'>INN COGNITO</a>
+        <a>▸</a>
+        <a href='/'>PROPERTIES</a>
       </div>
       <div class="message_and_options">
         <%if @user %>
@@ -41,7 +43,7 @@
         </select>
       </form>
       <% @properties.each do |property| %>
-        <div class="property">
+        <div contenteditable class="property">
           <h3><%= property.name%></h3>
           <p class="propert-desc"><%= property.description%></p>
           <div class="property-book">

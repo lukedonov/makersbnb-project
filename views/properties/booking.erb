@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html>
-
-  <%= @property.name%>
-  <li><%= @property.description%></li>
-  <li><%= @property.cpn%></li>
-  
-  <form action="/properties/requests" method="post">
-    <input type="hidden" name="property_id" value="<%= @property.id %>">
-    <input type="text" name="start-date" id="start-date"/>
-    <select id="duration" name="duration">
-      <option value="1">1 night</option>
-      <option value="2">2 night</option>
-      <option value="3">3 night</option>
-      <option value="4">4 night</option>
-      <option value="5">5 night</option>
-      <option value="6">6 night</option>
-      <option value="7">7 night</option>
-    </select>
-    <% if @user.id == @property.user_id %>
-      You cannot book your own property
-    <% else %>
-      <input type="submit" value="Request booking"/>
-    <% end %>
-  </form>
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( "#start-date" ).datepicker();
-  });
-  </script>
-  <script>
-    </script>
-  </html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="stylesheets/css/style.css" >
+	</head>
+	<body>
+		<%= @property.name%>
+		<li><%= @property.description%></li>
+		<li><%= @property.cpn%></li>
+		<form action="/properties/requests" method="post">
+			<input type="hidden" name="property_id" value="<%= @property.id %>">
+			<input type="text" name="start-date" id="start-date"/>
+			<select id="duration" name="duration">
+				<option value="1">1 night</option>
+				<option value="2">2 night</option>
+				<option value="3">3 night</option>
+				<option value="4">4 night</option>
+				<option value="5">5 night</option>
+				<option value="6">6 night</option>
+				<option value="7">7 night</option>
+			</select>
+			<% if @user.id == @property.user_id %>
+				You cannot book your own property
+			<% else %>
+				<input type="submit" value="Request booking"/>
+			<% end %>
+		</form>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script>
+			$( function() {
+			  $( "#start-date" ).datepicker();
+			});
+		</script>
+	</body>
+</html>
