@@ -88,18 +88,17 @@ class InnCognito < Sinatra::Base
     @bookings = Booking.set_approval(params[:booking_id], Booking::APPROVED)
     redirect '/view-requests'
   end
+
+  post '/account/reject-booking' do
+    @bookings = Booking.set_approval(params[:booking_id], Booking::REJECTED)
+    redirect '/view-requests'
+  end
   
   post '/sign-out' do
     session.clear
     flash[:notice] = 'You have signed out.'
     redirect('/')
   end
-
-
-
-
-
-
 
   get '/upload' do
     erb :'upload/upload'
@@ -115,4 +114,13 @@ class InnCognito < Sinatra::Base
 
     erb :'upload/show_upload'
   end
+
+  not_found do
+    erb :'errors/404'
+  end
+
+  error do
+    erb :'errors/500'
+  end
+
 end

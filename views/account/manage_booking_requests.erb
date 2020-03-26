@@ -27,6 +27,10 @@
 								<form action="/account/approve-booking" method="post">
 									<input type="hidden" name="booking_id" value="<%= booking.id %>">
 									<input type="submit" value="Approve">
+                </form>
+                <form action="/account/reject-booking" method="post">
+									<input type="hidden" name="booking_id" value="<%= booking.id %>">
+									<input type="submit" value="Reject">
 								</form>
 							<%end%>
 						</section>
