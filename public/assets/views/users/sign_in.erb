@@ -1,19 +1,15 @@
-<html>
-	<head>
-		<link rel="stylesheet" type="text/css" href="stylesheets/css/style.css" >
-	</head>
-	<div class="verticalCenter">
-		<div id="sign-in">
-			<img src="images/logo_light-on-clear.svg">
-			<form action="/sign-in" method="post">
-				<input type="email" name="email" id="email" placeholder="email address">
-				<input type="password" name="password" id="password" placeholder="password">
-				<input type="submit" id="submit" value="Sign In">
-			</form>
-			<h2>
-				<%= flash[:notice] %>
-			</h2>
-			<p>Don't have an account? <a href="/sign-up">sign up</a> now.</p>
-		</div>
+	
+<div class="verticalCenter">
+	<div id="sign-in">
+		<img src="images/logo_light-on-clear.svg">
+		<form action="/sign-in" method="post">
+			<input type="email" name="email" id="email" placeholder="email address">
+			<input type="password" name="password" id="password" placeholder="password">
+			<input type="submit" id="submit" value="Sign In">
+		</form>
+		<h2>
+			<%= flash[:notice] %>
+		</h2>
+		<p>Don't have an account? <a href="/sign-up">sign up</a> now.</p>
 	</div>
-</html>
+</div>

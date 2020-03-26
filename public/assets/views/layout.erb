@@ -1,6 +1,6 @@
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css" >
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css" >
   </head>
   <body>
     <div class="grid-container">
@@ -8,10 +8,14 @@
         <div class=logo_and_title>
           <img src="images/logo_dark-on-light.svg">
           <a href='/'>INN COGNITO</a>
-          <a>▸</a>
-          <a href='/'>PROPERTIES</a>
-          <%= flash[:notice] %>
+          <% if session[:location] %>
+          <% session[:location].each do |l| %>
+            <a>▸</a>
+            <%= "<a href=#{l[:link]}>#{l[:name].upcase}</a>" %>
+          <%end%>
+          <%end%>
         </div>
+        <%= flash[:notice] %>
       <div class="message_and_options">
         <%if @current_user %>
         <p><%="Logged in as <b>#{@current_user.name}</b>"%></p>
@@ -32,7 +36,6 @@
       </div>
     </div>
     <%= yield %>
-      
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="src/interface.js"></script>
   </body>

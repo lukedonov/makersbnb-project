@@ -18,12 +18,15 @@ class InnCognito < Sinatra::Base
   set :views, 'public/assets/views/'
   set :scss, 'public/assets/sass/'
 
-  get '/interface' do
-    @current_user = User.find(id: session[:user_id])
-    erb :test_content
+  def location(*args)
+    session[:location] = []
+    args.each do |a|
+      session[:location] << { name: a, link: request.path_info }
+    end
   end
 
   get '/' do
+    location 'home'
     @current_user = User.find(id: session[:user_id])
     @properties = Property.all
     @properties = Property.sort_by_recent if params[:sort] == 'recent'
@@ -32,6 +35,8 @@ class InnCognito < Sinatra::Base
   end
 
   get '/sign-up' do
+    location 'sign up'
+    session[:location] = [{ name: 'sign up', link: request.path_info }]
     erb :'users/sign_up'
   end
 
@@ -42,6 +47,7 @@ class InnCognito < Sinatra::Base
   end
 
   get '/sign-in' do
+    location 'sign in'
     erb :'users/sign_in'
   end
 
@@ -49,7 +55,7 @@ class InnCognito < Sinatra::Base
     @current_user = User.authenticate(email: params[:email], password: params[:password])
     if @current_user
       session[:user_id] = @current_user.id
-      redirect '/interface'
+      redirect '/'
     else
       flash[:notice] = 'Please check your email or password.'
       redirect '/sign-in'
@@ -57,6 +63,7 @@ class InnCognito < Sinatra::Base
   end
 
   get '/book/:id' do
+    location 'new booking'
     session[:place_id] = params[:id]
     @current_user = User.find(id: session[:user_id])
     @property = Property.find(id: session[:place_id])
@@ -68,10 +75,16 @@ class InnCognito < Sinatra::Base
     @duration = params[:duration]
     @property = Property.find(id: session[:place_id])
     @booking = Booking.create(user_id: params[:user_id], property_id: params[:property_id], start_date: params[:start_date], end_date: params[:end_date], owner_id: params[:owner_id])
+    redirect '/book/success'
+  end
+
+  get '/book/success' do
+    location 'confirmed'
     erb :'account/booking_request_confirmation'
   end
 
   get '/account/add-property' do
+    location 'new property'
     erb :'account/add_property'
   end
 
@@ -83,6 +96,7 @@ class InnCognito < Sinatra::Base
   end
 
   get '/account/manage-bookings' do
+    location 'manage bookings'
     @current_user = User.find(id: session[:user_id])
     @properties = Property.where(user_id: @current_user.id)
     @bookings = Booking.find_by_owner_id(@current_user.id)
