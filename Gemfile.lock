@@ -6,6 +6,7 @@ GEM
     ansi (1.5.0)
     ast (2.4.0)
     backport (1.1.2)
+    backports (3.17.0)
     bcrypt (3.1.13)
     benchmark (0.1.0)
     capybara (3.31.0)
@@ -24,6 +25,7 @@ GEM
     maruku (0.7.3)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
+    multi_json (1.14.1)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     nokogiri (1.10.9)
@@ -88,6 +90,13 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.8.1)
       tilt (~> 2.0)
+    sinatra-contrib (2.0.8.1)
+      backports (>= 2.8.2)
+      multi_json
+      mustermann (~> 1.0)
+      rack-protection (= 2.0.8.1)
+      sinatra (= 2.0.8.1)
+      tilt (~> 2.0)
     sinatra-flash (0.3.0)
       sinatra (>= 1.0.0)
     solargraph (0.38.6)
@@ -127,6 +136,7 @@ DEPENDENCIES
   simplecov
   simplecov-console
   sinatra
+  sinatra-contrib
   sinatra-flash
   solargraph
 

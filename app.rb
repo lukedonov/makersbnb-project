@@ -2,6 +2,7 @@
 
 require 'sinatra/base'
 require 'sinatra/flash'
+require 'sinatra/reloader'
 require './lib/user'
 require './lib/availability'
 require './lib/booking'
@@ -10,13 +11,12 @@ require_relative './lib/Property'
 
 class InnCognito < Sinatra::Base
   enable :sessions
-
   disable :strict_paths
-
+  register Sinatra::Reloader
   register Sinatra::Flash
 
   get '/' do
-    redirect '/properties'
+    '...properties'
   end
 
   get '/sign-in' do
@@ -77,7 +77,7 @@ class InnCognito < Sinatra::Base
     @duration = params[:duration]
     @property = Property.find(id: session[:place_id])
     @booking = Booking.create(user_id: params[:user_id], property_id: params[:property_id], start_date: params[:start_date], end_date: params[:end_date])
-    erb :'properties/requests'  
+    erb :'properties/requests'
   end
 
   post '/sessions/destroy' do
@@ -89,7 +89,7 @@ class InnCognito < Sinatra::Base
   get '/view-requests' do
     @user = User.find(id: session[:user_id])
     @properties = Property.all
-    @booking = Booking.find_by_approval_status("approval")
+    @booking = Booking.find_by_approval_status('approval')
     erb :'view-requests'
   end
 end
