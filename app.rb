@@ -16,7 +16,7 @@ class InnCognito < Sinatra::Base
   register Sinatra::Flash
 
   get '/' do
-    '...properties'
+    redirect '/properties'
   end
 
   get '/sign-in' do
