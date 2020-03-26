@@ -1,0 +1,19 @@
+language: ruby
+
+rvm:
+  - 2.6.5
+
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database inncognito_test;' -U postgres
+  - U postgres -d inncognito_test -f db/migrations/02_create_users_table.sql
+  - U postgres -d inncognito_test -f db/migrations/03_add_unique_constraints.sql
+  - U postgres -d inncognito_test -f db/migrations/04_create_properties_table.sql
+  - U postgres -d inncognito_test -f db/migrations/05_create_bookings_table.sql
+  - U postgres -d inncognito_test -f db/migrations/06_create_availability_table.sql
+
+  
+script:
+  - bundle exec rspec

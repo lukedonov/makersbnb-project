@@ -75,6 +75,7 @@ class InnCognito < Sinatra::Base
     session[:place_id] = params[:id]
     @user = User.find(id: session[:user_id])
     @property = Property.find(id: session[:place_id])
+    @availability = Availability.find(property_id: session[:place_id])
     erb :'/properties/booking'
   end
 

@@ -2,8 +2,15 @@
 <html>
 
   <%= @property.name%>
-  <li><%= @property.description%></li>
-  <li><%= @property.cpn%></li>
+  <br>
+  Description: <%= @property.description%>
+  <br>
+  Cost per night: £<%= @property.cpn%>
+  <br>
+  Available from: <%= @availability.start_date%>
+  <br>
+  Available to: <%= @availability.end_date%>
+
   
   <form action="/properties/requests" method="post">
     <input type="hidden" name="user_id" value="<%= @user.id %>">

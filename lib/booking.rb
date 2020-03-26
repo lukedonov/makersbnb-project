@@ -44,6 +44,11 @@ class Booking
     private
     
     def self.map(sql_result)
-        sql_result.map { |b| Booking.new(b['id'], b['user_id'], b['property_id'], b['start_date'], b['end_date'], b['owner_id'], b['approval'].to_sym) }
+        sql_result.map { |b| Booking.new(b['id'], b['user_id'], b['property_id'], date_format(b['start_date']), date_format(b['end_date']), b['owner_id'], b['approval'].to_sym) }
     end
+
+    def self.date_format(date)
+      DateTime.strptime(date, '%Y-%m-%d %H:%M:%S').strftime("%d %b %Y")
+    end
+
 end
