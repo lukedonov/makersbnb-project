@@ -17,7 +17,7 @@
         <form action="/sign-out" method="post">
           <input type="submit" value="Sign out" />
         </form>
-        <form action="/view-requests" method="get">
+        <form action="/account/manage-bookings" method="get">
           <input type="submit" value="View Booking Requests"/>
         </form>
         <% else %>
@@ -40,7 +40,7 @@
         </select>
       </form>
       <%if @current_user%>
-        <form action="/properties/new" method="get">
+        <form action="/account/add-property" method="get">
           <input type="submit" value="Add New Property">
         </form>
       <%end%>
@@ -52,7 +52,7 @@
           <div class="property-book">
             <p>£<%= property.cpn%> per night</p>
             <% if @current_user %>
-              <form action="/properties/<%= property.id %>" method="get">
+              <form action="/book/<%= property.id %>" method="get">
                 <input type="submit" value="Book">                
               </form>                                        
             <% else %>

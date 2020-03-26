@@ -20,7 +20,7 @@ class InnCognito < Sinatra::Base
     @properties = Property.all
     @properties = Property.sort_by_recent if params[:sort] == 'recent'
     @properties = Property.sort_by_cpn  if params[:sort] == 'price'
-    erb :'properties/index'
+    erb :index
   end
 
   get '/sign-up' do
@@ -47,47 +47,44 @@ class InnCognito < Sinatra::Base
       redirect '/sign-in'
     end
   end
+  
+    get '/book/:id' do
+      session[:place_id] = params[:id]
+      @current_user = User.find(id: session[:user_id])
+      @property = Property.find(id: session[:place_id])
+      @availability = Availability.find(property_id: session[:place_id])
+      erb :'account/create_booking_request'
+    end
+  
+    post '/book/success' do
+      @duration = params[:duration]
+      @property = Property.find(id: session[:place_id])
+      @booking = Booking.create(user_id: params[:user_id], property_id: params[:property_id], start_date: params[:start_date], end_date: params[:end_date], owner_id: params[:owner_id])
+      erb :'account/booking_request_confirmation'
+    end
 
-
-  get '/properties/new' do
-    erb :'/properties/new'
+  get '/account/add-property' do
+    erb :'account/add_property'
   end
 
-  post '/properties/new' do
+  post '/account/add-property' do
     @current_user = User.find(id: session[:user_id])
     @property = Property.create(name: params[:name], description: params[:description], cpn: params[:cpn], user_id: @current_user.id)
     @availability = Availability.create(property_id: @property.id, start_date: params[:start_date], end_date: params[:end_date])
     redirect '/'
   end
-
-
-  get '/properties/:id' do
-    session[:place_id] = params[:id]
-    @current_user = User.find(id: session[:user_id])
-    @property = Property.find(id: session[:place_id])
-    @availability = Availability.find(property_id: session[:place_id])
-    erb :'/properties/booking'
-  end
-
-  post '/properties/requests' do
-    @duration = params[:duration]
-    @property = Property.find(id: session[:place_id])
-    @booking = Booking.create(user_id: params[:user_id], property_id: params[:property_id], start_date: params[:start_date], end_date: params[:end_date], owner_id: params[:owner_id])
-    erb :'properties/requests'  
-  end
-
   
-  get '/view-requests' do
+  get '/account/manage-bookings' do
     @current_user = User.find(id: session[:user_id])
     @properties = Property.where(user_id: @current_user.id)
     @bookings = Booking.find_by_owner_id(@current_user.id)
     @bookings.each_with_index do |b, i|
       @bookings.delete_at(i) if b.approval != Booking::PENDING
     end
-    erb :'view-requests'
+    erb :'account/manage_booking_requests'
   end
   
-  post '/request-accept' do
+  post '/account/approve-booking' do
     @bookings = Booking.set_approval(params[:booking_id], Booking::APPROVED)
     redirect '/view-requests'
   end
