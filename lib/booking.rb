@@ -73,5 +73,10 @@ class Booking
 
     end
 
+    #------refactoring idea------
+    # def any_overlapping_ranges(array_of_ranges)
+    #  array_of_ranges.sort_by(&:first).each_cons(2).any?{|x,y|x.last>y.first}
+    # end
+
 
 end
