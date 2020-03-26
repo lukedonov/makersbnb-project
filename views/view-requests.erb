@@ -3,6 +3,7 @@
     <link rel="stylesheet" type="text/css" href="/public/inncognito.css" >
   </head>
  <body> 
+ <section>
 <p>My booking requests:
 
 <p>You currently have <%= @bookings.count %> booking requests
@@ -19,6 +20,7 @@
     <input type="submit" value="Approve">
   </form>
 <%end%>
+</section>
 <section>
 <p>My properties:
     <% @properties.each do |property| %>
