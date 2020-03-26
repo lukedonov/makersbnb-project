@@ -7,7 +7,7 @@ feature 'viewing all properties' do
   scenario 'add a new property' do
     create_user
     sign_in
-    visit('/properties')
+    visit('/')
     list_property
 
     expect(page).to have_content 'new property'
@@ -16,7 +16,7 @@ feature 'viewing all properties' do
   end
 
   scenario 'user cannot post new property when not signed in' do
-    visit('/properties')
+    visit('/')
 
     expect(page).not_to have_selector("input[type=submit][value='New Property']")
   end

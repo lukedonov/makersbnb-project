@@ -12,9 +12,9 @@
           <a href='/'>PROPERTIES</a>
         </div>
       <div class="message_and_options">
-        <%if @user %>
-        <p><%="Logged in as <b>#{@user.name}</b>"%></p>
-        <form action="/sessions/destroy" method="post">
+        <%if @current_user %>
+        <p><%="Logged in as <b>#{@current_user.name}</b>"%></p>
+        <form action="/sign-out" method="post">
           <input type="submit" value="Sign out" />
         </form>
         <form action="/view-requests" method="get">
@@ -39,7 +39,7 @@
           <option value="price">Price (Lowest to Highest)</option>
         </select>
       </form>
-      <%if @user%>
+      <%if @current_user%>
         <form action="/properties/new" method="get">
           <input type="submit" value="Add New Property">
         </form>
@@ -51,7 +51,7 @@
           <!--<img src="images/properties/<%=property.id%>.png">-->
           <div class="property-book">
             <p>£<%= property.cpn%> per night</p>
-            <% if @user %>
+            <% if @current_user %>
               <form action="/properties/<%= property.id %>" method="get">
                 <input type="submit" value="Book">                
               </form>                                        

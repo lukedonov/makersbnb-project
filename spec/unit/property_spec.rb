@@ -27,7 +27,7 @@ describe Property do
       expect(@property.name).to eq('House John')
       expect(@property.description).to eq('a splendid house made of cheese')
       expect(@property.cpn).to eq(134)
-      expect(@property.user_id).to eq(@user.id)
+      expect(@property.user_id).to eq(@current_user.id)
     end
   end
 
@@ -36,7 +36,7 @@ describe Property do
       create_user_and_property
 
       persisted_data(table: 'properties', id: @property.id)
-      expect(@property.user_id).to eq @user.id
+      expect(@property.user_id).to eq @current_user.id
     end
   end
 

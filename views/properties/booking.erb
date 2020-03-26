@@ -13,7 +13,7 @@
 
   
   <form action="/properties/requests" method="post">
-    <input type="hidden" name="user_id" value="<%= @user.id %>">
+    <input type="hidden" name="user_id" value="<%= @current_user.id %>">
     <input type="hidden" name="property_id" value="<%= @property.id %>">
     <input type="hidden" name="owner_id" value="<%= @property.user_id %>">
     <input type="text" name="start_date" id="startDate"/>
@@ -27,7 +27,7 @@
       <option value="6">6 night</option>
       <option value="7">7 night</option>
     </select>
-    <% if @user.id == @property.user_id %>
+    <% if @current_user.id == @property.user_id %>
       You cannot book your own property
     <% else %>
       <input type="submit" value="Request booking"/>
