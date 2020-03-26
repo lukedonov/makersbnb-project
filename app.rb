@@ -3,6 +3,7 @@
 require 'sinatra/base'
 require 'sinatra/flash'
 require './lib/user'
+require './lib/booking'
 require './lib/database_connection_setup'
 require_relative './lib/Property'
 
@@ -73,7 +74,8 @@ class InnCognito < Sinatra::Base
   post '/properties/requests' do
     @duration = params[:duration]    
     @property = Property.find(id: session[:place_id])
-    erb :'properties/requests'
+    @booking = Booking.create(user_id: params[:user_id], property_id: params[:property_id], start_date: params[:start_date], end_date: params[:end_date])
+    erb :'properties/requests'  
   end
 
   post '/sessions/destroy' do
@@ -85,6 +87,7 @@ class InnCognito < Sinatra::Base
   get '/view-requests' do
     @user = User.find(id: session[:user_id])
     @properties = Property.all
+    @booking = Booking.find_by_approval_status("approval")
     erb :'view-requests'
   end
 

@@ -21,15 +21,22 @@
 
 </section>
 
-
-
 <section>
 
 <p>My bookings:
-<
-
-
-
+  <% @booking.each do |booking| %>
+  <ul>
+    <b><%= booking.user_id%></b>
+    <li><%= booking.property_id%></li>
+    <li><%= booking.start_date%></li>  
+    <li><%= booking.end_date%></li>  
+  </ul>
+  <form action="/view-requests" method="post">
+    <input type="submit" value="Approve">
+  </form>
+  <form action="/view-requests" method="post">
+    <input type="submit" value="Deny">
+  </form>
+<%end%>
 </section>
-
 </body>
