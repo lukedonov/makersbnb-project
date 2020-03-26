@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $("#property").html("IT WORKS!");
+  //$('.header').load("views/header.html");
   $(function () {
     $('#sort').change(function () {
       this.form.submit();
