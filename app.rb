@@ -89,12 +89,13 @@ class InnCognito < Sinatra::Base
   get '/view-requests' do
     @user = User.find(id: session[:user_id])
     @properties = Property.where(user_id: @user.id)
-    @booking = Booking.find_by_owner_id(@user.id)
+    @bookings = Booking.find_by_owner_id(@user.id)
+    @bookings = 
     erb :'view-requests'
   end
 
-  # post '/view-requests' do
-  #   @user = User.find(id: session[:user_id])
-  #   @booking = Booking.find
-  # end
+  post '/request-accept' do
+    @bookings = Booking.set_approval(params[:booking_id], Booking::APPROVED)
+    redirect '/view-requests'
+  end
 end
