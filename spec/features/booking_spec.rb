@@ -22,7 +22,7 @@ feature 'booking a property' do
     click_button('Sign out')
     sign_up_and_in_other_test_user
     click_button('Book')
-    fill_in "start-date", with: "25/03/20"
+    fill_in "start_date", with: "25/03/20"
     select "2 night", :from => "duration"
     click_button("Request booking")
     expect(page).to have_content("Your request to book new property for 2 nights has been sent")
@@ -41,7 +41,7 @@ feature 'booking a property' do
     property = Property.create(name: 'House John', description: 'a splendid house made of cheese', cpn: 134, user_id: user.id)
     sign_up_and_in_other_test_user
     click_button('Book')
-    fill_in "start-date", with: "25/03/20"
+    fill_in "start_date", with: "25/03/20"
     select "2 night", :from => "duration"
     click_button("Request booking")
     click_button("Back to properties")

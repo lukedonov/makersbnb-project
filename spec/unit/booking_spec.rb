@@ -8,7 +8,7 @@ describe Booking do
 
     before(:each) do
         create_user_and_property
-        @booking = described_class.create(user_id: @user.id, property_id: @property.id, start_date: "2020-06-22 00:00:00", end_date: "2020-06-23 00:00:00")
+        @booking = described_class.create(user_id: @user.id, property_id: @property.id, start_date: "2020-06-22 00:00:00", end_date: "2020-06-23 00:00:00", owner_id: @property.user_id)
     end
     
     describe ('.create') do

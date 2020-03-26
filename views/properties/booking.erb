@@ -8,6 +8,7 @@
   <form action="/properties/requests" method="post">
     <input type="hidden" name="user_id" value="<%= @user.id %>">
     <input type="hidden" name="property_id" value="<%= @property.id %>">
+    <input type="hidden" name="owner_id" value="<%= @property.user_id %>">
     <input type="text" name="start_date" id="startDate"/>
     <input type="text" name="end_date" id="endDate"/>
     <select id="duration" name="duration">
@@ -31,16 +32,7 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="../../lib/booking.rb"></script>
   <script>
-  // $( function() {
-    // var booking = new Booking();
-    // $(document).ready(function() {
-
       $( "#startDate" ).datepicker();
       $( "#endDate" ).datepicker();
-    //   $("#requestbooking").click(function() {
-    //     booking.create(1,1,startDate,endDate);
-    //   });
-    // });
-  // });
   </script>
   </html>

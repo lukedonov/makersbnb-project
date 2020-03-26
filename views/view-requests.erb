@@ -10,13 +10,11 @@
 <section>
 <p>My properties:
     <% @properties.each do |property| %>
-      <%if @user.id == property.user_id %>
       <ul>
         <b><%= property.name%></b>
         <li><%= property.description%></li>
         <li><%= property.cpn%></li>  
       </ul>
-      <%end%>
     <%end%>
 
 </section>

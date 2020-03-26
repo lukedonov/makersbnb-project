@@ -76,7 +76,7 @@ class InnCognito < Sinatra::Base
   post '/properties/requests' do
     @duration = params[:duration]
     @property = Property.find(id: session[:place_id])
-    @booking = Booking.create(user_id: params[:user_id], property_id: params[:property_id], start_date: params[:start_date], end_date: params[:end_date])
+    @booking = Booking.create(user_id: params[:user_id], property_id: params[:property_id], start_date: params[:start_date], end_date: params[:end_date], owner_id: params[:owner_id])
     erb :'properties/requests'  
   end
 
@@ -88,8 +88,13 @@ class InnCognito < Sinatra::Base
 
   get '/view-requests' do
     @user = User.find(id: session[:user_id])
-    @properties = Property.all
-    @booking = Booking.find_by_approval_status("approval")
+    @properties = Property.where(user_id: @user.id)
+    @booking = Booking.find_by_owner_id(@user.id)
     erb :'view-requests'
   end
+
+  # post '/view-requests' do
+  #   @user = User.find(id: session[:user_id])
+  #   @booking = Booking.find
+  # end
 end
