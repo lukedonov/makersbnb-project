@@ -51,5 +51,7 @@ def list_property
   fill_in('name', with: 'new property')
   fill_in('description', with: 'wow, so nice')
   fill_in('cpn', with: '123421')
+  fill_in('start_date', with: '2020-06-22 00:00:00')
+  fill_in('end_date', with: '2020-06-23 00:00:00' )
   click_button('Submit')
 end

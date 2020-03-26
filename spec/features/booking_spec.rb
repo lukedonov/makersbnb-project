@@ -59,6 +59,8 @@ feature 'booking a property' do
     fill_in('name', with: 'a second property')
     fill_in('description', with: 'even nicer')
     fill_in('cpn', with: '50')
+    fill_in('start_date', with: '2020-06-24 00:00:00')
+    fill_in('end_date', with: '2020-06-25 00:00:00')
     click_button('Submit')
     click_button("View Booking Requests")
 

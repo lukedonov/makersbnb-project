@@ -13,6 +13,7 @@ class Property
   end
 
   def self.create(name:, description:, cpn:, user_id:)
+    description = DatabaseConnection.prepare(description)
     result = DatabaseConnection.query("INSERT INTO properties (name, description, cpn, user_id) VALUES ('#{name}', '#{description}', #{cpn.to_i}, #{user_id}) RETURNING id, name, description, cpn, user_id;")
     map(result).first
   end

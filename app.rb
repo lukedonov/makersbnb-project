@@ -3,6 +3,7 @@
 require 'sinatra/base'
 require 'sinatra/flash'
 require './lib/user'
+require './lib/availability'
 require './lib/database_connection_setup'
 require_relative './lib/Property'
 
@@ -50,6 +51,7 @@ class InnCognito < Sinatra::Base
   post '/properties/new' do
     @user = User.find(id: session[:user_id])
     @property = Property.create(name: params[:name], description: params[:description], cpn: params[:cpn], user_id: @user.id)
+    @availability = Availability.create(property_id: @property.id, start_date: params[:start_date], end_date: params[:end_date])
     redirect '/properties'
   end
 

@@ -20,6 +20,8 @@
     </select>
     <% if @user.id == @property.user_id %>
       You cannot book your own property
+      
+    </form>
     <% else %>
       <input type="submit" value="Request booking"/>
     <% end %>
