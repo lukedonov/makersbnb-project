@@ -2,6 +2,7 @@
 
 require 'sinatra/base'
 require 'sinatra/flash'
+require 'uri'
 require './lib/user'
 require './lib/availability'
 require './lib/database_connection_setup'
@@ -33,9 +34,14 @@ class InnCognito < Sinatra::Base
   end
 
   post '/users/sign-in' do
-    @user = User.find_by_email(email: params[:email])
-    session[:user_id] = @user.id unless @user.nil?
-    redirect '/properties'
+    @user = User.authenticate(email: params[:email], password: params[:password])
+    if @user
+      session[:user_id] = @user.id
+      redirect '/properties'
+    else
+      flash[:notice] = 'Please check your email or password.'
+      redirect '/sign-in'
+    end
   end
 
   get '/properties' do

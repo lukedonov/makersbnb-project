@@ -16,14 +16,6 @@ def sign_in
   fill_in(:email, with: 'test@test.com')
   fill_in(:password, with: 'test')
   click_button('Sign In')
-
-end
-
-def sign_in_with_wrong_email
-  visit '/sign-in'
-  fill_in(:email, with: 'test_wrong@test.com')
-  fill_in(:password, with: 'test')
-  click_button('Sign In')
 end
 
 def sign_up_and_in_other_test_user
