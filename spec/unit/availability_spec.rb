@@ -25,4 +25,16 @@ describe Availability do
       
     end
   end
+
+  describe ('.find') do
+    it "finds availibily based on property id" do
+      
+      result = Availability.find(property_id: @property.id)
+      
+      expect(result.first.property_id).to eq @property.id
+      expect(result.first.start_date).to eq @availability.start_date
+      expect(result.first.end_date).to eq @availability.end_date
+    end
+  end
+
 end

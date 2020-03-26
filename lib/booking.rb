@@ -21,6 +21,8 @@ class Booking
     end
 
     def self.create(user_id:, property_id:, start_date:, end_date:)
+
+        raise 'the property is not available on these dates' unless check_availability(property_id: property_id, start_date: start_date, end_date: end_date) == true
         map(DatabaseConnection.query("INSERT INTO bookings (user_id, property_id, start_date, end_date, approval) VALUES ('#{user_id}', '#{property_id}', '#{start_date}', '#{end_date}', '#{PENDING}') RETURNING id, user_id, property_id, start_date, end_date, approval;")).first
     end
 
@@ -41,4 +43,20 @@ class Booking
     def self.map(sql_result)
         sql_result.map { |b| Booking.new(b['id'], b['user_id'], b['property_id'], b['start_date'], b['end_date'], b['approval'].to_sym) }
     end
+
+    def self.check_availability(property_id:, start_date:, end_date:)
+        
+        available = false
+
+        results = Availability.find(property_id: property_id)
+        
+        results.each { |a|
+            if start_date >= a.start_date && start_date <= a.end_date 
+                available = true
+            end
+        }
+        
+        return available
+    end
+
 end
