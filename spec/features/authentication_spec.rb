@@ -9,7 +9,7 @@ feature 'sign in/out' do
   it 'a user can sign in' do
     sign_in
 
-    expect(page).to have_content 'Welcome, John Doe'
+    expect(page).to have_content 'Logged in as John Doe'
   end
 
   it 'a user cannot sign in with wrong email' do

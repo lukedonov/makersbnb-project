@@ -4,6 +4,6 @@ feature 'registration' do
   scenario 'a user can sign up to our website' do
     sign_up
 
-    expect(page).to have_content 'Welcome'
+    expect(page).to have_content 'Logged in'
   end
 end

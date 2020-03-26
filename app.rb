@@ -14,7 +14,7 @@ class InnCognito < Sinatra::Base
   register Sinatra::Flash
 
   get '/' do
-    'This is meant to be empty'
+    redirect '/properties'
   end
 
   get '/sign-in' do
@@ -63,7 +63,7 @@ class InnCognito < Sinatra::Base
     erb :'properties/index'
   end
 
-  get "/properties/:id" do
+  get '/properties/:id' do
     session[:place_id] = params[:id]
     @user = User.find(id: session[:user_id])
     @property = Property.find(id: session[:place_id])
@@ -71,14 +71,14 @@ class InnCognito < Sinatra::Base
   end
 
   post '/properties/requests' do
-    @duration = params[:duration]    
+    @duration = params[:duration]
     @property = Property.find(id: session[:place_id])
     erb :'properties/requests'
   end
 
   post '/sessions/destroy' do
     session.clear
-    flash[:notice] = "You have signed out."
+    flash[:notice] = 'You have signed out.'
     redirect('/properties')
   end
 
@@ -87,5 +87,4 @@ class InnCognito < Sinatra::Base
     @properties = Property.all
     erb :'view-requests'
   end
-
 end
