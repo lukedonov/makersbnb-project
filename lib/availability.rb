@@ -14,12 +14,12 @@ class Availability
   end
 
   def self.find(property_id:)
-    result = DatabaseConnection.query("SELECT * FROM availability WHERE property_id = #{property_id}")
-    map(result).first
+    map(DatabaseConnection.query("SELECT * FROM availability WHERE property_id = #{property_id};"))
   end
 
   def self.map(sql_result)
-    sql_result.map { |b| Availability.new(b['id'], b['property_id'], date_format(b['start_date']), date_format(b['end_date']))   }
+    sql_result.map { |b| Availability.new(b['id'], b['property_id'], b['start_date'], b['end_date'])   }
+    # sql_result.map { |b| Availability.new(b['id'], b['property_id'], date_format(b['start_date']), date_format(b['end_date']))   }
   end
 
   def self.date_format(date)
