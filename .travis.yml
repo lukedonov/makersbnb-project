@@ -13,6 +13,7 @@ before_script:
   - U postgres -d inncognito_test -f db/migrations/04_create_properties_table.sql
   - U postgres -d inncognito_test -f db/migrations/05_create_bookings_table.sql
   - U postgres -d inncognito_test -f db/migrations/06_create_availability_table.sql
+  - U postgres -d inncognito_test -f db/migrations/07_create_owner_id_in_bookings.sql
 
   
 script:
