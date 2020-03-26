@@ -97,6 +97,9 @@ class InnCognito < Sinatra::Base
     @user = User.find(id: session[:user_id])
     @properties = Property.where(user_id: @user.id)
     @bookings = Booking.find_by_owner_id(@user.id)
+    @bookings.each_with_index do |b, i|
+      @bookings.delete_at(i) if b.approval != Booking::PENDING
+    end
     erb :'view-requests'
   end
 
@@ -104,7 +107,7 @@ class InnCognito < Sinatra::Base
     @bookings = Booking.set_approval(params[:booking_id], Booking::APPROVED)
     redirect '/view-requests'
   end
-  
+
   get '/upload' do
     erb :'upload/upload'
   end

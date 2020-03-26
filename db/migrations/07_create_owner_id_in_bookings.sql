@@ -1,1 +1,2 @@
-ALTER TABLE bookings ADD COLUMN owner_id INTEGER REFERENCES users (id);
+ALTER TABLE bookings ADD COLUMN owner_id INTEGER REFERENCES users
+(id);
