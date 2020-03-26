@@ -32,6 +32,10 @@ class Booking
         map(DatabaseConnection.query("SELECT * FROM bookings WHERE property_id = #{id}"))
     end
 
+    def self.find_by_approval_status(status)
+        map(DatabaseConnection.query("SELECT * FROM bookings WHERE approval = #{status}"))
+    end
+
     private
     
     def self.map(sql_result)

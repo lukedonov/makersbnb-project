@@ -6,9 +6,10 @@
   <li><%= @property.cpn%></li>
   
   <form action="/properties/requests" method="post">
+    <input type="hidden" name="user_id" value="<%= @user.id %>">
     <input type="hidden" name="property_id" value="<%= @property.id %>">
-    <input type="text" name="start-date" id="startDate"/>
-    <input type="text" name="end-date" id="endDate"/>
+    <input type="text" name="start_date" id="startDate"/>
+    <input type="text" name="end_date" id="endDate"/>
     <select id="duration" name="duration">
       <option value="1">1 night</option>
       <option value="2">2 night</option>
