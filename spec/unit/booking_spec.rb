@@ -8,7 +8,7 @@ describe Booking do
 
     before(:each) do
         create_user_and_property
-        @booking = described_class.create(user_id: @user.id, property_id: @property.id, start_date: "2020-06-22 00:00:00", end_date: "2020-06-23 00:00:00")
+        @booking = described_class.create(user_id: @user.id, property_id: @property.id, start_date: "2020-06-22", end_date: "2020-06-23")
     end
     
     describe ('.create') do
@@ -16,8 +16,8 @@ describe Booking do
         it 'adds a new booking' do
             expect(@booking.user_id).to eq(@user.id)    
             expect(@booking.property_id).to eq(@property.id)    
-            expect(@booking.start_date).to eq("2020-06-22 00:00:00")    
-            expect(@booking.end_date).to eq("2020-06-23 00:00:00")    
+            expect(@booking.start_date).to eq("22 Jun 2020")    
+            expect(@booking.end_date).to eq("23 Jun 2020")    
             expect(@booking.approval).to eq(Booking::PENDING)    
         end
 
