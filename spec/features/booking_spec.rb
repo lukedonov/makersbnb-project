@@ -42,7 +42,7 @@ feature 'booking a property' do
     sign_up_and_in_other_test_user
     click_button('Book')
     fill_in "start_date", with: "25/03/20"
-    select "2 night", :from => "duration"
+    fill_in "end_date", with: "27/03/20"
     click_button("Request booking")
     click_button("Back to properties")
     click_button('Sign out')

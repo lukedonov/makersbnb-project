@@ -90,7 +90,6 @@ class InnCognito < Sinatra::Base
     @user = User.find(id: session[:user_id])
     @properties = Property.where(user_id: @user.id)
     @bookings = Booking.find_by_owner_id(@user.id)
-    @bookings = 
     erb :'view-requests'
   end
 
