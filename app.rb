@@ -104,4 +104,19 @@ class InnCognito < Sinatra::Base
     @bookings = Booking.set_approval(params[:booking_id], Booking::APPROVED)
     redirect '/view-requests'
   end
+  
+  get '/upload' do
+    erb :'upload/upload'
+  end
+
+  post '/upload' do
+    @filename = params[:file][:filename]
+    file = params[:file][:tempfile]
+
+    File.open("./public/images/properties/#{@filename}", 'wb') do |f|
+      f.write(file.read)
+    end
+
+    erb :'upload/show_upload'
+  end
 end

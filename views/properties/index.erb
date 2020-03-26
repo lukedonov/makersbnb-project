@@ -3,16 +3,14 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/css/style.css" >
   </head>
   <body>
-    
     <div class="grid-container">
-    
-    <div id="menu">
-      <div class=logo_and_title>
-        <img src="images/logo_dark-on-light.svg">
-        <a href='/'>INN COGNITO</a>
-        <a>▸</a>
-        <a href='/'>PROPERTIES</a>
-      </div>
+      <div id="menu">
+        <div class=logo_and_title>
+          <img src="images/logo_dark-on-light.svg">
+          <a href='/'>INN COGNITO</a>
+          <a>▸</a>
+          <a href='/'>PROPERTIES</a>
+        </div>
       <div class="message_and_options">
         <%if @user %>
         <p><%="Logged in as <b>#{@user.name}</b>"%></p>
@@ -32,10 +30,9 @@
         <% end %>
       </div>
     </div>
-
-  <div id="properties">
+    <div id="properties">
       <form action="/properties-sort" method="get">
-      <p class="sortBy">Sort By</p>
+        <p class="sortBy">Sort By</p>
         <select class="select-css" id="sort" name="sort">
           <option>All</option>
           <option value="recent">Most recent</option>
@@ -48,9 +45,10 @@
         </form>
       <%end%>
       <% @properties.each do |property| %>
-        <div contenteditable class="property">
+        <div tabindex="1" class="property">
           <h3><%= property.name%></h3>
           <p class="propert-desc"><%= property.description%></p>
+          <!--<img src="images/properties/<%=property.id%>.png">-->
           <div class="property-book">
             <p>£<%= property.cpn%> per night</p>
             <% if @user %>
@@ -67,22 +65,9 @@
       <%end%>
   </div>
     </div>
-    </div>
+   </div>
+    <%= flash[:notice] %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="src/interface.js"></script>
   </body>
-
-  <%= flash[:notice] %>
-
-<script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
-  <script>
-    $(document).ready(function(){
-      $(function(){
-        $('#sort').change(function(){
-          this.form.submit();
-        })
-      })
-    })
-  </script>
 <html>

@@ -10,6 +10,7 @@ gem 'sinatra-flash'
 gem 'bcrypt'
 gem 'sass'
 gem 'sinatra-contrib'
+gem 'refile-postgres', '~> 1.4.0'
 
 gem 'solargraph', group: :tests
 gem 'capybara', group: :tests
