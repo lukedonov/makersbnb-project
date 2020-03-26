@@ -1,36 +1,4 @@
-<html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="stylesheets/css/style.css" >
-  </head>
-  <body>
-    <div class="grid-container">
-      <div id="menu">
-        <div class=logo_and_title>
-          <img src="images/logo_dark-on-light.svg">
-          <a href='/'>INN COGNITO</a>
-          <a>▸</a>
-          <a href='/'>PROPERTIES</a>
-        </div>
-      <div class="message_and_options">
-        <%if @current_user %>
-        <p><%="Logged in as <b>#{@current_user.name}</b>"%></p>
-        <form action="/sign-out" method="post">
-          <input type="submit" value="Sign out" />
-        </form>
-        <form action="/account/manage-bookings" method="get">
-          <input type="submit" value="View Booking Requests"/>
-        </form>
-        <% else %>
-        <form action="/sign-in" method="get">
-          <input type="submit" value="Sign in" />
-        </form>
-        <form action="/sign-up" method="get">
-          <input type="submit" value="Sign up" />
-        </form>
-        <% end %>
-      </div>
-    </div>
-    <div id="properties">
+<div class="centerContent" id="properties">
       <form action="/" method="get">
         <p class="sortBy">Sort By</p>
         <select class="select-css" id="sort" name="sort">
@@ -48,7 +16,6 @@
         <div tabindex="1" class="property">
           <h3><%= property.name%></h3>
           <p class="propert-desc"><%= property.description%></p>
-          <!--<img src="images/properties/<%=property.id%>.png">-->
           <div class="property-book">
             <p>£<%= property.cpn%> per night</p>
             <% if @current_user %>
@@ -62,12 +29,5 @@
             <% end %>
           </div>
         </div>
-      <%end%>
-  </div>
-    </div>
-   </div>
-    <%= flash[:notice] %>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" src="src/interface.js"></script>
-  </body>
-<html>
+  <%end%>
+</div>
