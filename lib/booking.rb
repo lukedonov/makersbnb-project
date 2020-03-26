@@ -45,9 +45,7 @@ class Booking
     end
 
     def self.check_availability(property_id:, start_date:, end_date:)
-        
         available = false
-
         results = Availability.find(property_id: property_id)
         
         results.each { |a|

@@ -58,14 +58,11 @@ describe Booking do
             Availability.create(property_id: @property.id, start_date: "2020-06-24 00:00:00", end_date: "2020-06-25 00:00:00")
             
         end
-
-
+        
         describe ('.create') do
-            
             it 'cannot add a new booking' do
                 expect{described_class.create(user_id: @user.id, property_id: @property.id, start_date: "2020-06-22 00:00:00", end_date: "2020-06-23 00:00:00")}.to raise_error(RuntimeError, "the property is not available on these dates")
             end
-    
         end
 
     end
