@@ -18,6 +18,8 @@ class InnCognito < Sinatra::Base
   get '/' do
     @current_user = User.find(id: session[:user_id])
     @properties = Property.all
+    @properties = Property.sort_by_recent if params[:sort] == 'recent'
+    @properties = Property.sort_by_cpn  if params[:sort] == 'price'
     erb :'properties/index'
   end
 
@@ -58,15 +60,6 @@ class InnCognito < Sinatra::Base
     redirect '/'
   end
 
-  get '/properties-sort' do
-    @current_user = User.find(id: session[:user_id])
-    if params[:sort] == 'recent'
-      @properties = Property.sort_by_recent
-    elsif params[:sort] == 'price'
-      @properties = Property.sort_by_cpn
-    end
-    erb :'properties/index'
-  end
 
   get '/properties/:id' do
     session[:place_id] = params[:id]
