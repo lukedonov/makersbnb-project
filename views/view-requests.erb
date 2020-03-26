@@ -3,10 +3,24 @@
     <link rel="stylesheet" type="text/css" href="/public/inncognito.css" >
   </head>
  <body> 
-<p>My requests:
+ <section>
+<p>My booking requests:
 
 <p>You currently have <%= @bookings.count %> booking requests
 
+<% @bookings.each do |booking| %>
+  <ul>
+    <b><%= booking.user_id%></b>
+    <li><%= booking.property_id%></li>
+    <li><%= booking.start_date%></li>  
+    <li><%= booking.end_date%></li>  
+  </ul>
+  <form action="/request-accept" method="post">
+    <input type="hidden" name="booking_id" value="<%= booking.id %>">
+    <input type="submit" value="Approve">
+  </form>
+<%end%>
+</section>
 <section>
 <p>My properties:
     <% @properties.each do |property| %>
@@ -22,17 +36,6 @@
 <section>
 
 <p>My bookings:
-  <% @bookings.each do |booking| %>
-  <ul>
-    <b><%= booking.user_id%></b>
-    <li><%= booking.property_id%></li>
-    <li><%= booking.start_date%></li>  
-    <li><%= booking.end_date%></li>  
-  </ul>
-  <form action="/request-accept" method="post">
-    <input type="hidden" name="booking_id" value="<%= booking.id %>">
-    <input type="submit" value="Approve">
-  </form>
-<%end%>
+
 </section>
 </body>

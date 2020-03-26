@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './setup_test_database'
+require_relative './databases/setup_test_database'
 
 ENV['ENVIRONMENT'] = 'test'
 
@@ -11,9 +11,9 @@ require 'simplecov'
 require 'simplecov-console'
 require 'capybara/rspec'
 require 'rspec'
-require 'features/feature_web_helpers'
+require 'helpers/feature_web_helpers'
 require 'helpers/user_web_helper'
-require 'unit/unit_web_helpers'
+require 'helpers/unit_web_helpers'
 require 'bcrypt'
 
 Capybara.app = InnCognito
