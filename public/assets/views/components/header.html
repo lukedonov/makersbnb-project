@@ -1,0 +1,25 @@
+<div id="menu">
+  <div class=logo_and_title>
+    <img src="images/logo_dark-on-light.svg">
+    <a href='/'>INN COGNITO</a>
+    <a>▸</a>
+    <a href='/'>PROPERTIES</a>
+  </div>
+  <div class="message_and_options">
+    <%if @current_user %>
+    <p><%="Logged in as <b>#{@current_user.name}</b>"%></p>
+    <form action="/sign-out" method="post">
+      <input type="submit" value="Sign out" />
+    </form>
+    <form action="/account/manage-bookings" method="get">
+      <input type="submit" value="View Booking Requests" />
+    </form>
+    <% else %>
+    <form action="/sign-in" method="get">
+      <input type="submit" value="Sign in" />
+    </form>
+    <form action="/sign-up" method="get">
+      <input type="submit" value="Sign up" />
+    </form>
+    <% end %>
+  </div>

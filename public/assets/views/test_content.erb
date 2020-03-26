@@ -1,0 +1,28 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <div id="properties">
+      <form action="/" method="get">
+        <p class="sortBy">Sort By</p>
+        <select class="select-css" id="sort" name="sort">
+          <option>All</option>
+          <option value="recent">Most recent</option>
+          <option value="price">Price (Lowest to Highest)</option>
+        </select>
+      </form>
+      <%if @current_user%>
+        <form action="/account/add-property" method="get">
+          <input type="submit" value="Add New Property">
+        </form>
+      <%end%>
+        <div tabindex="1" class="property">
+          <h3>AEGAEG</h3>
+          <p class="propert-desc">aegaasdasdasdaseg</p>
+          <div class="property-book">
+            <p>£5 per night</p>
+          </div>
+        </div>
+   </div>
+  </body>
+<html>

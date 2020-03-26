@@ -3,6 +3,7 @@
 require 'sinatra/base'
 require 'sinatra/flash'
 require 'sinatra/reloader'
+require 'sass'
 require './lib/user'
 require './lib/availability'
 require './lib/booking'
@@ -10,23 +11,30 @@ require './lib/database_connection_setup'
 require_relative './lib/Property'
 
 class InnCognito < Sinatra::Base
-  enable :sessions
-  disable :strict_paths
   register Sinatra::Reloader
   register Sinatra::Flash
+  enable :sessions
+  disable :strict_paths
+  set :views, 'public/assets/views/'
+  set :scss, 'public/assets/sass/'
+
+  get '/interface' do
+    @current_user = User.find(id: session[:user_id])
+    erb :test_content
+  end
 
   get '/' do
     @current_user = User.find(id: session[:user_id])
     @properties = Property.all
     @properties = Property.sort_by_recent if params[:sort] == 'recent'
-    @properties = Property.sort_by_cpn  if params[:sort] == 'price'
+    @properties = Property.sort_by_cpn if params[:sort] == 'price'
     erb :index
   end
 
   get '/sign-up' do
     erb :'users/sign_up'
   end
-  
+
   post '/sign-up' do
     @current_user = User.create(name: params[:name], email: params[:email], password: params[:password])
     session[:user_id] = @current_user.id unless @current_user.nil?
@@ -41,27 +49,27 @@ class InnCognito < Sinatra::Base
     @current_user = User.authenticate(email: params[:email], password: params[:password])
     if @current_user
       session[:user_id] = @current_user.id
-      redirect '/'
+      redirect '/interface'
     else
       flash[:notice] = 'Please check your email or password.'
       redirect '/sign-in'
     end
   end
-  
-    get '/book/:id' do
-      session[:place_id] = params[:id]
-      @current_user = User.find(id: session[:user_id])
-      @property = Property.find(id: session[:place_id])
-      @availability = Availability.find(property_id: session[:place_id])
-      erb :'account/create_booking_request'
-    end
-  
-    post '/book/success' do
-      @duration = params[:duration]
-      @property = Property.find(id: session[:place_id])
-      @booking = Booking.create(user_id: params[:user_id], property_id: params[:property_id], start_date: params[:start_date], end_date: params[:end_date], owner_id: params[:owner_id])
-      erb :'account/booking_request_confirmation'
-    end
+
+  get '/book/:id' do
+    session[:place_id] = params[:id]
+    @current_user = User.find(id: session[:user_id])
+    @property = Property.find(id: session[:place_id])
+    @availability = Availability.find(property_id: session[:place_id])
+    erb :'account/create_booking_request'
+  end
+
+  post '/book/success' do
+    @duration = params[:duration]
+    @property = Property.find(id: session[:place_id])
+    @booking = Booking.create(user_id: params[:user_id], property_id: params[:property_id], start_date: params[:start_date], end_date: params[:end_date], owner_id: params[:owner_id])
+    erb :'account/booking_request_confirmation'
+  end
 
   get '/account/add-property' do
     erb :'account/add_property'
@@ -73,7 +81,7 @@ class InnCognito < Sinatra::Base
     @availability = Availability.create(property_id: @property.id, start_date: params[:start_date], end_date: params[:end_date])
     redirect '/'
   end
-  
+
   get '/account/manage-bookings' do
     @current_user = User.find(id: session[:user_id])
     @properties = Property.where(user_id: @current_user.id)
@@ -83,23 +91,17 @@ class InnCognito < Sinatra::Base
     end
     erb :'account/manage_booking_requests'
   end
-  
+
   post '/account/approve-booking' do
     @bookings = Booking.set_approval(params[:booking_id], Booking::APPROVED)
     redirect '/view-requests'
   end
-  
+
   post '/sign-out' do
     session.clear
     flash[:notice] = 'You have signed out.'
     redirect('/')
   end
-
-
-
-
-
-
 
   get '/upload' do
     erb :'upload/upload'
