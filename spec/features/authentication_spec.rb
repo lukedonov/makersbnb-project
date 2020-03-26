@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-feature 'sign in/out' do
+feature 'authentication' do
 
   before(:each) do
     create_user
@@ -13,9 +13,21 @@ feature 'sign in/out' do
   end
 
   it 'a user cannot sign in with wrong email' do
-    sign_in_with_wrong_email
+    visit '/sign-in'
+    fill_in(:email, with: 'test_wrong@test.com')
+    fill_in(:password, with: 'test')
+    click_button('Sign In')
 
-    expect(page).not_to have_content 'Welcome, Bob'
+    expect(page).not_to have_content 'Welcome, John Doe'
+  end
+
+  it 'a user cannot sign in with wrong password' do
+    visit '/sign-in'
+    fill_in(:email, with: 'test@test.com')
+    fill_in(:password, with: 'wrong')
+    click_button('Sign In')
+
+    expect(page).not_to have_content 'Welcome, John Doe'
   end
 
   it 'a user can sign out' do

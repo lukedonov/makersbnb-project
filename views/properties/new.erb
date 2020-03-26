@@ -3,12 +3,27 @@
 		<link rel="stylesheet" type="text/css" href="stylesheets/css/style.css" >
 	</head>
 	<body>
-		<form action="/properties/new" method="post">
-			<input type="text" name="name">
-			<input type="text" name="description">
+    <form action="/properties/new" method="post">
+      Property name:
+      <br>
+      <input type="text" name="name">
+      <br>
+      Property description:
+      <br>
+      <input type="text" name="description">
+      <br>
+      Cost per night:
+      <br>
       <input type="text" name="cpn">
+      <br>
+      Availability start date:
+      <br>
       <input type="date" name="start_date" placeholder="start of availability">
+      <br>
+      Availability end date:
+      <br>
       <input type="date" name="end_date" placeholder="end of availability">
+      <br>
 			<input type="submit" value="Submit">
 		</form>
 	</body>

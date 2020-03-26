@@ -10,6 +10,13 @@ class User
     map(result)
   end
 
+  def self.authenticate(email:, password:)
+    result = DatabaseConnection.query("SELECT * FROM users WHERE email = '#{email}'")
+    return unless result.any?
+    return unless BCrypt::Password.new(result[0]['password']) == password
+    map(result)
+  end
+
   def self.find(id:)
     return nil unless id
 
