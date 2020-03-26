@@ -16,6 +16,9 @@
         <li><%= property.description%></li>
         <li><%= property.cpn%></li>  
       </ul>
+        <form action="/properties/<%= property.id %>" method="get">
+          <input type="submit" value="Edit">
+        </form>
       <%end%>
     <%end%>
 

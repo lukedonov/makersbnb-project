@@ -15,6 +15,6 @@ class Availability
 
   def self.map(sql_result)
     sql_result.map { |b| Availability.new(b['id'], b['property_id'], b['start_date'], b['end_date']) }
-end
+  end
 
 end
