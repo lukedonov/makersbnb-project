@@ -1,26 +1,41 @@
-<div class="centered">
+<div class="centered" id="addProperty">
+
 	<form action="/account/add-property" method="post" enctype="multipart/form-data">
+		<p>
 		Property name:
 		<br>
 		<input type="text" name="name" required>
-		<br>
+		</p>
+		<p>
 		Property description:
 		<br>
 		<input type="text" name="description" required>
-		<br>
+		</p>
+
+		<p>
 		Cost per night:
 		<br>
 		<input type="text" name="cpn" required>
-		<br>
+		</p>
+
+		<p>
 		Availability start date:
 		<br>
 		<input type="date" name="start_date" placeholder="start of availability" required>
-		<br>
+		</p>
+		
+		<p>
 		Availability end date:
 		<br>
 		<input type="date" name="end_date" placeholder="end of availability" required>
-		<br>
+		</p>
+		<p>
 		<input type="file" name="file">
+		</p>
+
+		<p>
 		<input type="submit" value="Submit">
+		</p>
 	</form>
+
 </div>
