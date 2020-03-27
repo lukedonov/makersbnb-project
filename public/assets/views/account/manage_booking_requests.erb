@@ -1,0 +1,28 @@
+		
+<p>My requests:
+	<p>You currently have <%= @bookings.count %> booking requests
+		<section>
+			<p>My properties:
+				<% @properties.each do |property| %>
+					<ul>
+						<b><%= property.name%></b>
+						<li><%= property.description%></li>
+						<li><%= property.cpn%></li>
+					</ul>
+				<%end%>
+			</section>
+			<section>
+				<p>My bookings:
+					<% @bookings.each do |booking| %>
+						<ul>
+							<b><%= booking.user_id%></b>
+							<li><%= booking.property_id%></li>
+							<li><%= booking.start_date%></li>
+							<li><%= booking.end_date%></li>
+						</ul>
+						<form action="/account/approve-booking" method="post">
+							<input type="hidden" name="booking_id" value="<%= booking.id %>">
+							<input type="submit" value="Approve">
+						</form>
+					<%end%>
+				</section>

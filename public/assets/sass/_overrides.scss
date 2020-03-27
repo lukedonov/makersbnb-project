@@ -1,0 +1,27 @@
+#sign-up {
+  @include logo-image();
+  @include center-content();
+  margin-top: 8em;
+}
+
+#sign-in {
+  @include logo-image();
+  @include center-content();
+  margin-top: 8em;
+}
+
+#addProperty {
+  @include center-content();
+}
+
+#sortProperties {
+  display: inline-block;
+  font-weight: $normal;
+}
+#selectSort {
+  @include selection-list();
+}
+
+#propertyBookBlock {
+  width: 50em;
+}
