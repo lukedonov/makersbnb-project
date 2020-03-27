@@ -76,6 +76,10 @@ I would like to update the details of a listed property
 **Day 1**
 
 - Setting up of our group [Miro board](https://miro.com/welcomeonboard/BygBxwTmsSAHgAoJdncfqCDWS1yPZqBuMK9G32QTrosYQe6jNTAl2o6bD217YS5u)
+- Coming up with a name
+
+![inncognito](./public/images/name.png)
+
 - Deciding on our minimum viable product
 
 ![mininum viable product](./public/images/mvp.png)
