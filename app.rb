@@ -78,11 +78,13 @@ class InnCognito < Sinatra::Base
     @property = Property.create(name: params[:name], description: params[:description], cpn: params[:cpn], user_id: @current_user.id)
     @availability = Availability.create(property_id: @property.id, start_date: params[:start_date], end_date: params[:end_date])
     path = "./public/images/properties/#{@property.id}"
-    Dir.mkdir(path) unless Dir[path].any?
-    @filename = params[:file][:filename]
-    file = params[:file][:tempfile]
-    File.open("#{path}/#{(Dir[path + "/*"].length + 1).to_s}_#{@filename}", 'wb') do |f|
-      f.write(file.read)
+    if params[:file]
+      Dir.mkdir(path) unless Dir[path].any?
+      @filename = params[:file][:filename] 
+      file = params[:file][:tempfile]
+      File.open("#{path}/#{(Dir[path + "/*"].length + 1).to_s}_#{@filename}", 'wb') do |f|
+        f.write(file.read)
+      end
     end
     redirect '/'
   end
