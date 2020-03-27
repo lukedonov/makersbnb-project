@@ -50,7 +50,7 @@ I want my room to be available to book until a booking has been confirmed
 ```
 **Secondary**
 ```
-As a guestå
+As a guest
 So that I iknow my sign-up has been successful
 I would like to receive an email confirmation
 
