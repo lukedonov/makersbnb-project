@@ -10,10 +10,14 @@
       <p><a href="javascript:history.back()">Click here to go back</a></p>
   <% else %>
   Cost per night: £<%= @property.cpn%>
-  <br>
-  Available from: <%= @availability.first.start_date%>
-  <br>
-  Available to: <%= @availability.first.end_date%>
+   <%@availability.each { |a| %>
+      <p>
+      Available from: <%= a.start_date%>
+      <br>
+      Available to: <%= a.end_date%>
+      </p>
+  <%}%>
+  
 
   
   <form action="/book/success" method="post">
