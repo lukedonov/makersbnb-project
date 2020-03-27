@@ -92,12 +92,12 @@ class InnCognito < Sinatra::Base
   
   post '/account/approve-booking' do
     @bookings = Booking.set_approval(params[:booking_id], Booking::APPROVED)
-    redirect '/view-requests'
+    redirect '/account/manage-bookings'
   end
 
   post '/account/reject-booking' do
-    @bookings = Booking.set_approval(params[:booking_id], Booking::REJECTED)
-    redirect '/view-requests'
+    @bookings = Booking.set_approval(params[:booking_id_2], Booking::REJECTED)
+    redirect '/account/manage-bookings'
   end
   
   post '/sign-out' do
