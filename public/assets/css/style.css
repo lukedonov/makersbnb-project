@@ -25,32 +25,6 @@
   font-style: italic; }
 #properties {
   outline: none; }
-  #properties button {
-    background-color: #222327;
-    color: #d6d6d7;
-    border: 1px #696c79 solid;
-    border-radius: 5px;
-    padding: 5px;
-    font-family: BrandonGrotesque, sans-serif;
-    font-size: 15px; }
-    #properties button:hover {
-      background-color: #464850;
-      border: 1px #838692 solid; }
-    #properties button:active {
-      background-color: #3a3b42; }
-  #properties input {
-    background-color: #222327;
-    color: #d6d6d7;
-    border: 1px #696c79 solid;
-    border-radius: 5px;
-    padding: 5px;
-    font-family: BrandonGrotesque, sans-serif;
-    font-size: 15px; }
-    #properties input:hover {
-      background-color: #464850;
-      border: 1px #838692 solid; }
-    #properties input:active {
-      background-color: #3a3b42; }
   #properties .property {
     height: auto;
     justify-content: center;
@@ -94,52 +68,20 @@
       min-height: 300; }
 
 #sign-up {
-  margin-top: 12em;
   display: flex;
   flex-direction: column;
-  align-items: center; }
+  align-items: center;
+  margin-top: 8em; }
   #sign-up img {
-    max-width: 200;
-    padding-bottom: 25px; }
-  #sign-up input {
-    background-color: #222327;
-    color: #d6d6d7;
-    border: 1px #696c79 solid;
-    border-radius: 5px;
-    padding: 5px;
-    font-family: BrandonGrotesque, sans-serif;
-    font-size: 15px; }
-    #sign-up input:hover {
-      background-color: #464850;
-      border: 1px #838692 solid; }
-    #sign-up input:active {
-      background-color: #3a3b42; }
-  #sign-up a {
-    color: #649dd3; }
+    max-width: 20em; }
 
 #sign-in {
-  margin-top: 12em;
   display: flex;
   flex-direction: column;
-  align-items: center; }
+  align-items: center;
+  margin-top: 8em; }
   #sign-in img {
-    max-width: 200;
-    padding-bottom: 25px; }
-  #sign-in input {
-    background-color: #222327;
-    color: #d6d6d7;
-    border: 1px #696c79 solid;
-    border-radius: 5px;
-    padding: 5px;
-    font-family: BrandonGrotesque, sans-serif;
-    font-size: 15px; }
-    #sign-in input:hover {
-      background-color: #464850;
-      border: 1px #838692 solid; }
-    #sign-in input:active {
-      background-color: #3a3b42; }
-  #sign-in a {
-    color: #649dd3; }
+    max-width: 20em; }
 
 #addProperty {
   display: flex;
@@ -177,6 +119,9 @@
   #selectSort option {
     font-weight: normal; }
 
+#propertyBookBlock {
+  width: 50em; }
+
 body {
   background-color: #222327;
   margin: 0;
@@ -184,6 +129,8 @@ body {
   font-weight: 300; }
   body p {
     color: #d6d6d7; }
+  body a {
+    color: #649dd3; }
   body h1 {
     color: #d6d6d7; }
   body h2 {
@@ -201,6 +148,32 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center; }
+  .mainContent input {
+    background-color: #222327;
+    color: #d6d6d7;
+    border: 1px #696c79 solid;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: BrandonGrotesque, sans-serif;
+    font-size: 15px; }
+    .mainContent input:hover {
+      background-color: #464850;
+      border: 1px #838692 solid; }
+    .mainContent input:active {
+      background-color: #3a3b42; }
+  .mainContent button {
+    background-color: #222327;
+    color: #d6d6d7;
+    border: 1px #696c79 solid;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: BrandonGrotesque, sans-serif;
+    font-size: 15px; }
+    .mainContent button:hover {
+      background-color: #464850;
+      border: 1px #838692 solid; }
+    .mainContent button:active {
+      background-color: #3a3b42; }
 
 .centered {
   display: flex;

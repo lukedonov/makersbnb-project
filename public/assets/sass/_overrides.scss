@@ -1,11 +1,5 @@
 #properties {
   @include tab-focus();
-  button {
-    @include input-base();
-  }
-  input {
-    @include input-base();
-  }
   .property {
     @include block();
     h3 {
@@ -37,8 +31,6 @@
     }
     min-height: 100;
     transition: color 0.2s ease-out, border 0.2s ease-out, min-height 0.2s ease-in-out;
-    &:hover {
-    }
     &:focus {
       min-height: 300;
     }
@@ -46,13 +38,15 @@
 }
 
 #sign-up {
-  margin-top: 12em;
-  @include enter_info();
+  @include logo-image();
+  @include center-content();
+  margin-top: 8em;
 }
 
 #sign-in {
-  margin-top: 12em;
-  @include enter_info();
+  @include logo-image();
+  @include center-content();
+  margin-top: 8em;
 }
 
 #addProperty {
@@ -65,4 +59,8 @@
 }
 #selectSort {
   @include selection-list();
+}
+
+#propertyBookBlock {
+  width: 50em;
 }

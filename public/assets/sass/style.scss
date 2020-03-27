@@ -9,6 +9,9 @@ body {
   p {
     color: $neutral;
   }
+  a {
+    color: $hyperlink;
+  }
   h1 {
     color: $neutral;
   }
@@ -36,6 +39,7 @@ body {
 .mainContent {
   grid-area: mainContent;
   @include center-content();
+  @include input();
 }
 
 .centered {
