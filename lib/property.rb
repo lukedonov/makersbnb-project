@@ -18,6 +18,12 @@ class Property
     map(result).first
   end
 
+  def self.edit(id:, name:, description:, cpn:)
+    description = DatabaseConnection.prepare(description)
+    result = DatabaseConnection.query("UPDATE properties SET name = '#{name}', description = '#{description}', cpn = '#{cpn.to_i}' WHERE id = #{id} RETURNING id, name, description, cpn, user_id;")
+    map(result).first
+  end
+
   def self.all
     map(DatabaseConnection.query('SELECT * FROM properties'))
   end

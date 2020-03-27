@@ -13,6 +13,11 @@ class Availability
     map(DatabaseConnection.query("INSERT INTO availability (property_id, start_date, end_date) VALUES ('#{property_id}', '#{start_date}', '#{end_date}') RETURNING id, property_id, start_date, end_date;")).first
   end
 
+  def self.edit(property_id:, start_date:, end_date:)
+    result = DatabaseConnection.query("UPDATE availability SET start_date = '#{start_date}', end_date = '#{end_date}' WHERE property_id = #{property_id} RETURNING id, property_id, start_date, end_date;")
+    map(result).first
+  end
+
   def self.find(property_id:)
     map(DatabaseConnection.query("SELECT * FROM availability WHERE property_id = #{property_id};"))
   end

@@ -89,6 +89,20 @@ class InnCognito < Sinatra::Base
     end
     erb :'account/manage_booking_requests'
   end
+
+  get '/account/manage-bookings/:id' do
+    session[:place_id] = params[:id]
+    @current_user = User.find(id: session[:user_id])
+    @property = Property.find(id: session[:place_id])
+    @availability = Availability.find(property_id: session[:place_id])
+    erb :'account/edit_property'
+  end
+
+  post '/account/manage-bookings/:id' do
+    @property = Property.edit(id: session[:place_id], name: params[:name], description: params[:description], cpn: params[:cpn])
+    @availability = Availability.edit(property_id: session[:place_id], start_date: params[:start_date], end_date: params[:end_date])
+    redirect 'account/manage-bookings'
+  end
   
   post '/account/approve-booking' do
     @bookings = Booking.set_approval(params[:booking_id], Booking::APPROVED)
