@@ -7,25 +7,25 @@
 			<section>
 				<p>My properties:
 					<% @properties.each do |property| %>
-						<ul>
-							<b><%= property.name%></b>
-							<li><%= property.description%></li>
-							<li><%= property.cpn%></li>
+						<div class="block">
+							<p><b><%= property.name%></b></p>
+							<p><%= property.description%></p>
+							<p>£<%= property.cpn%></p>
 							<form action="/account/manage-bookings/<%= property.id %>" method="get">
 								<input type="submit" value="Edit">
 							</form>
-						</ul>
+						</div>
 					<%end%>
 				</section>
 				<section>
 					<p>My bookings:
 						<% @bookings.each do |booking| %>
-							<ul>
-								<b><%= booking.user_id%></b>
-								<li><%= booking.property_id%></li>
-								<li><%= booking.start_date%></li>
-								<li><%= booking.end_date%></li>
-							</ul>
+							<div class="block">
+								<p><b><%= booking.user_id%></b><p>
+								<p><%= booking.property_id%></p>
+								<p><%= booking.start_date%></p>
+								<p><%= booking.end_date%></p>
+							</div>
 							<form action="/account/approve-booking" method="post">
 								<input type="hidden" name="booking_id" value="<%= booking.id %>">
 								<input type="submit" value="Approve">

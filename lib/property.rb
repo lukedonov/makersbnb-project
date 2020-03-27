@@ -18,7 +18,7 @@ class Property
     result = DatabaseConnection.query("INSERT INTO properties (name, description, cpn, user_id) VALUES ('#{name}', '#{description}', #{cpn.to_i}, #{user_id}) RETURNING id, name, description, cpn, user_id;")
     map(result).first
   end
-  
+
   def self.edit(id:, name:, description:, cpn:)
     description = DatabaseConnection.prepare(description)
     result = DatabaseConnection.query("UPDATE properties SET name = '#{name}', description = '#{description}', cpn = '#{cpn.to_i}' WHERE id = #{id} RETURNING id, name, description, cpn, user_id;")
@@ -26,7 +26,6 @@ class Property
   end
 
   def self.find_images(id:)
-    
     result = []
     Dir["public/images/properties/#{id}/*"].each do |image|
       image.slice!('public/')
@@ -57,6 +56,6 @@ class Property
   end
 
   def self.map(sql_result)
-   sql_result.map { |p| Property.new(p['id'], p['name'], p['description'], p['cpn'].to_i, p['user_id']) }
+    sql_result.map { |p| Property.new(p['id'], p['name'], p['description'], p['cpn'].to_i, p['user_id']) }
   end
 end

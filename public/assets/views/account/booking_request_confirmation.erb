@@ -1,7 +1,7 @@
-<div class="verticalCenter">
+<div class="center">
 	<%if !@error%>
-		<div class="verticalCenter">
-			Your request to book <%= @property.name %> for <%= @duration %> nights has been sent
+		<div id="bookingConfirmed">
+			<p>Your request to book <%= @property.name %> for <%= @duration %> nights has been sent</p>
 			<form action="/" method="get">
 				<input type="submit" value="Back to properties">
 			</form>

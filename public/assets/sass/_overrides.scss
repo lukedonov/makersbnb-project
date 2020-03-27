@@ -10,7 +10,7 @@
   margin-top: 8em;
 }
 
-#addProperty {
+#newProperty {
   @include center-content();
 }
 
@@ -18,10 +18,15 @@
   display: inline-block;
   font-weight: $normal;
 }
+
 #selectSort {
   @include selection-list();
 }
 
 #propertyBookBlock {
   width: 50em;
+}
+
+#bookingConfirmed {
+  text-align: center;
 }

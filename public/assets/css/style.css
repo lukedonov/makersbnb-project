@@ -39,7 +39,7 @@
   #sign-in img {
     max-width: 20em; }
 
-#addProperty {
+#newProperty {
   display: flex;
   flex-direction: column;
   align-items: center; }
@@ -77,6 +77,9 @@
 
 #propertyBookBlock {
   width: 50em; }
+
+#bookingConfirmed {
+  text-align: center; }
 
 body {
   background-color: #222327;
