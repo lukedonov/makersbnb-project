@@ -4,7 +4,7 @@
 
 Contributors: Luke Donovan, Orion Reed, Gareth Harris, Sophia Bell
 
-[Outline](#Outline) | [Specifications](#Specifications) | [Planning](#planning) | [Installation Instructions](#install) | [Tech stack](#tech)
+[Outline](#Outline) | [Specifications](#Specifications) | [Planning](#planning) | [Installation Instructions](#install) | [Tech stack](#tech) | [Challenges](#challenges)
 
 ## [Outline](#Outline) 
 
@@ -75,21 +75,53 @@ I would like to update the details of a listed property
 
 **Day 1**
 
+- Setting up of our group [Miro board](https://miro.com/welcomeonboard/BygBxwTmsSAHgAoJdncfqCDWS1yPZqBuMK9G32QTrosYQe6jNTAl2o6bD217YS5u)
+- Coming up with a name
+
+![inncognito](./public/images/name.png)
+
+- Deciding on our minimum viable product
+
+![mininum viable product](./public/images/mvp.png)
+![domain model](./public/images/DM.png)
+
+- Pair programming
+- Merge branches and retro
+
 **Day 2**
+
+- Pair programming
+- Finishing off our mvp
+- Merge branches and retro
 
 **Day 3**
 
+- Deciding on Inncognito's second iteration
+
+![mininum viable product version 2](./public/images/mvp-2.png)
+
+- Pair programming
+- Merge branches and retro
+
 **Day 4**
+
+- Individual work due to various peer group meetings
+- Looking at additional functionality
+
+![additional functionality](./public/images/additional-functionality.png)
+
+- Merge branches and retro
 
 **Day 5**
 
-
+- Finishing off details, CSS etc.
 
 ## [Installation Instructions](#install)
 
 **Getting started**
 
 `git clone https://github.com/lukedonov/makersbnb-project.git`
+
 `bundle`
 
 **Setting up the databases**
@@ -126,3 +158,8 @@ Testing:
 Linting:
 
 * Rubocop
+
+## [Challenges](#challenges)
+
+* Working remotely for our first project was initially quite daunting but we managed pretty well - we kept in contact every day with stand ups and retros, and constant updates throughout the day as to our progress.
+* 

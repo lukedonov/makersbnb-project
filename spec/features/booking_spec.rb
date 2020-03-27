@@ -22,8 +22,8 @@ feature 'booking a property' do
     click_button('Sign out')
     sign_up_and_in_other_test_user
     click_button('Book')
-    fill_in "start_date", with: "2020-03-25"
-    fill_in "end_date", with: "2020-03-27"
+    fill_in "start_date", with: "2020-07-26"
+    fill_in "end_date", with: "2020-07-28"
     click_button("Request booking")
     expect(page).to have_content("Your request to book new property for 2 nights has been sent")
   end
