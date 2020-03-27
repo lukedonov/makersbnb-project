@@ -4,7 +4,7 @@
 
 Contributors: Luke Donovan, Orion Reed, Gareth Harris, Sophia Bell
 
-[Outline](#Outline) | [Specifications](#Specifications) | [Planning](#planning) | [Installation Instructions](#install) | [Tech stack](#tech)
+[Outline](#Outline) | [Specifications](#Specifications) | [Planning](#planning) | [Installation Instructions](#install) | [Tech stack](#tech) | [Challenges](#challenges)
 
 ## [Outline](#Outline) 
 
@@ -74,16 +74,19 @@ I would like to update the details of a listed property
 ## [Planning](#planning)
 
 **Day 1**
-
+- Setting up of our group [Miro board](https://miro.com/welcomeonboard/BygBxwTmsSAHgAoJdncfqCDWS1yPZqBuMK9G32QTrosYQe6jNTAl2o6bD217YS5u)
+- Deciding on our minimum viable product
+![mininum viable product](./public/images/mvp.png)
+- Pair programming
 **Day 2**
-
+- Pair programming
+- Finishing off our mvp
 **Day 3**
-
+- Deciding on Inncognito's second iteration
 **Day 4**
-
+- Individual work due to various peer group meetings
 **Day 5**
-
-
+- Finishing off details, CSS etc.
 
 ## [Installation Instructions](#install)
 
@@ -126,3 +129,5 @@ Testing:
 Linting:
 
 * Rubocop
+
+## [Challenges](#challenges)
