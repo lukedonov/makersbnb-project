@@ -23,50 +23,6 @@
   src: "fonts/brandon-grotesque/Brandon Text Italic.otf";
   font-weight: 400;
   font-style: italic; }
-#properties {
-  outline: none; }
-  #properties .property {
-    height: auto;
-    justify-content: center;
-    -webkit-box-shadow: 0px 6px 39px -5px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 0px 6px 39px -5px rgba(0, 0, 0, 0.4);
-    box-shadow: 0px 6px 39px -5px rgba(0, 0, 0, 0.4);
-    border-radius: 8px;
-    border: 1px solid #4f515b;
-    margin-bottom: 10px;
-    background-color: #2c2d32;
-    padding: 5px 15px 5px 15px;
-    color: #d6d6d7;
-    min-height: 100;
-    transition: color 0.2s ease-out, border 0.2s ease-out, min-height 0.2s ease-in-out; }
-    #properties .property:hover {
-      border: 1px solid #60636e; }
-    #properties .property:focus {
-      border: 1px solid #696c79; }
-    #properties .property h3 {
-      margin-top: 10px;
-      margin-bottom: 0px;
-      font-size: 20px; }
-    #properties .property p {
-      margin-top: 2px; }
-    #properties .property .property-book {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      margin-bottom: 5px;
-      justify-content: flex-end;
-      align-content: center; }
-      #properties .property .property-book p {
-        text-align: right;
-        display: inline-flex;
-        margin: 0;
-        margin-right: 10px; }
-      #properties .property .property-book form {
-        display: inline-flex;
-        margin: 0; }
-    #properties .property:focus {
-      min-height: 300; }
-
 #sign-up {
   display: flex;
   flex-direction: column;
@@ -249,5 +205,48 @@ body {
       display: inline-flex;
       padding-left: 10px;
       margin: 0px; }
+
+#properties .property {
+  outline: none;
+  height: auto;
+  justify-content: center;
+  -webkit-box-shadow: 0px 6px 39px -5px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0px 6px 39px -5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 6px 39px -5px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  border: 1px solid #4f515b;
+  margin-bottom: 10px;
+  background-color: #2c2d32;
+  padding: 5px 15px 5px 15px;
+  color: #d6d6d7;
+  min-height: 100;
+  transition: color 0.2s ease-out, border 0.2s ease-out, min-height 0.2s ease-in-out; }
+  #properties .property:hover {
+    border: 1px solid #60636e; }
+  #properties .property:focus {
+    border: 1px solid #696c79; }
+  #properties .property h3 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-size: 20px; }
+  #properties .property p {
+    margin-top: 2px; }
+  #properties .property .property-book {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 5px;
+    justify-content: flex-end;
+    align-content: center; }
+    #properties .property .property-book p {
+      text-align: right;
+      display: inline-flex;
+      margin: 0;
+      margin-right: 10px; }
+    #properties .property .property-book form {
+      display: inline-flex;
+      margin: 0; }
+  #properties .property:focus {
+    min-height: 300; }
 
 /*# sourceMappingURL=style.css.map */
