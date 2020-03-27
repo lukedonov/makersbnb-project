@@ -2,7 +2,10 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="/public/inncognito.css" >
 	</head>
-	<body>
+  <body>
+    <form action="/" method="get">
+				<input type="submit" value="Back to properties">
+		</form>
 		<p>My requests:
 			<p>You currently have <%= @bookings.count %> booking requests
 				<section>
@@ -33,5 +36,5 @@
 									<input type="submit" value="Reject">
 								</form>
 							<%end%>
-						</section>
+            </section>
 					</body>
