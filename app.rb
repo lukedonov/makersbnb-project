@@ -59,7 +59,13 @@ class InnCognito < Sinatra::Base
     post '/book/success' do
       @duration = params[:duration]
       @property = Property.find(id: session[:place_id])
-      @booking = Booking.create(user_id: params[:user_id], property_id: params[:property_id], start_date: params[:start_date], end_date: params[:end_date], owner_id: params[:owner_id])
+
+      begin
+        @booking = Booking.create(user_id: params[:user_id], property_id: params[:property_id], start_date: params[:start_date], end_date: params[:end_date], owner_id: params[:owner_id])
+      rescue => exception
+        @error = exception
+      end
+      
       erb :'account/booking_request_confirmation'
     end
 
