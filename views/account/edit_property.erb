@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="stylesheets/css/style.css" >
+	</head>
+	<body>
+    <form action="/account/manage-bookings/:id" method="post">
+    <input type="hidden" name="id" value="<%=@property.id%>" >
+			Property name: <%= @property.name %>
+			<br>
+			<input type="text" name="name">
+			<br>
+			Property description: <%= @property.description %>
+			<br>
+			<input type="text" name="description">
+			<br> 
+			Cost per night: <%= @property.cpn %>
+			<br>
+			<input type="text" name="cpn">
+			<br>
+			Availability start date: <%= @availability.first.start_date %>
+			
+			Availability end date: <%= @availability.first.end_date %>
+		
+			<input type="submit" value="Submit">
+		</form>
+	</body>
+</html>

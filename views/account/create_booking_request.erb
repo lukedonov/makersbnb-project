@@ -16,19 +16,19 @@
     <input type="hidden" name="user_id" value="<%= @current_user.id %>">
     <input type="hidden" name="property_id" value="<%= @property.id %>">
     <input type="hidden" name="owner_id" value="<%= @property.user_id %>">
-    <input type="text" name="start_date" id="startDate"/>
-    <input type="text" name="end_date" id="endDate"/>
+    <input type="date" name="start_date" id="startDate"/>
+    <input type="date" name="end_date" id="endDate"/>
     <% if @current_user.id == @property.user_id %>
       You cannot book your own property
     <% else %>
       <input type="submit" value="Request booking"/>
     <% end %>
   </form>
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script src="../../lib/booking.rb"></script>
-  <script>
-      $( "#startDate" ).datepicker({ dateFormat: 'yy-mm-dd 00:00:00' });
-      $( "#endDate" ).datepicker({ dateFormat: 'yy-mm-dd 00:00:00'});
-  </script>
+  # <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  # <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  # <script src="../../lib/booking.rb"></script>
+  # <script>
+  #     $( "#startDate" ).datepicker({ dateFormat: 'yy-mm-dd 00:00:00' });
+  #     $( "#endDate" ).datepicker({ dateFormat: 'yy-mm-dd 00:00:00'});
+  # </script>
   </html>

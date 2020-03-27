@@ -11,7 +11,10 @@
 							<ul>
 								<b><%= property.name%></b>
 								<li><%= property.description%></li>
-								<li><%= property.cpn%></li>
+                <li><%= property.cpn%></li>
+                <form action="/account/manage-bookings/<%= property.id %>" method="get">
+                <input type="submit" value="Edit">
+              </form>
 							</ul>
 						<%end%>
 					</section>
