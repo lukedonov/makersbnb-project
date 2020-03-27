@@ -57,7 +57,7 @@ class InnCognito < Sinatra::Base
     end
   
     post '/book/success' do
-      @duration = params[:duration]
+      @duration = (Date.parse(params[:end_date]) - Date.parse(params[:start_date])).to_i
       @property = Property.find(id: session[:place_id])
 
       begin

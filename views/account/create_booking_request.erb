@@ -5,6 +5,10 @@
   <br>
   Description: <%= @property.description%>
   <br>
+  <% if @current_user.id == @property.user_id %>
+      <p>You cannot book your own property</p>
+      <p><a href="javascript:history.back()">Click here to go back</a></p>
+  <% else %>
   Cost per night: £<%= @property.cpn%>
   <br>
   Available from: <%= @availability.first.start_date%>
@@ -18,10 +22,7 @@
     <input type="hidden" name="owner_id" value="<%= @property.user_id %>">
     <input type="text" name="start_date" id="startDate"/>
     <input type="text" name="end_date" id="endDate"/>
-    <% if @current_user.id == @property.user_id %>
-      You cannot book your own property
-    <% else %>
-      <input type="submit" value="Request booking"/>
+    <input type="submit" value="Request booking"/>
     <% end %>
   </form>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
