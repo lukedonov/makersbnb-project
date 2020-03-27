@@ -6,9 +6,7 @@
 			<input type="password" name="password" id="password" placeholder="password">
 			<input type="submit" id="submit" value="Sign In">
 		</form>
-		<h2>
-			<%= flash[:notice] %>
-		</h2>
-		<p>Don't have an account? <a href="/sign-up">sign up</a> now.</p>
+		<%= if flash[:notice] then "<p><b>#{flash[:notice]}</b></p>" end%>
+			<p>Don't have an account? <a href="/sign-up">sign up</a> now.</p>
+		</div>
 	</div>
-</div>

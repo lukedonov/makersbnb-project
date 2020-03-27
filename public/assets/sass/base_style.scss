@@ -1,0 +1,94 @@
+// USAGE:
+// run gem install sass
+// sass --watch public/stylesheets/sass:public/stylesheets/css
+// updating this file will automatically update the css file.
+
+@import "colour", "typography", "base_styles", "overrides";
+
+body {
+  p {
+    color: $neutral;
+  }
+  h1 {
+    color: $neutral;
+  }
+  h2 {
+    color: $neutral;
+  }
+  h3 {
+    color: $neutral;
+  }
+  background-color: $base;
+  margin: 0;
+  font-family: BrandonGrotesque, sans-serif;
+  font-weight: $light;
+}
+
+.grid-container {
+  display: grid;
+  grid-gap: 10px;
+
+  grid-template-areas:
+    "menu menu menu menu"
+    ". mainContent mainContent .";
+}
+
+.mainContent {
+  grid-area: mainContent;
+  @include center-content();
+}
+
+.centered {
+  @include center-content();
+}
+
+::selection {
+  background: $neutral; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: $neutral; /* Gecko Browsers */
+}
+
+#menu {
+  grid-area: menu;
+  padding: 5 20 5 10;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  $menu_scale: 50px;
+  background-color: lighten($base, 2%);
+  border-bottom: 1px solid lighten($base, 10%);
+  input {
+    @include input-base();
+  }
+
+  .logo_and_title {
+    display: flex;
+    align-items: center;
+    img {
+      max-width: 50px;
+    }
+    a {
+      font-size: 1.2em;
+      font-weight: $bold;
+      text-decoration: none;
+      padding-top: 4px; // optical centering (aligning with consideration for the shapes involved)
+      padding-left: 10px;
+      display: inline-flex;
+      color: $neutral;
+    }
+  }
+  .message_and_options {
+    display: flex;
+    align-items: center;
+    p {
+      padding-top: 4px; // optical centering (aligning with consideration for the shapes involved)
+    }
+    form {
+      display: inline-flex;
+      padding-left: 10px;
+      margin: 0px;
+    }
+  }
+}

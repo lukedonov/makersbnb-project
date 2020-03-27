@@ -1,0 +1,78 @@
+#properties {
+  @include tab-focus();
+  button {
+    @include input-base();
+  }
+  input {
+    @include input-base();
+  }
+  .property {
+    height: auto;
+    justify-content: center;
+    @include drop-shadow();
+    border-radius: 8px;
+    border: 1px solid lighten($base-light, 15%);
+    margin-bottom: 10px;
+    background-color: $base-light;
+    padding: 5px 15px 5px 15px;
+    color: $neutral;
+    h3 {
+      margin-top: 10px;
+      margin-bottom: 0px;
+      font-size: 20px;
+    }
+    p {
+      margin-top: 2px;
+    }
+
+    .property-book {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 5px;
+      justify-content: flex-end;
+      align-content: center;
+      p {
+        text-align: right;
+        display: inline-flex;
+        margin: 0;
+        margin-right: 10px;
+      }
+      form {
+        display: inline-flex;
+        margin: 0;
+      }
+    }
+    min-height: 100;
+    transition: color 0.2s ease-out, border 0.2s ease-out, min-height 0.2s ease-in-out;
+    &:hover {
+      border: 1px solid lighten($base-light, 22);
+    }
+    &:focus {
+      border: 1px solid lighten($base-light, 26);
+      min-height: 300;
+    }
+  }
+}
+
+#sign-up {
+  margin-top: 12em;
+  @include enter_info();
+}
+
+#sign-in {
+  margin-top: 12em;
+  @include enter_info();
+}
+
+#addProperty {
+  @include center-content();
+}
+
+#sortProperties {
+  display: inline-block;
+  font-weight: $normal;
+}
+#selectSort {
+  @include selection-list();
+}
