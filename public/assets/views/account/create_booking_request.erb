@@ -6,13 +6,12 @@
     <p>You cannot book your own property. <a href="javascript:history.back()">Click here</a> to go back.</p>
     <% else %>
     <p>Cost per night: £<%= @property.cpn%></p>
-    <%@availability.each { |a| %>
+    <%@availability.each do |a| %>
       <p>
       Available from: <%= a.start_date%>
       <br>
       Available to: <%= a.end_date%>
       </p>
-     <%}%>
     <% end %>
 </div>
   <form action="/book/success" method="post">
@@ -22,6 +21,6 @@
     <input type="date" name="start_date" id="startDate"/>
     <input type="date" name="end_date" id="endDate"/>
     <input type="submit" value="Request booking"/>
-    <% end %>
   </form>
+    <% end %>
 </div>

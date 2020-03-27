@@ -81,11 +81,6 @@ class InnCognito < Sinatra::Base
       @error = e
     end
 
-    redirect '/book/success'
-  end
-
-  get '/book/success' do
-    location 'confirmed'
     erb :'account/booking_request_confirmation'
   end
 
