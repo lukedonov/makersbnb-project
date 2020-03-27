@@ -79,7 +79,7 @@ I would like to update the details of a listed property
 - Deciding on our minimum viable product
 
 ![mininum viable product](./public/images/mvp.png)
-![domain model](./public/images/dm.png)
+![domain model](./public/images/DM.png)
 
 - Pair programming
 - Merge branches and retro
