@@ -117,6 +117,7 @@ I would like to update the details of a listed property
 **Getting started**
 
 `git clone https://github.com/lukedonov/makersbnb-project.git`
+
 `bundle`
 
 **Setting up the databases**
