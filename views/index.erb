@@ -34,9 +34,9 @@
       <form action="/" method="get">
         <p class="sortBy">Sort By</p>
         <select class="select-css" id="sort" name="sort">
-          <option>All</option>
-          <option value="recent">Most recent</option>
-          <option value="price">Price (Lowest to Highest)</option>
+          <option id='sort-all'>All</option>
+          <option value="recent" id='sort-recent'>Most recent</option>
+          <option value="price" id='sort-price'>Price (Lowest to Highest)</option>
         </select>
       </form>
       <%if @current_user%>
