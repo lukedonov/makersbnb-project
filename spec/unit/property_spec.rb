@@ -31,6 +31,17 @@ describe Property do
     end
   end
 
+  describe '.edit' do
+    it('edits the details of a property') do
+      create_user_and_property
+      @property = Property.edit(id: @property.id, name: 'House Jane', description: 'a splendid house made of crackers', cpn: 80)
+
+      expect(@property.name).to eq('House Jane')
+      expect(@property.description).to eq('a splendid house made of crackers')
+      expect(@property.cpn).to eq(80)
+    end
+  end
+
   describe '.where' do
     it 'gets the relevant id number from the user database' do
       create_user_and_property
