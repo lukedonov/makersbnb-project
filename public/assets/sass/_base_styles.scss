@@ -78,3 +78,22 @@
     font-weight: normal;
   }
 }
+
+@mixin block {
+  height: auto;
+  justify-content: center;
+  @include drop-shadow();
+  border-radius: 8px;
+  border: 1px solid lighten($base-light, 15%);
+  margin-bottom: 10px;
+  background-color: $base-light;
+  padding: 5px 15px 5px 15px;
+  color: $neutral;
+
+  &:hover {
+    border: 1px solid lighten($base-light, 22);
+  }
+  &:focus {
+    border: 1px solid lighten($base-light, 26);
+  }
+}

@@ -42,6 +42,10 @@ body {
   @include center-content();
 }
 
+.block {
+  @include block();
+}
+
 ::selection {
   background: $neutral; /* WebKit/Blink Browsers */
 }
