@@ -8,3 +8,4 @@
 .yardoc
 /doc
 bin/
+public/images/properties/*

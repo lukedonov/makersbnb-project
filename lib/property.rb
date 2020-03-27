@@ -24,6 +24,10 @@ class Property
     map(result).first
   end
 
+  def self.find_mages(id:)
+
+  end
+
   def self.all
     map(DatabaseConnection.query('SELECT * FROM properties'))
   end

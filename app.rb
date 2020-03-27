@@ -125,22 +125,14 @@ class InnCognito < Sinatra::Base
   end
 
   post '/upload' do
+    property_id = 123
+    path = "./public/images/properties/#{property_id}"
+    Dir.mkdir(path) unless Dir[path].any?
     @filename = params[:file][:filename]
     file = params[:file][:tempfile]
-
-    File.open("./public/images/properties/#{@filename}", 'wb') do |f|
+    File.open("#{path}/#{(Dir[path].length + 1).to_s}", 'wb') do |f|
       f.write(file.read)
     end
-
-    erb :'upload/show_upload'
+    redirect '/upload'
   end
-
-  not_found do
-    erb :'errors/404'
-  end
-
-  error do
-    erb :'errors/500'
-  end
-
 end
