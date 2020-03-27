@@ -6,6 +6,7 @@
 		<p>You currently have <%= @bookings.count %> booking requests
 			<section>
 				<p>My properties:
+					<p>You currently have <%= @properties.count %> advertised properties </p>
 					<% @properties.each do |property| %>
 						<div class="block">
 							<p><b><%= property.name%></b></p>
@@ -18,7 +19,8 @@
 					<%end%>
 				</section>
 				<section>
-					<p>My bookings:
+					<% if @properties.count != 0 %>
+					<p>My booking requests:
 						<% @bookings.each do |booking| %>
 							<div class="block">
 								<p><b><%= booking.user_id%></b><p>
@@ -34,6 +36,7 @@
 								<input type="hidden" name="booking_id_2" value="<%= booking.id %>">
 								<input type="submit" value="Reject">
 							</form>
+							<% end %>
 						<%end%>
 					</section>
 				</div>

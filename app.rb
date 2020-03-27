@@ -145,4 +145,13 @@ class InnCognito < Sinatra::Base
     flash[:notice] = 'You have signed out.'
     redirect('/')
   end
+
+  not_found do
+    erb :'errors/404'
+  end
+
+  error do
+    erb :'errors/500'
+  end
+
 end
