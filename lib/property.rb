@@ -3,29 +3,40 @@
 require_relative './database_connection'
 
 class Property
-  attr_reader :name, :description, :cpn, :user_id, :id
+  attr_reader :name, :description, :cpn, :user_id, :id, :images
   def initialize(id, name, description, cpn, user_id)
     @id = id
     @name = name
     @description = description
     @cpn = cpn
     @user_id = user_id
+    @images = []
   end
 
   def self.create(name:, description:, cpn:, user_id:)
     description = DatabaseConnection.prepare(description)
     result = DatabaseConnection.query("INSERT INTO properties (name, description, cpn, user_id) VALUES ('#{name}', '#{description}', #{cpn.to_i}, #{user_id}) RETURNING id, name, description, cpn, user_id;")
-    map(result).first
+    new_property = map(result).first
+    @images = find_images(new_property.id)
+    new_property
   end
-
+  
   def self.edit(id:, name:, description:, cpn:)
     description = DatabaseConnection.prepare(description)
     result = DatabaseConnection.query("UPDATE properties SET name = '#{name}', description = '#{description}', cpn = '#{cpn.to_i}' WHERE id = #{id} RETURNING id, name, description, cpn, user_id;")
     map(result).first
+    edited_property = map(result).first
+    @images = find_images(new_property.id)
+    edited_property
   end
 
-  def self.find_mages(id:)
-
+  def self.find_images(id:)
+    result = []
+    Dir["public/images/properties/#{id}/*"].each do |image|
+      image.slice!('public/')
+      result << image
+    end
+    result
   end
 
   def self.all

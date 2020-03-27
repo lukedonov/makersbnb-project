@@ -7,7 +7,7 @@ require './lib/user'
 require './lib/availability'
 require './lib/booking'
 require './lib/database_connection_setup'
-require_relative './lib/Property'
+require './lib/Property'
 
 class InnCognito < Sinatra::Base
   enable :sessions
@@ -77,6 +77,13 @@ class InnCognito < Sinatra::Base
     @current_user = User.find(id: session[:user_id])
     @property = Property.create(name: params[:name], description: params[:description], cpn: params[:cpn], user_id: @current_user.id)
     @availability = Availability.create(property_id: @property.id, start_date: params[:start_date], end_date: params[:end_date])
+    path = "./public/images/properties/#{@property.id}"
+    Dir.mkdir(path) unless Dir[path].any?
+    @filename = params[:file][:filename]
+    file = params[:file][:tempfile]
+    File.open("#{path}/#{(Dir[path + "/*"].length + 1).to_s}_#{@filename}", 'wb') do |f|
+      f.write(file.read)
+    end
     redirect '/'
   end
   
@@ -118,21 +125,5 @@ class InnCognito < Sinatra::Base
     session.clear
     flash[:notice] = 'You have signed out.'
     redirect('/')
-  end
-
-  get '/upload' do
-    erb :'upload/upload'
-  end
-
-  post '/upload' do
-    property_id = 123
-    path = "./public/images/properties/#{property_id}"
-    Dir.mkdir(path) unless Dir[path].any?
-    @filename = params[:file][:filename]
-    file = params[:file][:tempfile]
-    File.open("#{path}/#{(Dir[path].length + 1).to_s}", 'wb') do |f|
-      f.write(file.read)
-    end
-    redirect '/upload'
   end
 end

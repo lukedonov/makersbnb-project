@@ -3,7 +3,7 @@
 		<link rel="stylesheet" type="text/css" href="stylesheets/css/style.css" >
 	</head>
 	<body>
-		<form action="/account/add-property" method="post">
+		<form action="/account/add-property" method="post" enctype="multipart/form-data">
 			Property name:
 			<br>
 			<input type="text" name="name">
@@ -24,6 +24,8 @@
 			<br>
 			<input type="date" name="end_date" placeholder="end of availability">
 			<br>
+			<input type="file" name="file">
+			<input type="submit" value="Upload image">
 			<input type="submit" value="Submit">
 		</form>
 	</body>
