@@ -5,25 +5,21 @@
 	<body>
     <form action="/account/manage-bookings/:id" method="post">
     <input type="hidden" name="id" value="<%=@property.id%>" >
-			Property name: <%= @property.name %>
-			<br>
+			<p>Property name: <%= @property.name %></p>
 			<input type="text" name="name">
 			<br>
-			Property description: <%= @property.description %>
-			<br>
+			<p>Property description: <%= @property.description %></p>
 			<input type="text" name="description">
 			<br> 
-			Cost per night: <%= @property.cpn %>
-			<br>
+			<p>Cost per night: <%= @property.cpn %></p>
 			<input type="text" name="cpn">
 			<br>
-      Availability start date: <%= @availability.first.start_date %>
-      <br>
+      <p>Availability start date: <%= @availability.first.start_date %></p>
       <input type="date" name="start_date" placeholder="start of availability">
       <br>
-      Availability end date: <%= @availability.first.end_date %>
-      <br>
+      <p>Availability end date: <%= @availability.first.end_date %></p>
       <input type="date" name="end_date" placeholder="end of availability">
+      <br>
       <br>
 			<input type="submit" value="Submit">
 		</form>
