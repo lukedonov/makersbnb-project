@@ -18,14 +18,15 @@ describe Availability do
     end
   end
 
-  # describe ('.edit') do
-  #   it "allows a host to edit the availability dates of a property" do
-  #     expect(@availability).to receive(:start_date).with("2020-07-05")
-  #     expect(@availability.start_date).not_to eq "22 Jun 2020"
-      
-  #   end
-  # end
+  describe ('.edit') do
+    it('edits the availability of a property') do
+      @availability = Availability.edit(property_id: @property.id, start_date: "2020-08-01", end_date: "2020-08-30")
 
+      expect(@availability.property_id).to eq(@property.id)    
+      expect(@availability.start_date).to eq("2020-08-01 00:00:00")    
+      expect(@availability.end_date).to eq("2020-08-30 00:00:00") 
+    end
+  end
 
   describe ('.find') do
     it "finds availibily based on property id" do

@@ -94,6 +94,7 @@ class InnCognito < Sinatra::Base
 
   post '/account/manage-bookings/:id' do
     @property = Property.edit(id: session[:place_id], name: params[:name], description: params[:description], cpn: params[:cpn])
+    @availability = Availability.edit(property_id: session[:place_id], start_date: params[:start_date], end_date: params[:end_date])
     redirect 'account/manage-bookings'
   end
   

@@ -50,10 +50,6 @@ I want my room to be available to book until a booking has been confirmed
 ```
 **Secondary**
 ```
-As a host
-So that I am not out of pocket
-I would lke to recieve payments for my bookings
-
 As a guestå
 So that I iknow my sign-up has been successful
 I would like to receive an email confirmation
@@ -65,16 +61,36 @@ I would like to recieve an email booking confirmation
 As a guest
 So that I know if my booking has been unsuccessful
 I would like to receieve an email notifying me that my booking has been denied
+
+As a host
+So that I am not out of pocket
+I would lke to recieve payments for my bookings
+
+As a host
+So I can notify inncognito of a change to my property
+I would like to update the details of a listed property
 ```
 
 ## [Planning](#planning)
+
+**Day 1**
+
+**Day 2**
+
+**Day 3**
+
+**Day 4**
+
+**Day 5**
+
+
 
 ## [Installation Instructions](#install)
 
 **Getting started**
 
-`git clone path-to-your-repo`
-`command_to_install_dependencies` (e.g. `bundle`)
+`git clone https://github.com/lukedonov/makersbnb-project.git`
+`bundle`
 
 **Setting up the databases**
 
@@ -84,15 +100,16 @@ Run the SQL scripts in the `db/migrations` folder in the given order.
 
 **Usage**
 
-Navigate to `http://localhost:xxxx/`
+Navigate to `http://localhost:9292/`
 
 **Running tests**
 
-`test_command` (e.g. `rspec`)
+`rspec`
 
 ## [Tech stack](#tech) 
 
 Back-end:
+
 * Ruby
 
 Front-end:

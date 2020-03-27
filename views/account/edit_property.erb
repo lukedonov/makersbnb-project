@@ -17,10 +17,14 @@
 			<br>
 			<input type="text" name="cpn">
 			<br>
-			Availability start date: <%= @availability.first.start_date %>
-			
-			Availability end date: <%= @availability.first.end_date %>
-		
+      Availability start date: <%= @availability.first.start_date %>
+      <br>
+      <input type="date" name="start_date" placeholder="start of availability">
+      <br>
+      Availability end date: <%= @availability.first.end_date %>
+      <br>
+      <input type="date" name="end_date" placeholder="end of availability">
+      <br>
 			<input type="submit" value="Submit">
 		</form>
 	</body>
