@@ -1,7 +1,13 @@
-		
 <div class="verticalCenter">
-	Your request to book <%= @property.name %> for <%= @duration %> nights has been sent
-	<form action="/" method="get">
-		<input type="submit" value="Back to properties">
-	</form>
+	<%if !@error%>
+		<div class="verticalCenter">
+			Your request to book <%= @property.name %> for <%= @duration %> nights has been sent
+			<form action="/" method="get">
+				<input type="submit" value="Back to properties">
+			</form>
+		</div>
+	<%else%>
+		<p><%=@error%></p>
+		<p><a href="javascript:history.back()">Try another date</a></p>
+	<%end%>
 </div>
