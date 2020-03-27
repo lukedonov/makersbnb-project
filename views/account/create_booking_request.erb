@@ -11,11 +11,11 @@
   <% else %>
   Cost per night: £<%= @property.cpn%>
    <%@availability.each { |a| %>
-  <p>
-  Available from: <%= a.start_date%>
-  <br>
-  Available to: <%= a.end_date%>
-  </p>
+      <p>
+      Available from: <%= a.start_date%>
+      <br>
+      Available to: <%= a.end_date%>
+      </p>
   <%}%>
   
 
