@@ -54,7 +54,10 @@ body {
   grid-area: mainContent; }
 
 .verticalCenter {
-  background-color: red; }
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; }
 
 #sortProperties {
   display: inline-block;
