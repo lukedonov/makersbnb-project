@@ -26,12 +26,16 @@
     </section>
 			<section>
 				<p>My properties:
-					<p>You currently have <%= @properties.count %> advertised properties </p>
+          <p>You currently have <%= @properties.count %> advertised <% if @bookings.count == 0 || @bookings.count > 1 %>
+                                                                      <%= "properties" %>
+                                                                    <% else %>
+                                                                      <%= "property" %>
+                                                                    <% end %></p>
 					<% @properties.each do |property| %>
 						<div class="block">
 							<p><b><%= property.name%></b></p>
 							<p><%= property.description%></p>
-							<p>£<%= property.cpn%></p>
+							<p>£<%= property.cpn%> per night</p>
 							<form action="/account/manage-bookings/<%= property.id %>" method="get">
 								<input type="submit" value="Edit">
 							</form>
