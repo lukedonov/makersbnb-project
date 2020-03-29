@@ -2,15 +2,14 @@
 	<form action="/" method="get">
 		<input type="submit" value="Back to properties">
 	</form>
-	<p>My requests:
+	<p>My property requests:
     <p>You currently have <%= @bookings.count %> booking request<%= puts 's' if @bookings.count > 0 %>
     <section>
     <% if @properties.count != 0 %>
-					<p>My booking requests:
 						<% @bookings.each do |booking| %>
 							<div class="block">
-								<p><b><%= booking.user_id%></b><p>
-								<p><%= booking.property_id%></p>
+                <p><b>Guest name: <%= User.find(id: booking.user_id).name %></b><p>
+								<p>Property name: <%= booking.property_id%></p>
 								<p>Check in: <%= Booking.date_format(booking.start_date)%></p>
 								<p>Check out: <%= Booking.date_format(booking.end_date)%></p>
 							</div>
@@ -38,5 +37,11 @@
 							</form>
 						</div>
 					<%end%>
-				</section>
+        </section>
+        <section>
+          <p>My booking requests:
+            <p>You currently have 0 pending booking requests
+        </section>
+        <section>
+          <p>My bookings:
 				</div>
