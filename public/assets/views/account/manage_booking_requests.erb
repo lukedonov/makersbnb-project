@@ -3,13 +3,13 @@
 		<input type="submit" value="Back to properties">
 	</form>
 	<p>My property requests:
-    <p>You currently have <%= @bookings.count %> booking request<%= puts 's' if @bookings.count > 0 %>
+    <p>You currently have <%= @bookings.count %> booking request<%= "s" if @bookings.count == 0 || @bookings.count > 1%>
     <section>
     <% if @properties.count != 0 %>
 						<% @bookings.each do |booking| %>
 							<div class="block">
                 <p><b>Guest name: <%= User.find(id: booking.user_id).name %></b><p>
-								<p>Property name: <%= booking.property_id%></p>
+								<p>Property name: <%= Property.find(id: booking.property_id).name %></p>
 								<p>Check in: <%= Booking.date_format(booking.start_date)%></p>
 								<p>Check out: <%= Booking.date_format(booking.end_date)%></p>
 							</div>
@@ -22,7 +22,7 @@
 								<input type="submit" value="Reject">
 							</form>
 							<% end %>
-						<%end%>
+						<%end%>   
     </section>
 			<section>
 				<p>My properties:
