@@ -1,10 +1,10 @@
+# frozen_string_literal: true
 
 class UserWebHelper
-  
   USER_POOL = [
     { name: 'Bob', email: 'bob@bob.com', password: '12345' },
     { name: 'Eleanor', email: 'elle@gmail.com', password: 'sharksAreOlderThanTrees' }
-  ]
+  ].freeze
 
   def self.setup
     @@users = USER_POOL
@@ -14,9 +14,8 @@ class UserWebHelper
   def self.get_user
     @@users.shift
   end
-  
+
   def self.get_user_with_index(i)
     @@users_with_index[i]
   end
-
 end

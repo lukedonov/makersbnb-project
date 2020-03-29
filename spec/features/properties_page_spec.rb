@@ -3,7 +3,6 @@
 require './lib/database_connection'
 
 feature 'viewing all properties' do
-
   scenario 'add a new property' do
     create_user
     sign_in

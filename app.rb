@@ -153,5 +153,4 @@ class InnCognito < Sinatra::Base
   error do
     erb :'errors/500'
   end
-
 end

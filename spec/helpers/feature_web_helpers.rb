@@ -8,7 +8,6 @@ def sign_up
   fill_in('email', with: 'test@test.com')
   fill_in('password', with: 'test')
   click_button('Submit')
-
 end
 
 def sign_in
@@ -44,6 +43,6 @@ def list_property
   fill_in('description', with: 'wow, so nice')
   fill_in('cpn', with: '123421')
   fill_in('start_date', with: '2020-03-25')
-  fill_in('end_date', with: '2020-08-27' )
+  fill_in('end_date', with: '2020-08-27')
   click_button('Submit')
 end

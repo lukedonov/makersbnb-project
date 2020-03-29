@@ -14,6 +14,7 @@ class User
     result = DatabaseConnection.query("SELECT * FROM users WHERE email = '#{email}'")
     return unless result.any?
     return unless BCrypt::Password.new(result[0]['password']) == password
+
     map(result)
   end
 
@@ -22,6 +23,7 @@ class User
 
     result = DatabaseConnection.query("SELECT * FROM users WHERE id = #{id}")
     return nil unless result.any?
+
     map(result)
   end
 
@@ -30,6 +32,7 @@ class User
 
     result = DatabaseConnection.query("SELECT * FROM users WHERE email = '#{email}'")
     return nil unless result.any?
+
     map(result)
   end
 

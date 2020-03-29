@@ -1,6 +1,7 @@
-feature "editing a property's details" do
+# frozen_string_literal: true
 
-  scenario "a host can change a property's name, description and cost per night and availability"  do
+feature "editing a property's details" do
+  scenario "a host can change a property's name, description and cost per night and availability" do
     sign_up
     sign_in
     list_property
@@ -17,8 +18,6 @@ feature "editing a property's details" do
     click_button('Edit')
 
     expect(page).to have_content 'changing name'
-    expect(page).to have_content '2020-07-04 00:00:00'
-
+    expect(page).to have_content '04 Jul 2020'
   end
-
 end

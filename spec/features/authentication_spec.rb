@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 feature 'authentication' do
-
   before(:each) do
     create_user
   end
@@ -36,7 +35,5 @@ feature 'authentication' do
 
     expect(page).not_to have_content 'Welcome, John Doe'
     expect(page).to have_content 'You have signed out.'
-  end  
-
-  
+  end
 end

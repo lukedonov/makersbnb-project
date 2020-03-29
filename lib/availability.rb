@@ -1,8 +1,9 @@
-class Availability
+# frozen_string_literal: true
 
+class Availability
   attr_reader :id, :property_id, :start_date, :end_date
-  
-  def initialize(id, property_id, start_date, end_date) 
+
+  def initialize(id, property_id, start_date, end_date)
     @id = id
     @property_id = property_id
     @start_date = start_date
@@ -23,11 +24,10 @@ class Availability
   end
 
   def self.map(sql_result)
-    sql_result.map { |b| Availability.new(b['id'], b['property_id'], b['start_date'], b['end_date'])   }
+    sql_result.map { |b| Availability.new(b['id'], b['property_id'], b['start_date'], b['end_date']) }
   end
 
   def self.date_format(date)
-    DateTime.strptime(date, '%Y-%m-%d %H:%M:%S').strftime("%d %b %Y")
+    DateTime.strptime(date, '%Y-%m-%d %H:%M:%S').strftime('%d %b %Y')
   end
-
 end
