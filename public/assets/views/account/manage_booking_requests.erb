@@ -11,8 +11,8 @@
 							<div class="block">
 								<p><b><%= booking.user_id%></b><p>
 								<p><%= booking.property_id%></p>
-								<p><%= booking.start_date%></p>
-								<p><%= booking.end_date%></p>
+								<p>Check in: <%= Booking.date_format(booking.start_date)%></p>
+								<p>Check out: <%= Booking.date_format(booking.end_date)%></p>
 							</div>
 							<form action="/account/approve-booking" method="post">
 								<input type="hidden" name="booking_id" value="<%= booking.id %>">
