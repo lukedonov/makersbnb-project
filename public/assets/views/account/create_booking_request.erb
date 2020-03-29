@@ -1,16 +1,15 @@
 <div class = "centered">
 <div class="block" id="propertyBookBlock">
-  <h3><%= @property.name%></h3>
-  <p>Description: <%= @property.description%></p>
+  <h3><%= @property.name %></h3>
+  <p>Description: <%= @property.description %></p>
     <% if @current_user.id == @property.user_id %>
     <p>You cannot book your own property. <a href="javascript:history.back()">Click here</a> to go back.</p>
     <% else %>
-    <p>Cost per night: £<%= @property.cpn%></p>
-    <%@availability.each do |a| %>
+    <p>Cost per night: £<%= @property.cpn %></p>
+    <% @availability.each do |a| %>
       <p>
-      Available from: <%= a.start_date%>
-      <br>
-      Available to: <%= a.end_date%>
+      <p>Available from: <%= Availability.date_format(a.start_date) %></p>
+      <p>Available to: <%= Availability.date_format(a.end_date) %></p>
       </p>
     <% end %>
 </div>
@@ -18,9 +17,14 @@
     <input type="hidden" name="user_id" value="<%= @current_user.id %>">
     <input type="hidden" name="property_id" value="<%= @property.id %>">
     <input type="hidden" name="owner_id" value="<%= @property.user_id %>">
-    <input type="date" name="start_date" id="startDate"/>
-    <input type="date" name="end_date" id="endDate"/>
+    <p>
+    Check in:
+    <input type="date" name="start_date" id="startDate" value="<%= Date.today %>" min="<%= Date.today %>" />
+    Check out:
+    <input type="date" name="end_date" id="endDate" min="<%= Date.today %>" />
     <input type="submit" value="Request booking"/>
+    </p>
   </form>
     <% end %>
 </div>
+

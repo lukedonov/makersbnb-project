@@ -11,13 +11,13 @@
 			<p>Property description: <%= @property.description %></p>
 			<input type="text" name="description">
 			<br> 
-			<p>Cost per night: <%= @property.cpn %></p>
+			<p>Cost per night: £<%= @property.cpn %></p>
 			<input type="text" name="cpn">
 			<br>
-      <p>Availability start date: <%= @availability.first.start_date %></p>
+      <p>Availability start date: <%= Availability.date_format(@availability.first.start_date) %></p>
       <input type="date" name="start_date" placeholder="start of availability">
       <br>
-      <p>Availability end date: <%= @availability.first.end_date %></p>
+      <p>Availability end date: <%= Availability.date_format(@availability.first.end_date) %></p>
       <input type="date" name="end_date" placeholder="end of availability">
       <br>
       <br>

@@ -3,23 +3,9 @@
 		<input type="submit" value="Back to properties">
 	</form>
 	<p>My requests:
-		<p>You currently have <%= @bookings.count %> booking requests
-			<section>
-				<p>My properties:
-					<p>You currently have <%= @properties.count %> advertised properties </p>
-					<% @properties.each do |property| %>
-						<div class="block">
-							<p><b><%= property.name%></b></p>
-							<p><%= property.description%></p>
-							<p>£<%= property.cpn%></p>
-							<form action="/account/manage-bookings/<%= property.id %>" method="get">
-								<input type="submit" value="Edit">
-							</form>
-						</div>
-					<%end%>
-				</section>
-				<section>
-					<% if @properties.count != 0 %>
+    <p>You currently have <%= @bookings.count %> booking request<%= puts 's' if @bookings.count > 0 %>
+    <section>
+    <% if @properties.count != 0 %>
 					<p>My booking requests:
 						<% @bookings.each do |booking| %>
 							<div class="block">
@@ -38,5 +24,19 @@
 							</form>
 							<% end %>
 						<%end%>
-					</section>
+    </section>
+			<section>
+				<p>My properties:
+					<p>You currently have <%= @properties.count %> advertised properties </p>
+					<% @properties.each do |property| %>
+						<div class="block">
+							<p><b><%= property.name%></b></p>
+							<p><%= property.description%></p>
+							<p>£<%= property.cpn%></p>
+							<form action="/account/manage-bookings/<%= property.id %>" method="get">
+								<input type="submit" value="Edit">
+							</form>
+						</div>
+					<%end%>
+				</section>
 				</div>

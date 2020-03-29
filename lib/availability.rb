@@ -30,5 +30,4 @@ class Availability
     DateTime.strptime(date, '%Y-%m-%d %H:%M:%S').strftime("%d %b %Y")
   end
 
-
 end
