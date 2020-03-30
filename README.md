@@ -4,6 +4,8 @@
 
 Contributors: Luke Donovan, Orion Reed, Gareth Harris, Sophia Bell
 
+[![Build Status](https://travis-ci.com/lukedonov/makersbnb-project.svg?branch=master)](https://travis-ci.com/lukedonov/makersbnb-project)
+
 [Outline](#Outline) | [Specifications](#Specifications) | [Planning](#planning) | [Installation Instructions](#install) | [Tech stack](#tech) | [Challenges](#challenges)
 
 ## [Outline](#Outline) 
