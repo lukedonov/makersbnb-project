@@ -8,7 +8,7 @@ require './lib/user'
 require './lib/availability'
 require './lib/booking'
 require './lib/database_connection_setup'
-require './lib/Property'
+require './lib/property'
 
 class InnCognito < Sinatra::Base
   register Sinatra::Reloader
@@ -110,9 +110,6 @@ class InnCognito < Sinatra::Base
     @current_user = User.find(id: session[:user_id])
     @properties = Property.where(user_id: @current_user.id)
     @bookings = Booking.find_by_owner_id(@current_user.id)
-    @bookings.each_with_index do |b, i|
-      @bookings.delete_at(i) if b.approval != Booking::PENDING
-    end
     erb :'account/manage_booking_requests'
   end
 
