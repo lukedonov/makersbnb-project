@@ -2,7 +2,7 @@
 
 ## Makers Academy - Week 6 (group project)
 
-Contributors: Luke Donovan, Orion Reed, Gareth Harris, Sophia Bell
+Contributors: [Luke Donovan](https://github.com/lukedonov), [Orion Reed](https://github.com/OrionReed), [Gareth Harris](https://github.com/gdharris1000), [Sophia Bell](https://github.com/Kittaru87)
 
 [Outline](#Outline) | [Specifications](#Specifications) | [Planning](#planning) | [Installation Instructions](#install) | [Tech stack](#tech) | [Challenges](#challenges)
 
@@ -162,4 +162,4 @@ Linting:
 ## [Challenges](#challenges)
 
 * Working remotely for our first project was initially quite daunting but we managed pretty well - we kept in contact every day with stand ups and retros, and constant updates throughout the day as to our progress.
-* 
+* There were only 4 of us on the team so we had a lot to do, but that meant we were also able to try our hand at lots of different aspects of the project.
