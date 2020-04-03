@@ -2,7 +2,7 @@
 
 require './lib/database_connection'
 require_relative '../helpers/database_helpers.rb'
-require 'Property'
+require 'property'
 require 'user'
 require 'booking'
 require 'availability'
