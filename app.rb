@@ -8,7 +8,7 @@ require './lib/user'
 require './lib/availability'
 require './lib/booking'
 require './lib/database_connection_setup'
-require './lib/Property'
+require './lib/property'
 
 class InnCognito < Sinatra::Base
   register Sinatra::Reloader
