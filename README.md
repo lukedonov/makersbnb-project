@@ -56,15 +56,15 @@ I would like to receive an email confirmation
 
 As a guest
 So I know that my booking has been successful
-I would like to recieve an email booking confirmation
+I would like to receive an email booking confirmation
 
 As a guest
 So that I know if my booking has been unsuccessful
-I would like to receieve an email notifying me that my booking has been denied
+I would like to receive an email notifying me that my booking has been denied
 
 As a host
 So that I am not out of pocket
-I would lke to recieve payments for my bookings
+I would lke to receive payments for my bookings
 
 As a host
 So I can notify inncognito of a change to my property
@@ -163,3 +163,8 @@ Linting:
 
 * Working remotely for our first project was initially quite daunting but we managed pretty well - we kept in contact every day with stand ups and retros, and constant updates throughout the day as to our progress.
 * There were only 4 of us on the team so we had a lot to do, but that meant we were also able to try our hand at lots of different aspects of the project.
+
+
+### Look to the future
+
+We still have a lot we would like to accomplish with this project, including adding in a payment system (see the additional functionality picture above).
