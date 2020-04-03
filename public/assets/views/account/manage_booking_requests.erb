@@ -27,11 +27,7 @@
     </section>
     <section>
       <p>My properties:
-      <p>You currently have <%= @properties.count %> advertised <% if @bookings.count == 0 || @bookings.count > 1 %>
-                                                                  <%= "properties" %>
-                                                                <% else %>
-                                                                  <%= "property" %>
-                                                                <% end %></p>
+      <p>Your current number of properties: <%= @properties.count %>
       <% @properties.each do |property| %>
         <div class="block">
           <p><b><%= property.name%></b></p>
@@ -44,8 +40,12 @@
       <%end%>
     </section>
     <section>
-    <p>My booking requests:
-        <p>You currently have <%= @requests.count %> pending booking request<%= "s" if @requests.count == 0 || @requests.count > 1%>
+      <p>My booking requests:
+      <% counter = 0 %>
+      <% @requests.each do |request| %>
+        <% counter += 1 if request.approval == Booking::PENDING %>
+      <% end %>
+      <p>You currently have <%= counter %> pending booking request<%= "s" if counter == 0 || counter > 1%>
     </section>
     <section>
       <p>My bookings:
