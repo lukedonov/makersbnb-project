@@ -47,6 +47,10 @@ class Booking
     map(DatabaseConnection.query("SELECT * FROM bookings WHERE owner_id = #{id}"))
   end
 
+  def self.find_by_user_id(id)
+    map(DatabaseConnection.query("SELECT * FROM bookings WHERE user_id = #{id}"))
+  end
+
   private
 
   def self.map(sql_result)
