@@ -8,12 +8,12 @@ services:
 
 before_script:
   - psql -c 'create database inncognito_test;' -U postgres
-  - U postgres -d inncognito_test -f db/migrations/02_create_users_table.sql
-  - U postgres -d inncognito_test -f db/migrations/03_add_unique_constraints.sql
-  - U postgres -d inncognito_test -f db/migrations/04_create_properties_table.sql
-  - U postgres -d inncognito_test -f db/migrations/05_create_bookings_table.sql
-  - U postgres -d inncognito_test -f db/migrations/06_create_availability_table.sql
-  - U postgres -d inncognito_test -f db/migrations/07_create_owner_id_in_bookings.sql
+  - psql -d inncognito_test -c 'CREATE TABLE users(id SERIAL PRIMARY KEY, name VARCHAR(60), email VARCHAR(60), password VARCHAR(140));' -U postgres
+  - psql -d inncognito_test -c 'ALTER TABLE users ADD CONSTRAINT unique_email UNIQUE (email);' -U postgres
+  - psql -d inncognito_test -c 'CREATE TABLE properties(id SERIAL PRIMARY KEY, name VARCHAR(80), cpn NUMERIC, description VARCHAR(2000), user_id INTEGER REFERENCES users (id));' -U postgres
+  - psql -d inncognito_test -c 'CREATE TABLE bookings(id SERIAL PRIMARY KEY, user_id INTEGER REFERENCES users (id), property_id INTEGER REFERENCES properties (id), start_date TIMESTAMP, end_date TIMESTAMP, approval VARCHAR(10));' -U postgres
+  - psql -d inncognito_test -c 'CREATE TABLE availability(id SERIAL PRIMARY KEY, property_id INTEGER REFERENCES properties (id), start_date TIMESTAMP, end_date TIMESTAMP);' -U postgres
+  - psql -d inncognito_test -c 'ALTER TABLE bookings ADD COLUMN owner_id INTEGER REFERENCES users(id);' -U postgres
 
   
 script:
