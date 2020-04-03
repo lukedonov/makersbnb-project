@@ -29,6 +29,13 @@ def sign_up_and_in_other_test_user
   click_button('Sign In')
 end
 
+def sign_in_other_test_user
+  visit '/sign-in'
+  fill_in(:email, with: 'bob@bob.com')
+  fill_in(:password, with: 'bob')
+  click_button('Sign In')
+end
+
 def create_user
   User.create(name: 'John Doe', email: 'test@test.com', password: 'test')
 end
