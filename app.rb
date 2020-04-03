@@ -30,7 +30,8 @@ class InnCognito < Sinatra::Base
     @current_user = User.find(id: session[:user_id])
     @properties = Property.all
     @properties = Property.sort_by_recent if params[:sort] == 'recent'
-    @properties = Property.sort_by_cpn if params[:sort] == 'price'
+    @properties = Property.sort_by_low_cpn if params[:sort] == 'lowprice'
+    @properties = Property.sort_by_high_cpn if params[:sort] == 'highprice'
     erb :index
   end
 
