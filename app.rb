@@ -30,7 +30,8 @@ class InnCognito < Sinatra::Base
     @current_user = User.find(id: session[:user_id])
     @properties = Property.all
     @properties = Property.sort_by_recent if params[:sort] == 'recent'
-    @properties = Property.sort_by_cpn if params[:sort] == 'price'
+    @properties = Property.sort_by_low_cpn if params[:sort] == 'lowprice'
+    @properties = Property.sort_by_high_cpn if params[:sort] == 'highprice'
     erb :index
   end
 
@@ -110,6 +111,9 @@ class InnCognito < Sinatra::Base
     @current_user = User.find(id: session[:user_id])
     @properties = Property.where(user_id: @current_user.id)
     @bookings = Booking.find_by_owner_id(@current_user.id)
+    @bookings.each_with_index do |b, i|
+      @bookings.delete_at(i) if b.approval != Booking::PENDING
+    end
     erb :'account/manage_booking_requests'
   end
 

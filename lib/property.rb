@@ -42,8 +42,12 @@ class Property
     map(DatabaseConnection.query('SELECT * FROM properties ORDER BY id DESC'))
   end
 
-  def self.sort_by_cpn
+  def self.sort_by_low_cpn
     map(DatabaseConnection.query('SELECT * FROM properties ORDER BY cpn ASC'))
+  end
+
+  def self.sort_by_high_cpn
+    map(DatabaseConnection.query('SELECT * FROM properties ORDER BY cpn DESC'))
   end
 
   def self.where(user_id:)

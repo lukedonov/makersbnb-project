@@ -3,10 +3,11 @@
 		<input type="submit" value="Back to properties">
 	</form>
 	<p>My property requests:
-    <p>You currently have <%= @bookings.count %> booking request<%= "s" if @bookings.count == 0 || @bookings.count > 1%>
+    <p>You currently have <%= @bookings.count %> property request<%= "s" if @bookings.count == 0 || @bookings.count > 1%>
     <section>
     <% if @properties.count != 0 %>
-      <% @bookings.each do |booking| %>
+    <% @bookings.each_with_index do |booking, i| %>
+      <%= @bookings.delete_at(i) if booking.approval != Booking::PENDING %>
         <div class="block">
           <p><b>Guest name: <%= User.find(id: booking.user_id).name %></b><p>
           <p>Property name: <%= Property.find(id: booking.property_id).name %></p>
@@ -22,15 +23,11 @@
           <input type="submit" value="Reject">
         </form>
         <% end %>
-      <%end%>   
+      <% end %>   
     </section>
     <section>
       <p>My properties:
-      <p>You currently have <%= @properties.count %> advertised <% if @bookings.count == 0 || @bookings.count > 1 %>
-                                                                  <%= "properties" %>
-                                                                <% else %>
-                                                                  <%= "property" %>
-                                                                <% end %></p>
+      <p>Your current number of properties: <%= @properties.count %>
       <% @properties.each do |property| %>
         <div class="block">
           <p><b><%= property.name%></b></p>
@@ -44,20 +41,22 @@
     </section>
     <section>
       <p>My booking requests:
-      <p>You currently have 0 pending booking requests
+      <% counter = 0 %>
+      <% @requests.each do |request| %>
+        <% counter += 1 if request.approval == Booking::PENDING %>
+      <% end %>
+      <p>You currently have <%= counter %> pending booking request<%= "s" if counter == 0 || counter > 1%>
     </section>
     <section>
       <p>My bookings:
-      <% if @bookings.count != 0 %>
-        <% @bookings.each do |booking| %>
-          <% if booking.user_id == @current_user.id %>
+        <% @requests.each do |request| %>
+          <% if request.approval == Booking::APPROVED %>
             <div class="block">
-              <p>Property name: <%= Property.find(id: booking.property_id).name %></p>
-              <p>Check in: <%= Booking.date_format(booking.start_date)%></p>
-              <p>Check out: <%= Booking.date_format(booking.end_date)%></p>
+              <p>Property name: <%= Property.find(id: request.property_id).name %></p>
+              <p>Check in: <%= Booking.date_format(request.start_date)%></p>
+              <p>Check out: <%= Booking.date_format(request.end_date)%></p>
             </div>
-          <% end %>
+          <% end %>   
         <% end %>
-      <% end %>   
     </section>
 </div>
